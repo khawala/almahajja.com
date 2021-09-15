@@ -17,14 +17,14 @@ class CreateSectionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable();
-            $table->unsignedInteger('division_id');
-            $table->unsignedInteger('supervisor_id');
+            $table->integer('division_id')->nullable();
+            $table->integer('supervisor_id')->nullable();
             $table->string('category')->nullable();
             $table->string('track')->nullable();
             $table->string('pdf_file')->nullable();
             $table->timestamps();
 
-            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
+            // $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
             $table->foreign('supervisor_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

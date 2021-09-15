@@ -44,7 +44,7 @@ class SectionController extends Controller
         
         $section = Section::create($request->all());
 
-        return redirect()->route('admin.divisions.edit', $section->division_id)->withSuccess(trans('app.success_store'));
+        return redirect()->route('admin.sections.index')->withSuccess(trans('app.success_store'));
     }
 
     /**
@@ -86,7 +86,7 @@ class SectionController extends Controller
 
         $item->update($request->all());
 
-        return redirect()->route('admin.divisions.edit', $item->division_id)->withSuccess(trans('app.success_update'));
+        return redirect()->route('admin.sections.edit', $id)->withSuccess(trans('app.success_update'));
     }
 
     /**
@@ -100,7 +100,7 @@ class SectionController extends Controller
         $item = Section::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('admin.divisions.edit', $item->division_id)->withSuccess(trans('app.success_destroy'));
+        return redirect()->route('admin.sections.index')->withSuccess(trans('app.success_destroy'));
     }
 
     /**
@@ -114,8 +114,8 @@ class SectionController extends Controller
             $data[] = [
                 '#' => $item->id,
                 'اسم المسار' =>$item->name,
-                'القسم' =>$item->category,
-                'الفرع' =>$item->track,
+                // 'القسم' =>$item->category,
+                // 'الفرع' =>$item->track,
             ];
         }
         // return $data;

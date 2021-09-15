@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="<?php echo e(mix('/css/admin-vendor.css')); ?>">
         <link rel="stylesheet" href="/css/admin-custom.css">
     <?php endif; ?>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php echo $__env->yieldContent('css'); ?>
 
 </head>

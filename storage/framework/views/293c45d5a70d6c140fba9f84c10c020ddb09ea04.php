@@ -1,32 +1,27 @@
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#sectionModal">
-    إضافة مسار
-</button>
+<?php $__env->startSection('page-header'); ?>
+  المسار <small>إضافة</small>
+<?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('content'); ?>
 
-<!-- Modal -->
-<div class="modal fade" id="sectionModal" tabindex="-1" role="dialog" aria-labelledby="sectionModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <?php echo Form::open([
+     <?php echo Form::open([
                 'action' => ['SectionController@store'],
                 'files' => true
             ]); ?>
 
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="sectionModalLabel"> مسار جديد</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <?php echo $__env->make('admin.sections.form', ['division_id' => $item->id], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">حفظ</button>
-                </div>
-            </div>
-            <?php echo Form::close(); ?>
 
+        <div class="box box-info">
+          <div class="box-body">
+            <?php echo $__env->make('admin.sections.form', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+          </div>
         </div>
-    </div>
 
+  	<div class="box-footer">
+  	  <button type="submit" class="btn btn-info"><?php echo e(trans('app.add_button')); ?></button>
+  	</div>
+    
+  <?php echo Form::close(); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -62,22 +62,23 @@
 
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-sort-alpha-asc"></i> <span>الدورات والاعلانات</span>
+            <i class="fa fa-sort-alpha-asc"></i> <span>الاحصائات</span>
             <span class="pull-left-container">
                 <i class="fa fa-angle-left pull-left"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="<?php echo ( starts_with($route, ADMIN.'.divisions') ) ? "active" : '' ?>">
-                <a href="<?php echo e(route(ADMIN.'.divisions.index')); ?>">
-                    <span>الدورات</span>
-                </a>
-            </li>
-            <li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">
-                <a href="<?php echo e(route(ADMIN.'.advertisements.index')); ?>">
-                    <span>الاعلانات</span>
-                </a>
-            </li>
+            <!--<li class="<?php echo ( starts_with($route, ADMIN.'.divisions') ) ? "active" : '' ?>">-->
+            <!--    <a href="<?php echo e(route(ADMIN.'.divisions.index')); ?>">-->
+            <!--        <span>الدورات</span>-->
+            <!--    </a>-->
+            <!--</li>-->
+            <!--<li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">-->
+            <!--    <a href="<?php echo e(route(ADMIN.'.advertisements.index')); ?>">-->
+            <!--        <span>الاعلانات</span>-->
+            <!--    </a>-->
+            <!--</li>-->
+            
             <li class="<?php echo ( starts_with($route, ADMIN.'.divisions.stats') ) ? "active" : '' ?>">
                 <a href="<?php echo e(route(ADMIN.'.divisions.stats')); ?>">
                     <span>احصائيات</span>
@@ -85,7 +86,28 @@
             </li>
         </ul>
     </li>
-
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-sort-alpha-asc"></i> <span> الاقسام والمسارات</span>
+            <span class="pull-left-container">
+                <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="<?php echo ( starts_with($route, ADMIN.'.sections') ) ? "active" : '' ?>">
+                <a href="<?php echo e(route(ADMIN.'.sections.index')); ?>">
+                    <span>المسارات</span>
+                </a>
+            </li>
+            <li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">
+                <a href="<?php echo e(route(ADMIN.'.advertisements.index')); ?>">
+                    <span>الاعلانات</span>
+                </a>
+            </li>
+            
+           
+        </ul>
+    </li>
     <?php if(auth()->user()->role > 10): ?>
         <li class="treeview">
             <a href="#">

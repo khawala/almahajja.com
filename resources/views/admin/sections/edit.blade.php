@@ -15,7 +15,7 @@
 
         <div class="box box-info">
           <div class="box-body">
-            @include('admin.sections.form', ['division_id' => $item->division_id])
+            @include('admin.sections.form')
           </div>
         </div>
 
