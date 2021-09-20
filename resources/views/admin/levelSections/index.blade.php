@@ -43,6 +43,7 @@
             <tbody>
                 @foreach ($items as $item)
                     <tr>
+                        <td><a href="{{ route(ADMIN . '.levelSections.edit', $item->id) }}">{{ $item->id }}</a></td>
                         <td><a href="{{ route(ADMIN . '.levelSections.edit', $item->id) }}">{{ $item->level->name }}</a></td>
                         <td><a href="{{ route(ADMIN . '.levelSections.edit', $item->id) }}">{{ $item->section->name }}</a></td>
                         <td class="actions">

@@ -1,5 +1,5 @@
 <?php $__env->startSection('page-header'); ?>
-    المستوىات <small><?php echo e(trans('app.manage')); ?></small>
+    المستويات <small><?php echo e(trans('app.manage')); ?></small>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

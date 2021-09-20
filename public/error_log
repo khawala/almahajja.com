@@ -6,3 +6,4 @@
 [19-Sep-2021 01:45:48 Asia/Riyadh] PHP Fatal error:  Cannot redeclare App\Classroom::scopeForHome() in /home/pni333souxua/public_html/app/Classroom.php on line 118
 [19-Sep-2021 01:46:29 Asia/Riyadh] PHP Fatal error:  Cannot redeclare App\Classroom::scopeOnlyWomen() in /home/pni333souxua/public_html/app/Classroom.php on line 119
 [19-Sep-2021 02:02:26 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
+[21-Sep-2021 01:02:25 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288

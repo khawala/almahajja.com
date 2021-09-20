@@ -29,7 +29,7 @@ class Level extends Model
 
         public function sections()
     {
-        return $this->belongsToMany(Section::class, 'level_section', 
+        return $this->belongsToMany(Section::class, 'level_sections', 
         'level_id','section_id')->withPivot('pdf_file','brief');
     }
 }

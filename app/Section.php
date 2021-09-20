@@ -42,7 +42,7 @@ class Section extends Model
     }
     public function levels()
     {
-        return $this->belongsToMany(Level::class, 'level_section', 
+        return $this->belongsToMany(Level::class, 'level_sections', 
         'section_id', 'level_id')->withPivot('pdf_file','brief');
     }
     public function division()

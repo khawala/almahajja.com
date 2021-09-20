@@ -5,7 +5,7 @@
         {!! Form::mySelect('level_id', 'المستوى <span class=red>*</span>',['' => ''] +  App\Level::pluck('name', 'id')->toArray(),null, ['class' => 'chosen-rtl form-contro']) !!}
 
 
-        {!! Form::myTextArea('breif', 'نبذة') !!}
+        {!! Form::myTextArea('brief', 'نبذة') !!}
            {!! Form::myFile('pdf_file', 'ملف المسار') !!}
 
      @if (isset($item) && $item->pdf_file)

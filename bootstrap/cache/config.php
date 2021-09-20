@@ -1123,6 +1123,16 @@
         'height' => NULL,
       ),
     ),
+    'level_sections_pdf_file' => 
+    array (
+      'public' => '/files/level_sections_pdf_file/',
+      'folder' => '/home/pni333souxua/public_html/public/files/level_sections_pdf_file/',
+      'image' => 
+      array (
+        'width' => NULL,
+        'height' => NULL,
+      ),
+    ),
     'advertissements_photo' => 
     array (
       'public' => '/files/advertissements_photo/',

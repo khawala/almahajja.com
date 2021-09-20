@@ -159,7 +159,16 @@ return [
             'height' => null,
         ]
     ],
+    
+    'level_sections_pdf_file' => [
+        'public' => '/files/level_sections_pdf_file/',
+        'folder' => public_path() . '/files/level_sections_pdf_file/',
 
+        'image' => [
+            'width'  => null,
+            'height' => null,
+        ]
+    ],
     'advertissements_photo' => [
         'public' => '/files/advertissements_photo/',
         'folder' => public_path() . '/files/advertissements_photo/',
