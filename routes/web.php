@@ -22,6 +22,7 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
     Route::resource('division-times', 'DivisionTimeController');
     Route::get('sections/{id}/export', 'SectionController@export')->name('sections.export');
     Route::resource('sections', 'SectionController');
+    Route::resource('levels', 'LevelController');
     Route::resource('activities', 'ActivityController');
     Route::resource('telecoms', 'TelecomController');
     Route::resource('periods', 'PeriodController');
