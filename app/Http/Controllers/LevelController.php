@@ -14,7 +14,7 @@ class LevelController extends Controller
      */
     public function index()
     {
-        $items = Level::with('division')->latest('updated_at')->get();
+        $items = Level::latest('updated_at')->get();
         if (request()->has('export')) {
             $this->export($items);
         }

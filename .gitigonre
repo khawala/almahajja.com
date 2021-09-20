@@ -1,0 +1,3 @@
+storage/framework/*
+storage/debugbar/*
+storage/logs/*
