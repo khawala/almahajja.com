@@ -18,7 +18,9 @@ class SectionController extends Controller
     public function index()
     {
         $items = Section::with('division')->latest('updated_at')->get();
-
+        if (request()->has('export')) {
+            $this->export($items);
+        }
         return view('admin.sections.index', compact('items'));
     }
 
@@ -102,24 +104,15 @@ class SectionController extends Controller
 
         return redirect()->route('admin.sections.index')->withSuccess(trans('app.success_destroy'));
     }
-
-    /**
-     * Export certifications
-     */
-    public function export($id)
+    public function export($items)
     {
-        $items = Section::where('division_id', $id)->get();
-        
         foreach ($items as $item) {
-            $data[] = [
+ 
+          $data[] = [
                 '#' => $item->id,
                 'اسم المسار' =>$item->name,
-                // 'القسم' =>$item->category,
-                // 'الفرع' =>$item->track,
             ];
         }
-        // return $data;
-        // dd($data);
 
         Excel::create('المسارات', function ($excel) use ($data) {
             $excel->sheet('Sheetname', function ($sheet) use ($data) {

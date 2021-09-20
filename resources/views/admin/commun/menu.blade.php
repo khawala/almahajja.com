@@ -62,7 +62,7 @@
 
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-sort-alpha-asc"></i> <span>الاحصائات</span>
+            <i class="fa fa-sort-alpha-asc"></i> <span>الاحصائيات والاعلانات</span>
             <span class="pull-left-container">
                 <i class="fa fa-angle-left pull-left"></i>
             </span>
@@ -73,11 +73,11 @@
             <!--        <span>الدورات</span>-->
             <!--    </a>-->
             <!--</li>-->
-            <!--<li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">-->
-            <!--    <a href="{{ route(ADMIN.'.advertisements.index') }}">-->
-            <!--        <span>الاعلانات</span>-->
-            <!--    </a>-->
-            <!--</li>-->
+            <li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.advertisements.index') }}">
+                    <span>الاعلانات</span>
+                </a>
+            </li>
             
             <li class="<?php echo ( starts_with($route, ADMIN.'.divisions.stats') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.divisions.stats') }}">

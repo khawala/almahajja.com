@@ -13,6 +13,7 @@ use Alert;
 use Illuminate\Http\Request;
 use App\User;
 use App\Mark;
+use App\Classroom;
 use App\Registration;
 
 class HomeController extends Controller
@@ -26,7 +27,7 @@ class HomeController extends Controller
     {
         $ads        = Advertisement::active()->get();
         $divisions  = Division::forHome()->where('type', 1)->get();
-        $classrooms = Division::forHome()->where('type', 0)->get();
+        $classrooms = Classroom::forHome()->where('status', 1)->get();
         $jobs       = Job::active()->get();
 
         return view('site.index', compact('ads', 'divisions', 'classrooms', 'jobs'));
@@ -68,6 +69,52 @@ class HomeController extends Controller
      * Post division
      */
     public function postDivision(Request $request)
+    {
+        if (auth()->guest()) {
+            $user = User::where('username', request('username'))->first();
+
+            if (! $user) { // create new user
+                $user = User::create(request()->all());
+            } else { // user exist
+                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'error');
+                return back();
+            }
+        } else {
+            $user = auth()->user();
+        }
+
+        if ($user->registrations()
+                ->where('section_id', request('section_id'))
+                ->whereYear('created_at', date('Y'))
+                ->exists()) {
+            alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', '', 'error');
+            return back();
+        }
+
+        $user->registrations()->create(request()->all());
+
+        auth()->login($user);
+
+        alert('تم ارسال طلب التسجيل والدخول التلقائي للحساب.', '', 'success');
+        // alert('نعتذر عن قبول التسجيل.', '', 'error');
+
+        return redirect('/profile');
+    }
+
+ /**
+     * divisions Page
+     */
+    public function classroom($id)
+    {
+        $classroom = Classroom::findOrFail($id);
+
+        return view('site.classroom', compact('classroom'));
+    }
+
+    /**
+     * Post division
+     */
+    public function postClassroom(Request $request)
     {
         if (auth()->guest()) {
             $user = User::where('username', request('username'))->first();

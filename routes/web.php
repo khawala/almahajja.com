@@ -36,7 +36,7 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
     Route::post('registrations/search', 'RegistrationController@search')->name('registrations.search');
     Route::resource('registrations', 'RegistrationController');
     Route::resource('classrooms', 'ClassroomController');
-
+  Route::resource('departments', 'DepartmentController');
     Route::get('certifications', 'CertificationController@index')->name('certifications.index');
 
     Route::get('marks', 'MarkController@index')->name('marks.index');
@@ -55,6 +55,8 @@ Route::post('contact', 'HomeController@postContact')->name('contact.store');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('advertisement/{id}', 'HomeController@advertisement')->name('advertisement.show');
 Route::get('division/{id}', 'HomeController@division')->name('division.show');
+Route::get('classroom/{id}', 'HomeController@classroom')->name('classroom.show');
+Route::post('classroom', 'HomeController@postClassroom')->name('classroom.store');
 Route::post('division', 'HomeController@postDivision')->name('division.store');
 
 Route::get('job/{id}', 'HomeController@job')->name('job.show');

@@ -19,13 +19,25 @@ class CreateClassroomsTable extends Migration
             $table->string('code')->nullable();
             $table->text('description')->nullable();
             $table->unsignedInteger('section_id');
+            $table->unsignedInteger('department_id');
             $table->unsignedInteger('teacher_id');
             $table->string('pdf_file')->nullable();
+            $table->string('batch')->nullable();
+            $table->unsignedInteger('price')->nullable();
+            $table->unsignedInteger('status')->nullable();
+            $table->unsignedInteger('gender')->nullable();
+            $table->string('activity')->nullable();
+            $table->unsignedInteger('type')->default(0);
+            $table->string('photo')->nullable();
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+            
             $table->text('note')->nullable();
             $table->timestamps();
 
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

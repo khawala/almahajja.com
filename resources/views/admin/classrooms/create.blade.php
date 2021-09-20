@@ -21,3 +21,16 @@
   {!! Form::close() !!}
 
 @stop
+@section('js')
+<script>
+$(document).ready(function(){
+    $("#department").change(function(){
+        var selectedVal = $( "#department option:selected" ).val();
+        //  console.log(selectedVal);
+    });
+   
+}); 
+   
+    
+</script>
+@stop

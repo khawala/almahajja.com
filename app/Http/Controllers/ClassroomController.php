@@ -45,8 +45,9 @@ class ClassroomController extends Controller
     {
         $this->validate($request, Classroom::rules());
         
-        Classroom::create($request->all());
-
+      $classroom=  Classroom::create($request->all()+ [
+            'created_by' => auth()->id(),
+        ]);
         return back()->withSuccess(trans('app.success_store'));
     }
 
@@ -88,7 +89,7 @@ class ClassroomController extends Controller
 
         $item = Classroom::findOrFail($id);
 
-        $item->update($request->all());
+        $item->update($request->all()+ ['updated_by' => auth()->id()]);
 
         return redirect()->route(ADMIN . '.classrooms.index')->withSuccess(trans('app.success_update'));
     }

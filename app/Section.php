@@ -31,10 +31,16 @@ class Section extends Model
     {
         return $this->hasMany(Classroom::class);
     }
+        public function departments()
+    {
+        return $this->belongsToMany(Department::class, 'department_section', 
+      'section_id', 'department_id');
+    }
     public function divisiontimes()
     {
         return $this->hasMany(DivisionTime::class);
     }
+    
     public function division()
     {
         return $this->belongsTo(Division::class)->withDefault();

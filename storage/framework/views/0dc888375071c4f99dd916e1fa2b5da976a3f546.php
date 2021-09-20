@@ -20,4 +20,20 @@
 
 
 <?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+<script>
+$(document).ready(function(){
+    $("#department").change(function(){
+        var selectedVal = $( "#department option:selected" ).val();
+         console.log(selectedVal);
+        $("#hiddenmodelname").val(selectedVal);
+    });
+     document.getElementById('department').addEventListener('change', function() {
+  console.log('You selected: ', this.value);
+});
+}); 
+   
+    
+</script>
+<?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -90,8 +90,10 @@
                                         </ul>
                                     </div>
                                     <div class="col-sm-3">
-                                        <a class="btn btn-success btn-block" href="<?php echo e(route('division.show', $classroom)); ?>">الخطة الدراسية</a>
+
+                    <a class="btn btn-primary" href="<?php echo e(route('classroom.show', $classroom)); ?>">تفاصيل التدريب</a>
                                     </div>
+                                    
                                 </div>
 
                             </div>

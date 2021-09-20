@@ -7,8 +7,7 @@ use DB;
 
 class Classroom extends Model
 {
-    protected $fillable = [ 'name', 'code', 'description', 'section_id', 'teacher_id', 'pdf_file', 'note', ];
-
+   protected $guarded = []; 
     /*
     |------------------------------------------------------------------------------------
     | Validations
@@ -18,6 +17,14 @@ class Classroom extends Model
     {
         $common = [
             'name'    => 'required',
+            'name'    => 'required',
+            'name'    => 'required',
+            'name'    => 'required',
+            'name'    => 'required',
+            'name'    => 'required',
+            'name'    => 'required',
+            'name'    => 'required',
+            
         ];
     
         return $common;
@@ -40,7 +47,18 @@ class Classroom extends Model
     {
         return $this->belongsTo(Section::class);
     }
-
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+     public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by')->withDefault();
+    }
+    public function updator()
+    {
+        return $this->belongsTo(User::class, 'updated_by')->withDefault();
+    }
     /*
     |------------------------------------------------------------------------------------
     | Scopes
@@ -68,6 +86,39 @@ class Classroom extends Model
 
         return $q;
     }
+
+   
+  
+    public function scopeForHome($q)
+    {
+        $q->active()
+            ->onlyWomen()
+            ;
+    }
+    public function scopeOnlyWomen($q)
+    {
+        // $q->where('gender', 1);
+    }
+    public function scopeActive($q)
+    {
+        $q->where('status', 1);
+    }
+    public function scopeStats($q, $data)
+    {
+        return $q->selectRaw('`' . $data . '` , count(*) as count')
+                ->groupBy($data)
+                ->orderBy($data);
+    }
+    public function scopeListeWithGender($q)
+    {
+        $data = [];
+        $items = $q->get();
+        foreach ($items as $item) {
+            $data[$item->id] = $item->name . '-' . $item->GenderName ;
+        }
+        return($data);
+    }
+    
     
     /*
     |------------------------------------------------------------------------------------
@@ -83,5 +134,39 @@ class Classroom extends Model
     public function setPdfFileAttribute($photo)
     {
         $this->attributes['pdf_file'] = move_file($photo, 'sections_pdf_file');
+    }
+        
+    /*
+    |------------------------------------------------------------------------------------
+    | Attributes
+    |------------------------------------------------------------------------------------
+    */
+    public function getStatusNameAttribute()
+    {
+        return config('variables.status')[$this->status];
+    }
+    public function getDivistionTimesAttribute()
+    {
+        return $this->sections->pluck('divisiontimes')->collapse();
+    }
+    public function getTypeNameAttribute()
+    {
+        return config('variables.divisions_type')[$this->type];
+    }
+    public function getGenderNameAttribute()
+    {
+        return config('variables.divisions_gender')[$this->gender];
+    }
+    public function getPhotoAttribute($value)
+    {
+        if (!$value) {
+            return 'http://placehold.it/400x400';
+        }
+    
+        return url(config('variables.divisions_photo.public').$value);
+    }
+    public function setPhotoAttribute($photo)
+    {
+        $this->attributes['photo'] = move_file($photo, 'divisions_photo');
     }
 }

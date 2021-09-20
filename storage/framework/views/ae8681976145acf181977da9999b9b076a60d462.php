@@ -23,6 +23,7 @@
                         <th>#</th>
                         <th>إسم الحلقة</th>
                         <th>المسار</th>
+                         <th>القسم</th>
                         <th>المعلمة</th>
                         <th class="actions">اجراءات</th>
                     </tr>
@@ -33,6 +34,7 @@
                         <th>#</th>
                         <th>إسم الحلقة</th>
                         <th>المسار</th>
+                        <th>القسم</th>
                         <th>المعلمة</th>
                         <th class="actions">اجراءات</th>
                     </tr>
@@ -44,6 +46,7 @@
                             <td><a href="<?php echo e(route(ADMIN . '.classrooms.edit', $item->id)); ?>"><?php echo e($item->id); ?></a></td>
                             <td><a href="<?php echo e(route(ADMIN . '.classrooms.edit', $item->id)); ?>"><?php echo e($item->name); ?></a></td>
 	                        <td><?php echo e($item->section->name); ?></td>
+	                       <td><?php echo e($item->department->name); ?></td>
                             <td><?php echo e($item->teacher->name); ?></td>
 	                        <td class="actions">
                                 <ul class="list-inline">

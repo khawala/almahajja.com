@@ -1,2 +1,8 @@
 [03-Sep-2021 22:17:56 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
 [15-Sep-2021 10:54:34 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
+[16-Sep-2021 01:21:50 Asia/Riyadh] PHP Fatal error:  Cannot use Illuminate\Http\Request as Request because the name is already in use in /home/pni333souxua/public_html/app/Http/Controllers/DepartmentController.php on line 7
+[18-Sep-2021 01:17:43 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
+[18-Sep-2021 22:19:36 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
+[19-Sep-2021 01:45:48 Asia/Riyadh] PHP Fatal error:  Cannot redeclare App\Classroom::scopeForHome() in /home/pni333souxua/public_html/app/Classroom.php on line 118
+[19-Sep-2021 01:46:29 Asia/Riyadh] PHP Fatal error:  Cannot redeclare App\Classroom::scopeOnlyWomen() in /home/pni333souxua/public_html/app/Classroom.php on line 119
+[19-Sep-2021 02:02:26 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/pni333souxua/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
