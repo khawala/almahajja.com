@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Level;
 use Illuminate\Http\Request;
-
+use Excel;
 class LevelController extends Controller
-{
-    /**
+{ 
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $items = Level::with('division')->latest('updated_at')->get();
+        if (request()->has('export')) {
+            $this->export($items);
+        }
+        return view('admin.levels.index', compact('items'));
     }
 
     /**
@@ -24,7 +28,7 @@ class LevelController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.levels.create');
     }
 
     /**
@@ -35,16 +39,20 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, Level::rules());
+        
+        $level = Level::create($request->all());
+
+        return redirect()->route('admin.levels.index')->withSuccess(trans('app.success_store'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show($id)
     {
         //
     }
@@ -52,34 +60,62 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit($id)
     {
-        //
+        $item = Level::findOrFail($id);
+
+        return view('admin.levels.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Level  $level
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Level $level)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, Level::rules(true, $id));
+
+        $item = Level::findOrFail($id);
+
+        $item->update($request->all());
+
+        return redirect()->route('admin.levels.edit', $id)->withSuccess(trans('app.success_update'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Level  $level
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Level $level)
+    public function destroy($id)
     {
-        //
+        $item = Level::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('admin.levels.index')->withSuccess(trans('app.success_destroy'));
+    }
+    public function export($items)
+    {
+        foreach ($items as $item) {
+ 
+          $data[] = [
+                '#' => $item->id,
+                'اسم المستوى' =>$item->name,
+                'نبذة' =>$item->description,
+            ];
+        }
+
+        Excel::create('المستويات', function ($excel) use ($data) {
+            $excel->sheet('Sheetname', function ($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->export('xls');
     }
 }

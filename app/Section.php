@@ -40,7 +40,11 @@ class Section extends Model
     {
         return $this->hasMany(DivisionTime::class);
     }
-    
+    public function levels()
+    {
+        return $this->belongsToMany(Level::class, 'level_section', 
+        'section_id', 'level_id')->withPivot('pdf_file','brief');
+    }
     public function division()
     {
         return $this->belongsTo(Division::class)->withDefault();

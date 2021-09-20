@@ -6,5 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    //
+    protected $guarded = []; 
+     /*
+    |------------------------------------------------------------------------------------
+    | Validations
+    |------------------------------------------------------------------------------------
+    */
+    public static function rules($update = false, $id=null)
+    {
+        $common = [
+            'name'        => 'required',
+        ];
+    
+        return $common;
+    }
+
+    /*
+    |------------------------------------------------------------------------------------
+    | Relations
+    |------------------------------------------------------------------------------------
+    */
+
+        public function sections()
+    {
+        return $this->belongsToMany(Section::class, 'level_section', 
+        'level_id','section_id')->withPivot('pdf_file','brief');
+    }
 }

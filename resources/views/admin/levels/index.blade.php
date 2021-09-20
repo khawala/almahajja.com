@@ -26,8 +26,6 @@
                 <tr>
                     <th width="80">#</th>
                     <th>اسم المستوى</th>
-                    <!--<th>القسم</th>-->
-                    <!--<th>الفرع</th>-->
                     <th class="actions">اجراءات</th>
                 </tr>
             </thead>
@@ -36,8 +34,6 @@
                 <tr>
                     <th>#</th>
                     <th>اسم المستوى</th>
-                    <!--<th>القسم</th>-->
-                    <!--<th>الفرع</th>-->
                     <th class="actions">اجراءات</th>
                 </tr>
             </tfoot>
@@ -47,8 +43,6 @@
                     <tr>
                         <td><a href="{{ route(ADMIN . '.levels.edit', $item->id) }}">{{ $item->id }}</a></td>
                         <td><a href="{{ route(ADMIN . '.levels.edit', $item->id) }}">{{ $item->name }}</a></td>
-                        <!--<td>{{ $item->category }}</td>-->
-                        <!--<td>{{ $item->track }}</td>-->
                         <td class="actions">
                             <ul class="list-inline">
                                 <li><a href="{{ route(ADMIN . '.levels.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
