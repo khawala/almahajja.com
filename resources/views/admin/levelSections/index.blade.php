@@ -3,15 +3,15 @@
 @extends('admin.default')
 
 @section('page-header')
-    المستويات <small>{{ trans('app.manage') }}</small>
+    المستويات والمسارات <small>{{ trans('app.manage') }}</small>
 @stop
 
 @section('content')
 
     <section class="filter-area">
         <ul class="list-inline">
-            <li><a class="btn btn-info" href="{{ route(ADMIN . '.levels.create') }}">{{ trans('app.add_button') }}</a></li>
-            <li class="pull-left"> <a href="{{ route(ADMIN . '.levels.index',['export' => true]) }}" class="btn btn-info"><i class="fa fa-print"></i></a></li>
+            <li><a class="btn btn-info" href="{{ route(ADMIN . '.levelSections.create') }}">{{ trans('app.add_button') }}</a></li>
+            <li class="pull-left"> <a href="{{ route(ADMIN . '.levelSections.index',['export' => true]) }}" class="btn btn-info"><i class="fa fa-print"></i></a></li>
         </ul>
     </section>
 
@@ -26,6 +26,7 @@
                 <tr>
                     <th width="80">#</th>
                     <th>اسم المستوى</th>
+                    <th>اسم المسار</th>
                     <th class="actions">اجراءات</th>
                 </tr>
             </thead>
@@ -34,6 +35,7 @@
                 <tr>
                     <th>#</th>
                     <th>اسم المستوى</th>
+                    <th>اسم المسار</th>
                     <th class="actions">اجراءات</th>
                 </tr>
             </tfoot>
@@ -41,15 +43,15 @@
             <tbody>
                 @foreach ($items as $item)
                     <tr>
-                        <td><a href="{{ route(ADMIN . '.levels.edit', $item->id) }}">{{ $item->id }}</a></td>
-                        <td><a href="{{ route(ADMIN . '.levels.edit', $item->id) }}">{{ $item->name }}</a></td>
+                        <td><a href="{{ route(ADMIN . '.levelSections.edit', $item->id) }}">{{ $item->level->name }}</a></td>
+                        <td><a href="{{ route(ADMIN . '.levelSections.edit', $item->id) }}">{{ $item->section->name }}</a></td>
                         <td class="actions">
                             <ul class="list-inline">
-                                <li><a href="{{ route(ADMIN . '.levels.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
+                                <li><a href="{{ route(ADMIN . '.levelSections.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
                                 <li>
                                     {!! Form::open([
                                         'class'=>'delete',
-                                        'url'  => route(ADMIN . '.levels.destroy', $item->id), 
+                                        'url'  => route(ADMIN . '.levelSections.destroy', $item->id), 
                                         'method' => 'DELETE',
                                         ]) 
                                     !!}
