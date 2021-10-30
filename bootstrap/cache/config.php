@@ -4,7 +4,7 @@
     'name' => 'Almahajja',
     'env' => 'local',
     'debug' => true,
-    'url' => 'https://almahajja.com/',
+    'url' => 'https://almahajja.test/',
     'timezone' => 'Asia/Riyadh',
     'locale' => 'ar',
     'fallback_locale' => 'ar',
@@ -179,7 +179,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/pni333souxua/public_html/storage/framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\almahajja\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -228,8 +228,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'almahajja',
-        'username' => 'almahajja',
-        'password' => '(MrXnK*1.=p!',
+        'username' => 'root',
+        'password' => '',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -243,8 +243,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'almahajja',
-        'username' => 'almahajja',
-        'password' => '(MrXnK*1.=p!',
+        'username' => 'root',
+        'password' => '',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -276,7 +276,7 @@
     array (
       'enabled' => true,
       'driver' => 'file',
-      'path' => '/home/pni333souxua/public_html/storage/debugbar',
+      'path' => 'C:\\xampp\\htdocs\\almahajja\\storage\\debugbar',
       'connection' => NULL,
       'provider' => '',
     ),
@@ -378,7 +378,7 @@
         'host' => 'localhost',
         'port' => 11211,
       ),
-      'dir' => '/home/pni333souxua/public_html/storage/cache',
+      'dir' => 'C:\\xampp\\htdocs\\almahajja\\storage\\cache',
     ),
     'properties' => 
     array (
@@ -444,7 +444,7 @@
       ),
       'store' => 
       array (
-        'path' => '/home/pni333souxua/public_html/storage/exports',
+        'path' => 'C:\\xampp\\htdocs\\almahajja\\storage\\exports',
         'returnInfo' => false,
       ),
       'pdf' => 
@@ -454,15 +454,15 @@
         array (
           'DomPDF' => 
           array (
-            'path' => '/home/pni333souxua/public_html/vendor/dompdf/dompdf/',
+            'path' => 'C:\\xampp\\htdocs\\almahajja\\vendor/dompdf/dompdf/',
           ),
           'tcPDF' => 
           array (
-            'path' => '/home/pni333souxua/public_html/vendor/tecnick.com/tcpdf/',
+            'path' => 'C:\\xampp\\htdocs\\almahajja\\vendor/tecnick.com/tcpdf/',
           ),
           'mPDF' => 
           array (
-            'path' => '/home/pni333souxua/public_html/vendor/mpdf/mpdf/',
+            'path' => 'C:\\xampp\\htdocs\\almahajja\\vendor/mpdf/mpdf/',
           ),
         ),
       ),
@@ -630,13 +630,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/home/pni333souxua/public_html/storage/app',
+        'root' => 'C:\\xampp\\htdocs\\almahajja\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/home/pni333souxua/public_html/storage/app/public',
-        'url' => 'https://almahajja.com//storage',
+        'root' => 'C:\\xampp\\htdocs\\almahajja\\storage\\app/public',
+        'url' => 'https://almahajja.test//storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -674,13 +674,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/home/pni333souxua/public_html/storage/logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\almahajja\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/home/pni333souxua/public_html/storage/logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\almahajja\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 7,
       ),
@@ -722,7 +722,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/home/pni333souxua/public_html/resources/views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\almahajja\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -930,7 +930,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/home/pni333souxua/public_html/storage/framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\almahajja\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -1081,7 +1081,7 @@
     'users_photo' => 
     array (
       'public' => '/files/users_photo/',
-      'folder' => '/home/pni333souxua/public_html/public/files/users_photo/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/users_photo/',
       'image' => 
       array (
         'width' => 600,
@@ -1091,7 +1091,7 @@
     'classrooms_pdf_file' => 
     array (
       'public' => '/files/classrooms_pdf_file/',
-      'folder' => '/home/pni333souxua/public_html/public/files/classrooms_pdf_file/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/classrooms_pdf_file/',
       'image' => 
       array (
         'width' => NULL,
@@ -1106,7 +1106,7 @@
     'division_times_pdf_file' => 
     array (
       'public' => '/files/division_times_pdf_file/',
-      'folder' => '/home/pni333souxua/public_html/public/files/division_times_pdf_file/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/division_times_pdf_file/',
       'image' => 
       array (
         'width' => NULL,
@@ -1116,7 +1116,7 @@
     'sections_pdf_file' => 
     array (
       'public' => '/files/sections_pdf_file/',
-      'folder' => '/home/pni333souxua/public_html/public/files/sections_pdf_file/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/sections_pdf_file/',
       'image' => 
       array (
         'width' => NULL,
@@ -1126,7 +1126,7 @@
     'level_sections_pdf_file' => 
     array (
       'public' => '/files/level_sections_pdf_file/',
-      'folder' => '/home/pni333souxua/public_html/public/files/level_sections_pdf_file/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/level_sections_pdf_file/',
       'image' => 
       array (
         'width' => NULL,
@@ -1136,7 +1136,7 @@
     'advertissements_photo' => 
     array (
       'public' => '/files/advertissements_photo/',
-      'folder' => '/home/pni333souxua/public_html/public/files/advertissements_photo/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/advertissements_photo/',
       'image' => 
       array (
         'width' => 400,
@@ -1146,7 +1146,7 @@
     'configurations_logo' => 
     array (
       'public' => '/files/configurations_logo/',
-      'folder' => '/home/pni333souxua/public_html/public/files/configurations_logo/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/configurations_logo/',
       'image' => 
       array (
         'width' => 600,
@@ -1156,7 +1156,7 @@
     'divisions_photo' => 
     array (
       'public' => '/files/divisions_photo/',
-      'folder' => '/home/pni333souxua/public_html/public/files/divisions_photo/',
+      'folder' => 'C:\\xampp\\htdocs\\almahajja\\public/files/divisions_photo/',
       'image' => 
       array (
         'width' => 400,
@@ -1170,8 +1170,8 @@
   array (
     'paths' => 
     array (
-      0 => '/home/pni333souxua/public_html/resources/views',
+      0 => 'C:\\xampp\\htdocs\\almahajja\\resources\\views',
     ),
-    'compiled' => '/home/pni333souxua/public_html/storage/framework/views',
+    'compiled' => 'C:\\xampp\\htdocs\\almahajja\\storage\\framework\\views',
   ),
 );

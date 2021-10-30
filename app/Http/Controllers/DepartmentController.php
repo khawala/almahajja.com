@@ -45,7 +45,9 @@ class DepartmentController extends Controller
     {
         $this->validate($request, Department::rules());
         
-        $department=Department::create($request->except('section_id'));
+        $department=Department::create($request->except('section_id') + [
+            'created_by' => auth()->id(),
+        ]);
        
         $department->sections()->attach($request->section_id);
          return redirect()->route(ADMIN . '.departments.index')->withSuccess(trans('app.success_store'));
@@ -89,7 +91,9 @@ class DepartmentController extends Controller
         $item = Department::findOrFail($id);
         $item->sections()->detach();
         $item->sections()->attach($request->section_id);
-        $item->update($request->except('section_id'));
+        $item->update($request->except('section_id') + [
+            'created_by' => auth()->id(),
+        ]);
 
         return redirect()->route(ADMIN . '.departments.index')->withSuccess(trans('app.success_update'));
     }

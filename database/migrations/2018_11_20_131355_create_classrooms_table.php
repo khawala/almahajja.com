@@ -18,9 +18,10 @@ class CreateClassroomsTable extends Migration
             $table->string('name');
             $table->string('code')->nullable();
             $table->text('description')->nullable();
-            $table->unsignedInteger('section_id');
-            $table->unsignedInteger('department_id');
-            $table->unsignedInteger('teacher_id');
+            $table->unsignedInteger('section_id')->nullable();
+            $table->unsignedInteger('department_id')->nullable();
+            $table->unsignedInteger('level_id')->nullable();
+            $table->unsignedInteger('teacher_id')->nullable();
             $table->string('pdf_file')->nullable();
             $table->string('batch')->nullable();
             $table->unsignedInteger('price')->nullable();
@@ -35,9 +36,9 @@ class CreateClassroomsTable extends Migration
             $table->text('note')->nullable();
             $table->timestamps();
 
-            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            // $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
+            // $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

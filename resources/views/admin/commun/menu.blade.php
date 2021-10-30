@@ -181,10 +181,19 @@
     @endif
 
 @endif
-
-    <li>
-        <a target="_blank" href="https://www.hit.sa/#section4">
-            <i class="fa fa-life-ring" aria-hidden="true"></i> <span>الدعم الفني</span>
+<li>
+    <a target="_blank" href="https://www.hit.sa/#section4">
+        <i class="fa fa-life-ring" aria-hidden="true"></i> <span>الدعم الفني</span>
+    </a>
+</li>
+    <li class="<?php echo ( starts_with($route, ADMIN.'.levels') ) ? "active" : '' ?>">
+        <a href="{{ route(ADMIN.'.levels.index') }}">
+            <i class="fa fa-industry" aria-hidden="true"></i> <span>المستويات</span>
+        </a>
+    </li>
+    <li class="<?php echo ( starts_with($route, ADMIN.'.levelSections') ) ? "active" : '' ?>">
+        <a href="{{ route(ADMIN.'.levelSections.index') }}">
+            <i class="fa fa-industry" aria-hidden="true"></i> <span>الاقسام والمسارات</span>
         </a>
     </li>
 

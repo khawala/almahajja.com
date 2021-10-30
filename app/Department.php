@@ -88,4 +88,24 @@ class Department extends Model
     {
         $this->attributes['pdf_file'] = move_file($photo, 'sections_pdf_file');
     }
+    public function getPhotoAttribute($value)
+    {
+        if (!$value) {
+            return 'http://placehold.it/400x400';
+        }
+    
+        return url(config('variables.divisions_photo.public').$value);
+    }
+    public function setPhotoAttribute($photo)
+    {
+        $this->attributes['photo'] = move_file($photo, 'divisions_photo');
+    }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by')->withDefault();
+    }
+    public function updator()
+    {
+        return $this->belongsTo(User::class, 'updated_by')->withDefault();
+    }
 }

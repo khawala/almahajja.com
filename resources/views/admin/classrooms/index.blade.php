@@ -25,6 +25,7 @@
                         <th>#</th>
                         <th>إسم الحلقة</th>
                         <th>المسار</th>
+                        <th>المستوى</th>
                          <th>القسم</th>
                         <th>المعلمة</th>
                         <th class="actions">اجراءات</th>
@@ -36,6 +37,8 @@
                         <th>#</th>
                         <th>إسم الحلقة</th>
                         <th>المسار</th>
+                        <th>المستوى</th>
+
                         <th>القسم</th>
                         <th>المعلمة</th>
                         <th class="actions">اجراءات</th>
@@ -48,6 +51,7 @@
                             <td><a href="{{ route(ADMIN . '.classrooms.edit', $item->id) }}">{{ $item->id }}</a></td>
                             <td><a href="{{ route(ADMIN . '.classrooms.edit', $item->id) }}">{{ $item->name }}</a></td>
 	                        <td>{{ $item->section->name }}</td>
+	                        <td>{{ $item->level->name }}</td>
 	                       <td>{{ $item->department->name }}</td>
                             <td>{{ $item->teacher->name }}</td>
 	                        <td class="actions">

@@ -47,6 +47,10 @@ class Classroom extends Model
     {
         return $this->belongsTo(Section::class);
     }
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
     public function department()
     {
         return $this->belongsTo(Department::class);
