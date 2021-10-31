@@ -20,6 +20,8 @@ class CreateRegistrationsTable extends Migration
             $table->unsignedInteger('telecom_id')->nullable();
             $table->unsignedInteger('period_id')->nullable();
             $table->unsignedInteger('activity_id')->nullable();
+            $table->unsignedInteger('department_id')->nullable();
+            $table->unsignedInteger('level_id')->nullable();
             $table->unsignedInteger('classroom_id')->nullable();
             $table->unsignedInteger('paid')->default(0)->nullable();
             $table->unsignedInteger('level')->nullable();

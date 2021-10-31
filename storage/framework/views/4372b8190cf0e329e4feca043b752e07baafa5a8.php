@@ -29,34 +29,10 @@
 </section>
 
 <?php if(!$divisions->isEmpty()): ?>
-<section class="divisions" id="divisions" data-aos="fade-up">
-    <div class="container">
-        <div id="divisions-slide" data-interval="false" class="carousel slide" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <?php $__currentLoopData = $divisions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $division): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="item <?php echo e($loop->first ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('division.show', $division)); ?>">
-                        <h3 class="title"><?php echo e($division->name); ?></h3>
-                    </a>
-                    <p><?php echo e($division->description); ?></p>
-                    <p class="the-date"><?php echo e($division->batch); ?> <span><?php echo e($division->price); ?> ريال سعودي</span></p>
-                    <a class="btn btn-primary" href="<?php echo e(route('division.show', $division)); ?>">تفاصيل التدريب</a>
-                </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <?php $__currentLoopData = $divisions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $division): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li data-target="#divisions-slide" data-slide-to="<?php echo e($loop->index); ?>" <?php echo e($loop->first ? 'class=active' : ''); ?>></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </ol>
-        </div>
-    </div>
-</section>
+
 <?php endif; ?>
 
-<section class="classrooms" id="classrooms" data-aos="fade-up">
+<section class="departments" id="departments" data-aos="fade-up">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -65,24 +41,25 @@
 
             <div class="col-sm-8">
                 <div class="wrapper">
-                    <div id="classrooms-slide" data-interval="false" class="carousel slide" data-ride="carousel">
+                    <div id="departments-slide" data-interval="false" class="carousel slide" data-ride="carousel">
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
-                            <?php $__currentLoopData = $classrooms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $classroom): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $department): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="item <?php echo e($loop->first ? 'active' : ''); ?>">
-                                <a href="<?php echo e(route('division.show', $classroom)); ?>">
-                                    <h3><?php echo e($classroom->name); ?></h3>
-                                </a>
-                                <p><?php echo e($classroom->description); ?></p>
+                               
+                                    <h3><?php echo e($department->name); ?></h3>
+ 
+                                <p><?php echo e($department->description); ?></p>
                                 <div class="row">
                                     <div class="col-sm-9">
                                         <ul class="list-unstyled">
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> انعقاد الدورة : <?php echo e($classroom->batch); ?></li>
+                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> تاريخ البدء  : <?php echo e($department->start_date); ?></li>
+                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> تاريخ الانتهاء  : <?php echo e($department->end_date); ?></li>
                                             <li>
                                                 <i class="fa fa-money" aria-hidden="true"></i> رسوم التسجيل :
-                                                <?php if($classroom->price): ?>
-                                                <?php echo e($classroom->price); ?> ريال
+                                                <?php if($department->price): ?>
+                                                <?php echo e($department->price); ?> ريال
                                                 <?php else: ?>
                                                 مجانا
                                                 <?php endif; ?>
@@ -91,7 +68,7 @@
                                     </div>
                                     <div class="col-sm-3">
 
-                    <a class="btn btn-primary" href="<?php echo e(route('classroom.show', $classroom)); ?>">تفاصيل التدريب</a>
+                    <a class="btn btn-primary" href="<?php echo e(route('department.show', $department)); ?>">تفاصيل التدريب</a>
                                     </div>
                                     
                                 </div>
@@ -102,15 +79,15 @@
 
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
-                            <?php $__currentLoopData = $classrooms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $classroom): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li data-target="#classrooms-slide" data-slide-to="<?php echo e($loop->index); ?>" <?php echo e($loop->first ? 'class=active' : ''); ?>></li>
+                            <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $department): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li data-target="#departments-slide" data-slide-to="<?php echo e($loop->index); ?>" <?php echo e($loop->first ? 'class=active' : ''); ?>></li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ol>
-                        <a class="left carousel-control" href="#classrooms-slide" role="button" data-slide="prev">
+                        <a class="left carousel-control" href="#departments-slide" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="right carousel-control" href="#classrooms-slide" role="button" data-slide="next">
+                        <a class="right carousel-control" href="#departments-slide" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>

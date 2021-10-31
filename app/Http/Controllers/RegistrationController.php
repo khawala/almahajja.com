@@ -182,7 +182,7 @@ class RegistrationController extends Controller
                 'وقت التسميع' => $item->period->name,
                 'تاريخ التسجيل' => $item->created_at,
                 'المدفوع' => $item->paid,
-                'المستوى' => $item->levelName,
+                'المستوى' => $item->level->name,
                 'الحلقة' => $item->classroom->name,
                 'الحالة' => $item->statusName,
             ];

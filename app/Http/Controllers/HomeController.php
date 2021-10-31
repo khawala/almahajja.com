@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Mark;
 use App\Classroom;
+use App\Department;
 use App\Registration;
 
 class HomeController extends Controller
@@ -24,13 +25,14 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $ads        = Advertisement::active()->get();
         $divisions  = Division::forHome()->where('type', 1)->get();
-        $classrooms = Classroom::forHome()->where('status', 1)->get();
+        
         $jobs       = Job::active()->get();
+        $departments = Department::where('registeration_status', 1)->get();
 
-        return view('site.index', compact('ads', 'divisions', 'classrooms', 'jobs'));
+        return view('site.index', compact('ads', 'divisions', 'departments', 'jobs'));
     }
 
     /**
@@ -104,17 +106,17 @@ class HomeController extends Controller
  /**
      * divisions Page
      */
-    public function classroom($id)
+    public function department($id)
     {
-        $classroom = Classroom::findOrFail($id);
+        $department = Department::findOrFail($id);
 
-        return view('site.classroom', compact('classroom'));
+        return view('site.department', compact('department'));
     }
 
     /**
      * Post division
      */
-    public function postClassroom(Request $request)
+    public function postDepartment(Request $request)
     {
         if (auth()->guest()) {
             $user = User::where('username', request('username'))->first();

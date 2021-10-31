@@ -56,9 +56,16 @@
                                     <td>{{ $item->period->name}}</td>
                                     <td>{{ $item->CreatedAtFormated }}</td>
                                     <td>{{ $item->paid }}</td>
-                                    <td>{{ $item->levelName }}</td>
+                                    @if($item->level)
+                                    <td>{{ $item->level->name }}</td>
+                                    @else
+                                    <td>لم يحدد بعد</td>
+                                    @endif
+                                    @if($item->classroom)
                                     <td>{{ $item->classroom->name }}</td>
-                                    
+                                    @else
+                                    <td>لم تحدد بعد</td>
+                                    @endif
                                     <td>
                                         <ul class="list-inline">
                                             <li>{{ $item->statusName }}</li>
@@ -70,7 +77,7 @@
                                             @if ($item->status == 3)
                                                 <li><a target="_blank" class="btn btn-xs btn-success" href="{{ route('certifications.print', $item) }}">طباعة الشهادة</a></li>
                                             @endif
-
+ 
                                             @foreach ($item->section->divisiontimes as $divisiontime)
                                                 @if ($divisiontime->pdf_file)
                                                     <a class="btn btn-primary btn-xs" download href="{{ $divisiontime->pdf_file }}"><i class="fa fa-download"></i></a>

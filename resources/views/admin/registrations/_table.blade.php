@@ -48,7 +48,7 @@
                         'method' => 'PUT',
                         ]) 
                     !!}
-                        {!! Form::mySelect('level', '', config('variables.sections_level'), null, ['class' => 'form-control onchange', 'width' => 300]) !!}
+                        {!! Form::mySelect('level_id', '', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' => 300]) !!}
                     {!! Form::close() !!}
                 </td>
                 <td width="130">

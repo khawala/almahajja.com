@@ -57,8 +57,8 @@ Route::post('contact', 'HomeController@postContact')->name('contact.store');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('advertisement/{id}', 'HomeController@advertisement')->name('advertisement.show');
 Route::get('division/{id}', 'HomeController@division')->name('division.show');
-Route::get('classroom/{id}', 'HomeController@classroom')->name('classroom.show');
-Route::post('classroom', 'HomeController@postClassroom')->name('classroom.store');
+Route::get('department/{id}', 'HomeController@department')->name('department.show');
+Route::post('department', 'HomeController@postdepartment')->name('department.store');
 Route::post('division', 'HomeController@postDivision')->name('division.store');
 
 Route::get('job/{id}', 'HomeController@job')->name('job.show');

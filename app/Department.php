@@ -11,9 +11,9 @@ class Department extends Model
     |------------------------------------------------------------------------------------
     | Validations
     |------------------------------------------------------------------------------------
-    */
+    */ 
     public static function rules($update = false, $id=null)
-    {
+    { 
         $common = [
             'name'    => 'required',
             'supervisor_id'    => 'required',

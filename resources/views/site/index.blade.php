@@ -31,7 +31,7 @@
 </section>
 
 @if (!$divisions->isEmpty())
-<section class="divisions" id="divisions" data-aos="fade-up">
+{{-- <section class="divisions" id="divisions" data-aos="fade-up">
     <div class="container">
         <div id="divisions-slide" data-interval="false" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
@@ -55,10 +55,10 @@
             </ol>
         </div>
     </div>
-</section>
+</section> --}}
 @endif
 
-<section class="classrooms" id="classrooms" data-aos="fade-up">
+<section class="departments" id="departments" data-aos="fade-up">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -67,24 +67,25 @@
 
             <div class="col-sm-8">
                 <div class="wrapper">
-                    <div id="classrooms-slide" data-interval="false" class="carousel slide" data-ride="carousel">
+                    <div id="departments-slide" data-interval="false" class="carousel slide" data-ride="carousel">
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
-                            @foreach ($classrooms as $classroom)
+                            @foreach ($departments as $department)
                             <div class="item {{ $loop->first ? 'active' : '' }}">
-                                <a href="{{ route('division.show', $classroom) }}">
-                                    <h3>{{ $classroom->name }}</h3>
-                                </a>
-                                <p>{{ $classroom->description }}</p>
+                               
+                                    <h3>{{ $department->name }}</h3>
+ 
+                                <p>{{ $department->description }}</p>
                                 <div class="row">
                                     <div class="col-sm-9">
                                         <ul class="list-unstyled">
-                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> انعقاد الدورة : {{ $classroom->batch }}</li>
+                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> تاريخ البدء  : {{ $department->start_date }}</li>
+                                            <li><i class="fa fa-calendar" aria-hidden="true"></i> تاريخ الانتهاء  : {{ $department->end_date }}</li>
                                             <li>
                                                 <i class="fa fa-money" aria-hidden="true"></i> رسوم التسجيل :
-                                                @if ($classroom->price)
-                                                {{ $classroom->price }} ريال
+                                                @if ($department->price)
+                                                {{ $department->price }} ريال
                                                 @else
                                                 مجانا
                                                 @endif
@@ -93,7 +94,7 @@
                                     </div>
                                     <div class="col-sm-3">
 
-                    <a class="btn btn-primary" href="{{ route('classroom.show', $classroom) }}">تفاصيل التدريب</a>
+                    <a class="btn btn-primary" href="{{ route('department.show', $department) }}">تفاصيل التدريب</a>
                                     </div>
                                     
                                 </div>
@@ -104,15 +105,15 @@
 
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
-                            @foreach ($classrooms as $classroom)
-                            <li data-target="#classrooms-slide" data-slide-to="{{ $loop->index }}" {{ $loop->first ? 'class=active' : '' }}></li>
+                            @foreach ($departments as $department)
+                            <li data-target="#departments-slide" data-slide-to="{{ $loop->index }}" {{ $loop->first ? 'class=active' : '' }}></li>
                             @endforeach
                         </ol>
-                        <a class="left carousel-control" href="#classrooms-slide" role="button" data-slide="prev">
+                        <a class="left carousel-control" href="#departments-slide" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="right carousel-control" href="#classrooms-slide" role="button" data-slide="next">
+                        <a class="right carousel-control" href="#departments-slide" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
