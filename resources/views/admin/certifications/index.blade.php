@@ -70,7 +70,7 @@
                                 'route' => ADMIN . '.registrations.marks',
                                 ]) !!}
                                 {!! Form::hidden('id', $item->id) !!}
-                                {!! Form::mySelect('level', '', config('variables.sections_level'), null, ['required']) !!}
+                                {!! Form::mySelect('level', '',App\Level::pluck('name', 'id')->toArray(), null, ['required']) !!}
                                 <button class="btn btn-success btn-xs" title="الكشف"><i class="fa fa-print"></i></button>
                                 {!! Form::close() !!}
                             </td>

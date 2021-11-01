@@ -17,6 +17,7 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                 {!! Form::mySelect('level_id', 'المستوى <span class=red>*</span>', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-contro']) !!}
 
                 {!! Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'chosen-rtl form-contro']) !!}
+                {!! Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'chosen-rtl form-contro']) !!}
 
                
                 {!! Form::myTextArea('description', 'نبذة  <span class=red>*</span>', ['required']) !!}
@@ -35,7 +36,6 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
     {{-- <div class="col-sm-6">
         <div class="box box-warning">
             <div class="box-body">
-                {!! Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'chosen-rtl form-contro']) !!}
 
                 {!! Form::myTextArea('description', 'معلومات اضافية') !!}
 

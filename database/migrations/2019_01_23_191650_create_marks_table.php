@@ -17,6 +17,7 @@ class CreateMarksTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('registration_id');
             $table->unsignedInteger('section_id');
+            $table->unsignedInteger('department_id')->nullable();
             $table->unsignedInteger('month');
             $table->unsignedInteger('semester');
             $table->unsignedInteger('level');

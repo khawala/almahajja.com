@@ -72,7 +72,7 @@
 
                                 <?php echo Form::hidden('id', $item->id); ?>
 
-                                <?php echo Form::mySelect('level', '', config('variables.sections_level'), null, ['required']); ?>
+                                <?php echo Form::mySelect('level', '',App\Level::pluck('name', 'id')->toArray(), null, ['required']); ?>
 
                                 <button class="btn btn-success btn-xs" title="الكشف"><i class="fa fa-print"></i></button>
                                 <?php echo Form::close(); ?>

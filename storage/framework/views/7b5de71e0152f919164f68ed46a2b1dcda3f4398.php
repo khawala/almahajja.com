@@ -22,6 +22,8 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
 
                 <?php echo Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'chosen-rtl form-contro']); ?>
 
+                <?php echo Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'chosen-rtl form-contro']); ?>
+
 
                
                 <?php echo Form::myTextArea('description', 'نبذة  <span class=red>*</span>', ['required']); ?>

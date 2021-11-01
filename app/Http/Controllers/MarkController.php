@@ -27,7 +27,7 @@ class MarkController extends Controller
         $classroom->load('teacher', 'section.division');
 
         $students = Registration::StudentsForMark(request('month'), request('semester'), request('level'))->get();
-        // return $students;
+       
 
         if (request()->has('export')) {
             $this->export($students);
@@ -48,6 +48,7 @@ class MarkController extends Controller
                 $data[] = [
                     'registration_id' => $register_id,
                     'section_id'      => $mark['section_id'],
+                    'department_id'      => $mark['department_id'],
                     'month'           => $mark['month'],
                     'semester'        => $mark['semester'],
                     'level'           => $mark['level'],

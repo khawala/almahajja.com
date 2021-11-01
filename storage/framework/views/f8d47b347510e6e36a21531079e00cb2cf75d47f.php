@@ -12,7 +12,7 @@
                  
                 </li>
             </ul>
-            <?php echo Form::mySelect('department_id', '', ['' => 'الفسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']); ?>
+            <?php echo Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']); ?>
 
             <?php echo Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']); ?>
 

@@ -103,6 +103,7 @@ class Registration extends Model
     }
     public function scopeStudentsForMark($q, $month = 1, $semester = 1, $level = 1)
     {
+ 
         return $q->join('classrooms', function ($join) {
             $join->on('classrooms.id', '=', 'registrations.classroom_id')
                 ->on('classrooms.section_id', '=', 'registrations.section_id');
@@ -115,8 +116,9 @@ class Registration extends Model
             })
             ->where('classrooms.id', request('classroom'))
             ->where('users.status', 1)
-            ->where('registrations.level', $level)
-            ->select('registrations.id', 'users.name', 'registrations.level', 'marks.mark1', 'marks.mark2', 'marks.mark3');
+            ->where('registrations.level_id', $level)
+            // ->select('registrations.id', 'users.name', 'registrations.level_id');
+            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3');
             ;
     }
     public function scopeSearch($q)
