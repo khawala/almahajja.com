@@ -24,7 +24,7 @@ class CreateRegistrationsTable extends Migration
             $table->unsignedInteger('level_id')->nullable();
             $table->unsignedInteger('classroom_id')->nullable();
             $table->unsignedInteger('paid')->default(0)->nullable();
-            $table->unsignedInteger('level')->nullable();
+            $table->unsignedInteger('level_old')->nullable();
             $table->unsignedInteger('status');
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();

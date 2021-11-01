@@ -14,9 +14,9 @@ $total = App\Registration::TotalMarks($item->id, $item->level);
     
     <img src="/img/certifications.jpg" alt="">
     <p class="name"><?php echo e($item->student->name); ?></p>
-    <p class="note"><?php echo e($item->section->division->note); ?> </p>
+    
     <p class="supervisor"><?php echo e($item->section->supervisor->name); ?></p>
-    <p class="batch"><?php echo e($item->section->division->batch); ?></p>
+    
     <p class="hours"><?php echo e($item->section->CountHours); ?></p>
     <p class="totalmarks"><?php echo e($total[0]->Marks); ?></p>
     <p class="totalmarks"><?php echo e($total[0]->Marks); ?></p>
@@ -26,8 +26,8 @@ $total = App\Registration::TotalMarks($item->id, $item->level);
     
     <img src="/img/certification-phone.png" alt="">
     <p class="name"><?php echo e($item->student->name); ?></p>
-    <p class="note"><?php echo e($item->section->division->note); ?> </p>
-    <p class="batch"><?php echo e(substr($item->section->division->batch, 0, 4)); ?></p>
+    
+    
     <p class="classroom"><?php echo e($item->classroom->name); ?></p>
     <p class="teacher"><?php echo e($item->classroom->teacher->name); ?></p>
     <p class="totalmarks"><?php echo e($total[0]->Marks); ?></p>

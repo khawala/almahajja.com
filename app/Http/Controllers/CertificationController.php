@@ -41,7 +41,7 @@ class CertificationController extends Controller
             abort(403);
         }
 
-        $item->load('classroom.teacher', 'student', 'section.division', 'section.supervisor');
+        $item->load('classroom.teacher', 'student', 'classroom.department', 'section.supervisor');
         // return $item;
         
         return view('admin.certifications.print', compact('item'));

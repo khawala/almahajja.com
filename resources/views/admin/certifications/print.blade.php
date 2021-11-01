@@ -15,9 +15,9 @@ $total = App\Registration::TotalMarks($item->id, $item->level);
     {{-- دورة تدريبية‎ --}}
     <img src="/img/certifications.jpg" alt="">
     <p class="name">{{ $item->student->name }}</p>
-    <p class="note">{{ $item->section->division->note }} </p>
+    {{-- <p class="note">{{ $item->section->division->note }} </p> --}}
     <p class="supervisor">{{ $item->section->supervisor->name }}</p>
-    <p class="batch">{{ $item->section->division->batch }}</p>
+    {{-- <p class="batch">{{ $item->section->division->batch }}</p> --}}
     <p class="hours">{{ $item->section->CountHours }}</p>
     <p class="totalmarks">{{ $total[0]->Marks }}</p>
     <p class="totalmarks">{{ $total[0]->Marks }}</p>
@@ -27,8 +27,8 @@ $total = App\Registration::TotalMarks($item->id, $item->level);
     {{-- حلقة‎ --}}
     <img src="/img/certification-phone.png" alt="">
     <p class="name">{{ $item->student->name }}</p>
-    <p class="note">{{ $item->section->division->note }} </p>
-    <p class="batch">{{ substr($item->section->division->batch, 0, 4) }}</p>
+    {{-- <p class="note">{{ $item->section->division->note }} </p> --}}
+    {{-- <p class="batch">{{ substr($item->section->division->batch, 0, 4) }}</p> --}}
     <p class="classroom">{{ $item->classroom->name }}</p>
     <p class="teacher">{{ $item->classroom->teacher->name }}</p>
     <p class="totalmarks">{{ $total[0]->Marks }}</p>
