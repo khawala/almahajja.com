@@ -20,7 +20,7 @@
 	      <div class="box-body table-responsive no-padding">
             
 	        <table class="table data-tables" cellspacing="0" width="100%">
-                <thead>
+                <thead> 
                     <tr>
                         <th>#</th>
                         <th>إسم الحلقة</th>

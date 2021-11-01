@@ -80,14 +80,26 @@ class Classroom extends Model
     {
         $q = DB::table('classrooms')
                 ->join('sections', 'classrooms.section_id', '=', 'sections.id')
-                ->join('divisions', 'sections.division_id', '=', 'divisions.id')
+                ->join('departments', 'classrooms.department_id', '=', 'departments.id')
                 ->leftJoin('users', 'users.id', '=', 'classrooms.teacher_id')
-                ->select('classrooms.id as classroom_id', 'classrooms.name as classroom_name', 'sections.name as section_name', 'users.name as user_name');
+                ->select('classrooms.id as classroom_id', 'classrooms.name as classroom_name', 'sections.name as section_name', 'users.name as user_name','departments.name as department_name');
 
         if (auth()->user()->isTeacher) { // is teacher
             $q->where('classrooms.teacher_id', auth()->id());
         }
 
+        if (request('department_id')) {
+            $q->where('classrooms.department_id','=',request('department_id'));
+            
+        }
+        if (request('section_id')) {
+            $q->where('classrooms.section_id','=',request('section_id'));
+            
+        }
+        if (request('classroom_id')) {
+            $q->where('classrooms.id','=',request('classroom_id'));
+            
+        }
         return $q;
     }
 

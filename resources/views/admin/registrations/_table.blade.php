@@ -4,6 +4,8 @@
         <tr>
             <th>رقم التسجيل</th>
             <th>الطالبة</th>
+            <th>القسم</th>
+
             <th>المسار</th>
             <th>شريحة الجوال</th>
             <th>وقت التسميع</th>
@@ -20,6 +22,7 @@
         <tr>
             <th>رقم التسجيل</th>
             <th>الطالبة</th>
+            <th>القسم</th>
             <th>المسار</th>
             <th>شريحة الجوال</th>
             <th>وقت التسميع</th>
@@ -37,6 +40,7 @@
             <tr>
                 <td><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}">{{ $item->id }}</a></td>
                 <td><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}">{{ $item->student->name }}</a></td>
+                <td>{{ $item->department->name }}</td>
                 <td>{{ $item->section->name }}</td>
                 <td>{{ $item->telecom->name }}</td>
                 <td>{{ $item->period->name}}</td>

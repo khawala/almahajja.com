@@ -16,9 +16,8 @@ class MarkController extends Controller
      */
     public function index()
     {
-        $classrooms = Classroom::forMarks()->paginate(50);
-        // return $classrooms;
-
+        $classrooms = Classroom::forMarks()->paginate(10);
+        // return $classrooms; 
         return view('admin.marks.index', compact('classrooms'));
     }
 

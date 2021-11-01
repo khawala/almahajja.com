@@ -4,6 +4,8 @@
         <tr>
             <th>رقم التسجيل</th>
             <th>الطالبة</th>
+            <th>القسم</th>
+
             <th>المسار</th>
             <th>شريحة الجوال</th>
             <th>وقت التسميع</th>
@@ -20,6 +22,7 @@
         <tr>
             <th>رقم التسجيل</th>
             <th>الطالبة</th>
+            <th>القسم</th>
             <th>المسار</th>
             <th>شريحة الجوال</th>
             <th>وقت التسميع</th>
@@ -37,6 +40,7 @@
             <tr>
                 <td><a href="<?php echo e(route(ADMIN . '.registrations.edit', $item->id)); ?>"><?php echo e($item->id); ?></a></td>
                 <td><a href="<?php echo e(route(ADMIN . '.registrations.edit', $item->id)); ?>"><?php echo e($item->student->name); ?></a></td>
+                <td><?php echo e($item->department->name); ?></td>
                 <td><?php echo e($item->section->name); ?></td>
                 <td><?php echo e($item->telecom->name); ?></td>
                 <td><?php echo e($item->period->name); ?></td>
@@ -48,7 +52,7 @@
                         'method' => 'PUT',
                         ]); ?>
 
-                        <?php echo Form::mySelect('level', '', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' => 300]); ?>
+                        <?php echo Form::mySelect('level_id', '', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' => 300]); ?>
 
                     <?php echo Form::close(); ?>
 

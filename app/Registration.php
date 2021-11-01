@@ -49,6 +49,10 @@ class Registration extends Model
     {
         return $this->belongsTo(Section::class)->withDefault();
     }
+    public function department()
+    {
+        return $this->belongsTo(Department::class)->withDefault();
+    }
     public function telecom()
     {
         return $this->belongsTo(Telecom::class)->withDefault();
