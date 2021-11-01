@@ -179,8 +179,7 @@ class HomeController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        $user->load('registrations.section', 'registrations.telecom', 'registrations.period', 'registrations.classroom');
-
+        $user->load('registrations.section', 'registrations.telecom', 'registrations.period', 'registrations.classroom','registrations.level');
         return view('site.profile', compact('user'));
     }
 
@@ -193,7 +192,7 @@ class HomeController extends Controller
         $level = Registration::where('user_id', auth()->id())
                                 ->latest('id')
                                 ->first()->level;
-        // dd($marks);
+       
 
         return view('site.marks', compact('marks', 'registration_id', 'level'));
     }

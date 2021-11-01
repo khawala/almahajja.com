@@ -18,10 +18,10 @@
             <p><strong>المعلمة </strong>: {{ $registration->classroom->teacher->name }}</p>
         </div>
         <div class="col-xs-6 col-md-4">
-            <p><strong>الدورة </strong>: {{ $registration->section->division->name }}</p>
+            <p><strong>القسم </strong>: {{ $registration->department->name }}</p>
             <p><strong>المسار </strong>: {{ $registration->section->name }}</p>
-            <p><strong>المستوى </strong>: {{ $registration->levelName }}</p>
-            <p><strong>كمية الحفظ </strong>: {{ $registration->section->division->note }}</p>
+            {{-- <p><strong>المستوى </strong>: {{ $registration->levelName }}</p> --}}
+            {{-- <p><strong>كمية الحفظ </strong>: {{ $registration->section->division->note }}</p> --}}
         </div>
     </div>
 

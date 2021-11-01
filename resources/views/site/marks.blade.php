@@ -11,7 +11,7 @@
                 @if ($marks->isNotEmpty())
                     <div class="row">
                         <div class="col-sm-6">
-                            <p>الدورة: {{ $marks->first()->divisions_name }}</p>
+                            <p>القسم: {{ $marks->first()->departments_name }}</p>
                             <p>المسار: {{ $marks->first()->sections_name }}</p>
                         </div>
                         <div class="col-sm-6">

@@ -54,6 +54,7 @@
                                     <td><?php echo e($item->period->name); ?></td>
                                     <td><?php echo e($item->CreatedAtFormated); ?></td>
                                     <td><?php echo e($item->paid); ?></td>
+                                    
                                     <?php if($item->level): ?>
                                     <td><?php echo e($item->level->name); ?></td>
                                     <?php else: ?>

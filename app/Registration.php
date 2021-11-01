@@ -81,9 +81,10 @@ class Registration extends Model
     */
     public function scopeTotalMarks($q, $id, $level)
     {
+        
         return DB::select("SELECT (sum(mark1+mark2+mark3) /600) * 100 AS Marks
                             FROM `marks`
-                            WHERE (`registration_id` = $id) and (level=$level)
+                            WHERE (`registration_id` = $id) and (level=$level->id)
         ");
     }
 

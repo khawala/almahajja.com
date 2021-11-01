@@ -56,6 +56,7 @@
                                     <td>{{ $item->period->name}}</td>
                                     <td>{{ $item->CreatedAtFormated }}</td>
                                     <td>{{ $item->paid }}</td>
+                                    {{-- {{ dd($item->level) }} --}}
                                     @if($item->level)
                                     <td>{{ $item->level->name }}</td>
                                     @else
