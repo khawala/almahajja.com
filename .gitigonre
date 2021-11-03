@@ -2,3 +2,5 @@ storage/framework/*
 storage/debugbar/*
 storage/logs/*
 /storage/*
+storage
+.env
