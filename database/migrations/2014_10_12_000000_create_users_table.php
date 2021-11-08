@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('gender')->default(0);
             $table->string('mobile1');
             $table->string('mobile2')->nullable();
+            $table->string('bank_account')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('telecom_id')->nullable();
+            $table->text('cv')->nullable();
             $table->string('phone')->nullable();
             $table->boolean('status')->default(0);
             $table->string('photo')->nullable();

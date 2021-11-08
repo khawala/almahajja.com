@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [ 'name', 'username', 'password', 'email', 'national_id', 'nationality_id', 'gender', 'mobile1', 'mobile2', 'phone', 'status', 'photo', 'note', 'role',];
+    protected $fillable = [ 'name', 'username', 'password', 'email', 'national_id', 'nationality_id', 'gender', 'mobile1', 'mobile2', 'phone', 'status', 'photo', 'note', 'role','bank_account','cv','address','telecom_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -154,7 +154,19 @@ class User extends Authenticatable
     {
         $this->attributes['photo'] = move_file($photo, 'users_photo.image');
     }
+     public function getCvAttribute($value)
+    {
+        if (!$value) {
+            return 'https://placehold.it/400x400';
+        }
 
+        return config('variables.users_photo.public').$value;
+    }
+
+ public function setCvAttribute($photo)
+    {
+        $this->attributes['cv'] = move_file($photo, 'users_photo');
+    }
     /*
     |------------------------------------------------------------------------------------
     | Boot

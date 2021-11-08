@@ -6,7 +6,73 @@
 </a>
 
 <ul class="sidebar-menu">
-
+ <li class="treeview">
+        <a href="#">
+            <i class="fa fa-sort-alpha-asc"></i> <span>  الاقسام والمسارات </span>
+            <span class="pull-left-container">
+                <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+                @if (auth()->user()->role > 10)
+             <li class="<?php echo ( starts_with($route, ADMIN.'.departments') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.departments.index') }}">
+                    <span>الاقسام</span>
+                </a>
+            </li>
+            @endif
+            <li class="<?php echo ( starts_with($route, ADMIN.'.sections') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.sections.index') }}">
+                    <span>المسارات</span>
+                </a>
+            </li>
+           
+             <li class="<?php echo ( starts_with($route, ADMIN.'.levels') ) ? "active" : '' ?>">
+        <a href="{{ route(ADMIN.'.levels.index') }}">
+             <span>المستويات</span>
+        </a>
+    </li>
+    <li class="<?php echo ( starts_with($route, ADMIN.'.levelSections') ) ? "active" : '' ?>">
+        <a href="{{ route(ADMIN.'.levelSections.index') }}">
+           <span>المستويات والمسارات</span>
+        </a>
+    </li>
+      @if (auth()->user()->role ==10)
+         <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.classrooms.index') }}">
+                    <span>الحلقات</span>
+                </a>
+            </li>
+            @endif
+          <li class="<?php echo ( starts_with($route, ADMIN.'.teachers') ) ? "active" : '' ?>">
+        <a href="{{ route(ADMIN.'.teachers.index') }}">
+           <span> المعلمات</span>
+        </a>
+    </li>  
+        </ul>
+    </li>
+     <li class="treeview">
+        <a href="#">
+            <i class="fa fa-graduation-cap"></i> <span> الطلبات</span>
+            <span class="pull-left-container">
+                <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+               <li class="<?php echo ( starts_with($route, ADMIN.'.registrations') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.registrations.index', ['status' => 0]) }}">
+                    <span>طلبات التسجيل</span>
+                </a>
+            </li>
+                @if (auth()->user()->role > 10)
+                 <li class="<?php echo ( starts_with($route, ADMIN.'.job-requests') ) ? "active" : '' ?>">
+                    <a href="{{ route(ADMIN.'.job-requests.index') }}">
+                        <span>طلبات التوظيف</span>
+                    </a>
+                </li>
+                @endif
+        </ul>
+    </li>
     <li class="treeview">
         <a href="#">
             <i class="fa fa-graduation-cap"></i> <span>الدرجات والشهادات</span>
@@ -27,107 +93,77 @@
             </li>
         </ul>
     </li>
-@if (auth()->user()->role > 5)
-    
-    <li class="treeview">
+        @if (auth()->user()->role > 10)
+     <li class="treeview">
         <a href="#">
-            <i class="fa fa-pencil"></i> <span>التسجيل والحلقات</span>
+            <i class="fa fa-graduation-cap"></i> <span> المستخدمين</span>
             <span class="pull-left-container">
                 <i class="fa fa-angle-left pull-left"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="<?php echo ( starts_with($route, ADMIN.'.students') ) ? "active" : '' ?>">
+                    <li class="<?php echo ( starts_with($route, ADMIN.'.students') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.students.index') }}">
                     <span>الطالبات</span>
                 </a>
             </li>
-            <li class="<?php echo ( starts_with($route, ADMIN.'.registrations') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.registrations.index', ['status' => 0]) }}">
-                    <span>التسجيل</span>
-                </a>
-            </li>
-            <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
+ <li class="<?php echo ( starts_with($route, ADMIN.'.users') ) ? "active" : '' ?>">
+                    <a href="{{ route(ADMIN.'.users.index') }}">
+                        <span>المستخدمين</span>
+                    </a>
+                </li>
+        </ul>
+    </li>
+    @endif
+@if (auth()->user()->role > 10)
+    
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-pencil"></i> <span>التوظيف والحلقات</span>
+            <span class="pull-left-container">
+                <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+                 <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.classrooms.index') }}">
                     <span>الحلقات</span>
                 </a>
             </li>
-            <li class="<?php echo ( starts_with($route, ADMIN.'.registrations.stats') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.registrations.stats') }}">
-                    <span>احصائيات</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-
-    <li class="treeview">
-        <a href="#">
-            <i class="fa fa-sort-alpha-asc"></i> <span> الاعلانات</span>
-            <span class="pull-left-container">
-                <i class="fa fa-angle-left pull-left"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-         
-            <li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.advertisements.index') }}">
-                    <span>الاعلانات</span>
-                </a>
-            </li>
-            
-          
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="#">
-            <i class="fa fa-sort-alpha-asc"></i> <span> الاقسام والمسارات</span>
-            <span class="pull-left-container">
-                <i class="fa fa-angle-left pull-left"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="<?php echo ( starts_with($route, ADMIN.'.sections') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.sections.index') }}">
-                    <span>المسارات</span>
-                </a>
-            </li>
-            <li class="<?php echo ( starts_with($route, ADMIN.'.departments') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.departments.index') }}">
-                    <span>الاقسام</span>
-                </a>
-            </li>
-            
+                        <li class="<?php echo ( starts_with($route, ADMIN.'.jobs') ) ? "active" : '' ?>">
+                    <a href="{{ route(ADMIN.'.jobs.index') }}">
+                        <span>الوظائف</span>
+                    </a>
+                </li>
+    
+        
+       
            
         </ul>
     </li>
+
+   
     @if (auth()->user()->role > 10)
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-users"></i> <span>التوظيف والصلاحيات </span>
+                <i class="fa fa-users"></i> <span> الإحصائيات </span>
                 <span class="pull-left-container">
                     <i class="fa fa-angle-left pull-left"></i>
                 </span>
             </a>
 
             <ul class="treeview-menu">
-                <li class="<?php echo ( starts_with($route, ADMIN.'.jobs') ) ? "active" : '' ?>">
-                    <a href="{{ route(ADMIN.'.jobs.index') }}">
-                        <span>الوظائف</span>
-                    </a>
-                </li>
-                <li class="<?php echo ( starts_with($route, ADMIN.'.job-requests') ) ? "active" : '' ?>">
-                    <a href="{{ route(ADMIN.'.job-requests.index') }}">
-                        <span>طلبات التوظيف</span>
-                    </a>
-                </li>
-                <li class="<?php echo ( starts_with($route, ADMIN.'.users') ) ? "active" : '' ?>">
-                    <a href="{{ route(ADMIN.'.users.index') }}">
-                        <span>المستخدمين</span>
-                    </a>
-                </li>
+    
+           
+               
+                 <li class="<?php echo ( starts_with($route, ADMIN.'.registrations.stats') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.registrations.stats') }}">
+                    <span>احصائيات طلبات التسجيل</span>
+                </a>
+            </li>
                 <li class="<?php echo ( starts_with($route, ADMIN.'.stats') ) ? "active" : '' ?>">
                     <a href="{{ route(ADMIN.'.stats.index') }}">
-                        <span>احصائيات</span>
+                        <span>احصائيات طلبات التوظيف</span>
                     </a>
                 </li>
             </ul>
@@ -142,6 +178,12 @@
             </a>
             
             <ul class="treeview-menu">
+                 <li class="<?php echo ( starts_with($route, ADMIN.'.advertisements') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.advertisements.index') }}">
+                    <span>الاعلانات</span>
+                </a>
+            </li>
+            
                 <li class="<?php echo ( starts_with($route, ADMIN.'.configurations') ) ? "active" : '' ?>">
                     <a href="{{ route(ADMIN.'.configurations.index') }}">
                         <span>عن المؤسسة</span>
@@ -168,25 +210,17 @@
                         <span>الفترات</span>
                     </a>
                 </li>
+                <li>
+    <a target="_blank" href="https://www.hit.sa/#section4">
+        <i class="fa fa-life-ring" aria-hidden="true"></i> <span>الدعم الفني</span>
+    </a>
+</li>
             </ul>
         </li>
     @endif
 
 @endif
-<li>
-    <a target="_blank" href="https://www.hit.sa/#section4">
-        <i class="fa fa-life-ring" aria-hidden="true"></i> <span>الدعم الفني</span>
-    </a>
-</li>
-    <li class="<?php echo ( starts_with($route, ADMIN.'.levels') ) ? "active" : '' ?>">
-        <a href="{{ route(ADMIN.'.levels.index') }}">
-            <i class="fa fa-industry" aria-hidden="true"></i> <span>المستويات</span>
-        </a>
-    </li>
-    <li class="<?php echo ( starts_with($route, ADMIN.'.levelSections') ) ? "active" : '' ?>">
-        <a href="{{ route(ADMIN.'.levelSections.index') }}">
-            <i class="fa fa-industry" aria-hidden="true"></i> <span>الاقسام والمسارات</span>
-        </a>
-    </li>
+
+   
 
 </ul>

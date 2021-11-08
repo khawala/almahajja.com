@@ -63,7 +63,7 @@
                         'method' => 'PUT',
                         ]); ?>
 
-                        <?php echo Form::mySelect('classroom_id', '', ['' => ''] + App\Classroom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control onchange', 'width' => 200]); ?>
+                        <?php echo Form::mySelect('classroom_id', '', ['' => ''] + App\Classroom::where('department_id','=',$item->department->id)->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control onchange', 'width' => 200]); ?>
 
 
                     <?php echo Form::close(); ?>

@@ -192,7 +192,7 @@ class HomeController extends Controller
         $level = Registration::where('user_id', auth()->id())
                                 ->latest('id')
                                 ->first()->level;
-       
+   
 
         return view('site.marks', compact('marks', 'registration_id', 'level'));
     }

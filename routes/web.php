@@ -30,7 +30,9 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
     Route::resource('nationalities', 'NationalityController');
 
     Route::get('users/export', ['uses'=>'UsersController@export', 'as' => 'users.export']);
+        Route::get('teachers/export', ['uses'=>'TeacherController@export', 'as' => 'teachers.export']);
     Route::resource('users', 'UsersController');
+    Route::resource('teachers', 'TeacherController');
     Route::resource('students', 'StudentController');
     Route::get('registrations/stats', 'RegistrationController@stats')->name('registrations.stats');
     Route::get('registrations/marks', 'RegistrationController@marks')->name('registrations.marks');

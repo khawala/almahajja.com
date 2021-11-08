@@ -18,12 +18,12 @@ class Mark extends Model
     {
         $q->join('sections', 'marks.section_id', '=', 'sections.id')
             ->join('departments', 'marks.department_id', '=', 'departments.id')
-            ->leftJoin('classrooms', 'classrooms.section_id', '=', 'sections.id')
-            ->join('users', 'users.id', '=', 'classrooms.teacher_id')
+            // ->join('classrooms', 'classrooms.section_id', '=', 'sections.id')
+            // ->join('users', 'users.id', '=', 'classrooms.teacher_id')
 
             ->where('marks.registration_id', $registration_id)
             ->where('marks.section_id', $section_id)
-            ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name', 'sections.name as sections_name', 'classrooms.name as classrooms_name', 'users.name as users_name']);
+            ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name', 'sections.name as sections_name']);
         ;
     }
 
