@@ -120,6 +120,31 @@ class TeacherController extends Controller
      */
     public function export()
     {
+         if (auth()->user()->isSupervisor) { // is supervisor
+ $items = User::where('role',5)->whereHas('classrooms', function ($q) {
+                $q->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            });
+            })->get();
+ 
+        foreach ($items as $item) {
+            $data[] = [
+                '#' => $item->id,
+                'الاسم الرباعي' => $item->name,
+                'رقم الهوية' => $item->national_id,
+                'الجنسية' => $item->nationality->name,
+                'الجنس' => $item->genderName,
+                'الجوال' => $item->mobile1,
+                'الصلاحيات' => $item->roleName,
+                'السيرة الذاتية' => $item->cv,
+                'العنوان' => $item->address,
+                'الشريحة' => $item->telecom->name,
+                 'رقم الحساب البنكي' => $item->bank_account,
+                'الحالة' => $item->statusName,
+            ];
+        }
+ }
+ else{
         $items = User::notStudent()->with('nationality')->get();
 
         foreach ($items as $item) {
@@ -135,7 +160,7 @@ class TeacherController extends Controller
             ];
         }
         // return $data;
-
+}
         Excel::create('المستخدمين', function ($excel) use ($data) {
             $excel->sheet('Sheetname', function ($sheet) use ($data) {
                 $sheet->fromArray($data);

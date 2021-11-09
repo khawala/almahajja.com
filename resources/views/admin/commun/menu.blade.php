@@ -14,13 +14,13 @@
             </span>
         </a>
         <ul class="treeview-menu">
-                @if (auth()->user()->role > 10)
+                
              <li class="<?php echo ( starts_with($route, ADMIN.'.departments') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.departments.index') }}">
                     <span>الاقسام</span>
                 </a>
             </li>
-            @endif
+            
             <li class="<?php echo ( starts_with($route, ADMIN.'.sections') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.sections.index') }}">
                     <span>المسارات</span>
@@ -38,6 +38,11 @@
         </a>
     </li>
       @if (auth()->user()->role ==10)
+        <li class="<?php echo ( starts_with($route, ADMIN.'.students') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.students.index') }}">
+                    <span>الطلاب</span>
+                </a>
+            </li>
          <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.classrooms.index') }}">
                     <span>الحلقات</span>

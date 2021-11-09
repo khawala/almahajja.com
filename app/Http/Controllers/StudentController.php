@@ -18,7 +18,13 @@ class StudentController extends Controller
     public function index()
     {
         $items = User::students()->latest('updated_at')->paginate(20);
-
+if (auth()->user()->isSupervisor) { // is supervisor
+ $items = User::students()->whereHas('registrations', function ($q) {
+                $q->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            });
+            })->latest('updated_at')->paginate(20);
+}
         if (request()->has('export')) {
             $this->export($items);
         }

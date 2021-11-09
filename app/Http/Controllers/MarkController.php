@@ -82,20 +82,22 @@ class MarkController extends Controller
             $data[] = [
                 'رقم التسجيل'          => $item->id,
                 'الطالبة'              => $item->name,
-                'مستوى الطالبة'        => config('variables.sections_level')[$item->level],
+                'مستوى الطالبة'        => $item->level->name,
                 'الحضور (30)'          => $item->mark1,
                 'التسميع (30)'         => $item->mark2,
                 'الإختبار الشهري (40)' => $item->mark3,
                 'المجموع'              => $item->mark1 + $item->mark2 + $item->mark3,
             ];
         }
-        // return $data;
+Excel::create('Filename', function($excel) use($data) {
 
+    $excel->sheet('Sheetname', function($sheet) use($data) {
 
-        Excel::create('الدرجات', function ($excel) use ($data) {
-            $excel->sheet('Sheetname', function ($sheet) use ($data) {
-                $sheet->fromArray($data);
-            });
-        })->export('xls');
+        $sheet->with($data);
+
+    });
+
+})->export('xls');
+      
     }
 }

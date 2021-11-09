@@ -148,9 +148,9 @@ class RegistrationController extends Controller
         $registration = Registration::findOrFail(request('id'));
 
         //Check access
-        if (auth()->user()->isStudent && auth()->id() != $registration->user_id) {
-            abort(403);
-        }
+        // if (auth()->user()->isStudent && auth()->id() != $registration->user_id) {
+        //     abort(403);
+        // }
         
         $registration->load('student');
 
@@ -160,7 +160,6 @@ class RegistrationController extends Controller
                     ->orderBy('month');
         }]);
         // return $registration;
-
         if (request('print')) {
             return view('admin.registrations.print-marks', compact('registration'));
         }

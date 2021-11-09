@@ -61,6 +61,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Nationality::class)->withDefault();
     }
+        public function telecom()
+    {
+        return $this->belongsTo(Telecom::class)->withDefault();
+    }
     public function registrations()
     {
         return $this->hasMany(Registration::class);

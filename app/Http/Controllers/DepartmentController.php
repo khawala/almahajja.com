@@ -17,7 +17,9 @@ class DepartmentController extends Controller
     public function index()
     {
         $items = Department::with('supervisor','sections')->latest('updated_at')->get();
-
+ if (auth()->user()->isSupervisor) { // is supervisor
+         $items = Department::with('supervisor','sections')->where('supervisor_id',auth()->user()->id)->latest('updated_at')->get();
+                }
         if (request()->has('export')) {
             $this->export($items);
         }
