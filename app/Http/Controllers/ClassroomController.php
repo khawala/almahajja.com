@@ -17,7 +17,11 @@ class ClassroomController extends Controller
     public function index()
     {
         $items = Classroom::with('teacher')->latest('updated_at')->get();
-
+if (auth()->user()->isSupervisor) { // is supervisor
+ $items = Classroom::with('teacher')->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            })->latest('updated_at')->get();
+        }
         if (request()->has('export')) {
             $this->export($items);
         }

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Excel;
 use App\User;
 use Validator;
-
+use App\Department;
 class TeacherController extends Controller
 {
     /**
@@ -19,10 +19,15 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role < 20) {
-            abort(403);
-        }
+     
         $items = User::where('role',5)->get();
+        if (auth()->user()->isSupervisor) { // is supervisor
+ $items = User::where('role',5)->whereHas('classrooms', function ($q) {
+                $q->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            });
+            })->get();
+        }
         $stats = User::notStudent()->stats('status');
         // return $stats;
 

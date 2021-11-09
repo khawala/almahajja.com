@@ -87,7 +87,9 @@ class Classroom extends Model
         if (auth()->user()->isTeacher) { // is teacher
             $q->where('classrooms.teacher_id', auth()->id());
         }
-
+if (auth()->user()->isSupervisor) { // is supervisor
+            $q->where('departments.supervisor_id', auth()->id());
+        }
         if (request('department_id')) {
             $q->where('classrooms.department_id','=',request('department_id'));
             

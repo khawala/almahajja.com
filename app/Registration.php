@@ -124,12 +124,17 @@ class Registration extends Model
     }
     public function scopeSearch($q)
     {
+        
         if (request('section')) {
             $q->whereHas('section', function ($q) {
                 $q->where('name', 'like', '%' . request('section') . '%');
             });
         }
-
+if (auth()->user()->isSupervisor) { // is supervisor
+$q->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            });
+        }
         if (request('section_id')) {
             $q->whereHas('section', function ($q) {
                 $q->where('id', request('section_id'));

@@ -17,7 +17,12 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $items = Section::with('division')->latest('updated_at')->get();
+        $items = Section::latest('updated_at')->get();
+                if (auth()->user()->isSupervisor) { // is supervisor
+         $items = Section::latest('updated_at')->whereHas('departments', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            })->get();
+                }
         if (request()->has('export')) {
             $this->export($items);
         }

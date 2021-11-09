@@ -65,7 +65,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Registration::class);
     }
+      public function departments()
+    {
+        return $this->hasMany(Department::class,'supervisor_id');
+    }
 
+      public function classrooms()
+    {
+        return $this->hasMany(Classroom::class,'teacher_id');
+    }
     /*
     |------------------------------------------------------------------------------------
     | Scopes
@@ -121,6 +129,10 @@ class User extends Authenticatable
     public function getIsTeacherAttribute()
     {
         return auth()->user()->role == 5;
+    }
+        public function getIsSupervisorAttribute()
+    {
+        return auth()->user()->role == 10;
     }
     public function getIsStudentAttribute()
     {

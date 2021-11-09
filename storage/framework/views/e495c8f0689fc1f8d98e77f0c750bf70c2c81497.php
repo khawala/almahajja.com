@@ -12,11 +12,20 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
 
                 <?php echo Form::myInput('text', 'name', 'إسم الحلقة <span class=red>*</span>', ['required']); ?>
 
+                <?php if(auth()->user()->isSupervisor): ?> 
+   <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']); ?>
 
+               <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::whereHas('departments', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            })->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-contro']); ?>
+
+               
+             <?php else: ?>   
                 <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']); ?>
 
                 <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-contro']); ?>
 
+                <?php endif; ?>
                 <?php echo Form::mySelect('level_id', 'المستوى <span class=red>*</span>', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-contro']); ?>
 
 
