@@ -9,8 +9,8 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <?php $__currentLoopData = $registration->marks->chunk(10); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marks): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    
+    <?php $__currentLoopData = $registration->marks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marks): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+       
         <div class="wrapper">
             <img src="/img/mark.jpg" class="bg-print" alt="">
             <div class="row">
@@ -20,11 +20,11 @@
                     <p><strong>الحلقة </strong>: <?php echo e($registration->classroom->name); ?></p>
                     <p><strong>المعلمة </strong>: <?php echo e($registration->classroom->teacher->name); ?></p>
                 </div>
+                
                 <div class="col-xs-6 col-md-4">
-                    <p><strong>الدورة </strong>: <?php echo e($registration->section->division->name); ?></p>
+                    <p><strong>القسم </strong>: <?php echo e($registration->department->name); ?></p>
                     <p><strong>المسار </strong>: <?php echo e($registration->section->name); ?></p>
-                    <p><strong>المستوى </strong>: <?php echo e($registration->levelName); ?></p>
-                    <p><strong>كمية الحفظ </strong>: <?php echo e($registration->section->division->note); ?></p>
+                    <p><strong>المستوى </strong>: <?php echo e($registration->level->name); ?></p>
                 </div>
             </div>
            
@@ -63,11 +63,12 @@
                         </tfoot>
                      
                         <tbody>
-                            <?php $__currentLoopData = $marks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mark): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $registration->marks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mark): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
+                                
                                     <td><?php echo e($mark->monthName); ?></td>
                                     <td><?php echo e($mark->semesterName); ?></td>
-                                    <td><?php echo e($mark->levelName); ?></td>
+                                    <td><?php echo e($mark->levelN->name); ?></td>
                                     <td><?php echo e($mark->mark1); ?></td>
                                     <td><?php echo e($mark->mark2); ?></td>
                                     <td><?php echo e($mark->mark3); ?></td>

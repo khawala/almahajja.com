@@ -26,7 +26,9 @@ class Mark extends Model
             ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name', 'sections.name as sections_name']);
         ;
     }
-
+        public function levelN()
+    {
+        return $this->belongsTo(Level::class,'level');    }
     /*
     |------------------------------------------------------------------------------------
     | Attributes

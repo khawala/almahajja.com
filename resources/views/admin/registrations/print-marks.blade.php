@@ -10,8 +10,8 @@
 
 @section('content')
 
-    @foreach ($registration->marks->chunk(10) as $marks)
-    
+    @foreach ($registration->marks as $marks)
+       
         <div class="wrapper">
             <img src="/img/mark.jpg" class="bg-print" alt="">
             <div class="row">
@@ -21,11 +21,11 @@
                     <p><strong>الحلقة </strong>: {{ $registration->classroom->name }}</p>
                     <p><strong>المعلمة </strong>: {{ $registration->classroom->teacher->name }}</p>
                 </div>
+                
                 <div class="col-xs-6 col-md-4">
-                    <p><strong>الدورة </strong>: {{ $registration->section->division->name }}</p>
+                    <p><strong>القسم </strong>: {{ $registration->department->name }}</p>
                     <p><strong>المسار </strong>: {{ $registration->section->name }}</p>
-                    <p><strong>المستوى </strong>: {{ $registration->levelName }}</p>
-                    <p><strong>كمية الحفظ </strong>: {{ $registration->section->division->note }}</p>
+                    <p><strong>المستوى </strong>: {{ $registration->level->name }}</p>
                 </div>
             </div>
            
@@ -64,11 +64,12 @@
                         </tfoot>
                      
                         <tbody>
-                            @foreach ($marks as $mark)
+                            @foreach ($registration->marks as $mark)
                                 <tr>
+                                
                                     <td>{{ $mark->monthName }}</td>
                                     <td>{{ $mark->semesterName }}</td>
-                                    <td>{{ $mark->levelName }}</td>
+                                    <td>{{ $mark->levelN->name }}</td>
                                     <td>{{ $mark->mark1 }}</td>
                                     <td>{{ $mark->mark2 }}</td>
                                     <td>{{ $mark->mark3 }}</td>
