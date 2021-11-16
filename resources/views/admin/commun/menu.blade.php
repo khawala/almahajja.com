@@ -37,23 +37,24 @@
            <span>المستويات والمسارات</span>
         </a>
     </li>
+     <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
+                <a href="{{ route(ADMIN.'.classrooms.index') }}">
+                    <span>الحلقات</span>
+                </a>
+            </li>
       @if (auth()->user()->role ==10)
         <li class="<?php echo ( starts_with($route, ADMIN.'.students') ) ? "active" : '' ?>">
                 <a href="{{ route(ADMIN.'.students.index') }}">
                     <span>الطلاب</span>
                 </a>
             </li>
-         <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.classrooms.index') }}">
-                    <span>الحلقات</span>
-                </a>
-            </li>
-            @endif
-          <li class="<?php echo ( starts_with($route, ADMIN.'.teachers') ) ? "active" : '' ?>">
+         <li class="<?php echo ( starts_with($route, ADMIN.'.teachers') ) ? "active" : '' ?>">
         <a href="{{ route(ADMIN.'.teachers.index') }}">
            <span> المعلمات</span>
         </a>
     </li>  
+            @endif
+         
         </ul>
     </li>
      <li class="treeview">
@@ -117,35 +118,21 @@
                         <span>المستخدمين</span>
                     </a>
                 </li>
+                         <li class="<?php echo ( starts_with($route, ADMIN.'.teachers') ) ? "active" : '' ?>">
+        <a href="{{ route(ADMIN.'.teachers.index') }}">
+           <span> المعلمات</span>
+        </a>
+    </li>  
         </ul>
     </li>
     @endif
 @if (auth()->user()->role > 10)
-    
-    <li class="treeview">
-        <a href="#">
-            <i class="fa fa-pencil"></i> <span>التوظيف والحلقات</span>
-            <span class="pull-left-container">
-                <i class="fa fa-angle-left pull-left"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-                 <li class="<?php echo ( starts_with($route, ADMIN.'.classrooms') ) ? "active" : '' ?>">
-                <a href="{{ route(ADMIN.'.classrooms.index') }}">
-                    <span>الحلقات</span>
-                </a>
-            </li>
-                        <li class="<?php echo ( starts_with($route, ADMIN.'.jobs') ) ? "active" : '' ?>">
+     <li class="<?php echo ( starts_with($route, ADMIN.'.jobs') ) ? "active" : '' ?>">
                     <a href="{{ route(ADMIN.'.jobs.index') }}">
-                        <span>الوظائف</span>
+                        <i class="fa fa-users"></i>   <span>الوظائف</span>
+                      
                     </a>
                 </li>
-    
-        
-       
-           
-        </ul>
-    </li>
 
    
     @if (auth()->user()->role > 10)

@@ -8,9 +8,9 @@
 
     <ul class="list-inline">
         <li><a class="btn btn-info" href="{{ route(ADMIN . '.teachers.create') }}">{{ trans('app.add_button') }}</a></li>
-        <li class="pull-left">
-            <a class="btn btn-success" href="{{ route(ADMIN . '.teachers.export') }}"><i class="fa fa-file-excel-o"></i></a>
-        </li>
+        <!--<li class="pull-left">-->
+        <!--    <a class="btn btn-success" href="{{ route(ADMIN . '.teachers.export') }}"><i class="fa fa-file-excel-o"></i></a>-->
+        <!--</li>-->
     </ul>
 
 	<div class="row">

@@ -5,24 +5,24 @@
 @stop
 
 @section('content')
-    <section class="filter-area">
-        <form action="" class="form-inline">
+    <!--<section class="filter-area">-->
+    <!--    <form action="" class="form-inline">-->
 
-            <ul class="list-inline">
-                <li style="float: left">
-                  <button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button>
+    <!--        <ul class="list-inline">-->
+    <!--            <li style="float: left">-->
+    <!--              <button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button>-->
                  
-                </li>
-            </ul>
-            {!! Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']) !!}
-            {!! Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']) !!}
+    <!--            </li>-->
+    <!--        </ul>-->
+    <!--        {!! Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']) !!}-->
+    <!--        {!! Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']) !!}-->
 
-            {!! Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']) !!}
+    <!--        {!! Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']) !!}-->
 
 
 
-        </form>
-    </section>
+    <!--    </form>-->
+    <!--</section>-->
     <br>
     <div class="row">
         <div class="col-xs-12">

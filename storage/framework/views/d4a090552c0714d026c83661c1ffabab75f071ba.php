@@ -6,7 +6,9 @@
 
     <section class="filter-area">
         <ul class="list-inline">
+            <?php if(auth()->user()->role != 10): ?>
             <li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.departments.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>
+            <?php endif; ?>
             <li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.departments.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>
         </ul>
     </section>

@@ -1,14 +1,14 @@
 
-<table class="table" cellspacing="0" width="100%">
+<table class="table" id="dtDynamicVerticalScrollExample" cellspacing="0" width="auto">
     <thead>
         <tr>
-            <th>رقم التسجيل</th>
+            <th>رقم </th>
             <th>الطالبة</th>
             <th>القسم</th>
 
             <th>المسار</th>
-            <th>شريحة الجوال</th>
-            <th>وقت التسميع</th>
+            <th> الشريحة</th>
+            <th>الوقت </th>
             <th>تاريخ التسجيل</th>
             <th>المدفوع</th>
             <th>المستوى</th>
@@ -20,12 +20,12 @@
     
     <tfoot>
         <tr>
-            <th>رقم التسجيل</th>
+            <th>رقم </th>
             <th>الطالبة</th>
             <th>القسم</th>
             <th>المسار</th>
-            <th>شريحة الجوال</th>
-            <th>وقت التسميع</th>
+                <th> الشريحة</th>
+            <th>الوقت </th>
             <th>تاريخ التسجيل</th>
             <th>المدفوع</th>
             <th>المستوى</th>
@@ -46,13 +46,13 @@
                 <td>{{ $item->period->name}}</td>
                 <td>{{ $item->created_at }}</td>
                 <td>{{ $item->paid }}</td>
-                <td width="170">
+                <td style="width:250 px;">
                     {!! Form::model($item, [
                         'url'  => route(ADMIN . '.registrations.update', $item->id), 
                         'method' => 'PUT',
                         ]) 
                     !!}
-                        {!! Form::mySelect('level_id', '', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' => 300]) !!}
+                        {!! Form::mySelect('level_id', '', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' =>'FIT-CONTENT']) !!}
                     {!! Form::close() !!}
                 </td>
                 <td width="130">

@@ -34,8 +34,15 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                         <?php } ?>
                     </div>
                 @endif
-                {!! Form::mySelect('supervisor_id','المشرفة/المدربه  <span class=red>*</span>',App\User::supervisor()->pluck('name', 'id')->toArray(),null,['required', 'class' => 'chosen-rtl form-control']) !!}
+                @if(auth()->user()->role != 10)
+               
 
+                {!! Form::mySelect('supervisor_id','المشرفة/المدربه  <span class=red>*</span>',App\User::supervisor()->pluck('name', 'id')->toArray(),null,['required', 'class' => 'chosen-rtl form-control']) !!}
+@else
+ @if (isset($item) )
+ <input type="hidden" name="supervisor_id" value="{{ $item->supervisor_id }}">
+ @endif
+@endif
                 {!! Form::myTextArea('description', 'نبذة عن القسم') !!}
         
                 
