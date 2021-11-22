@@ -49,13 +49,13 @@ class RegistrationController extends Controller
         $this->validate($request, Registration::rules());
         
         // check if student's
-        $divisions_id = Registration::with('section.division')->where('user_id', request('user_id'))->get()->pluck('section.division.id')->toArray(); // Get divisions aleady  registerer
-        $division_id = Section::findOrFail(request('section_id'))->division_id; // get current division
-        // dd($division_id);
+        // $divisions_id = Registration::with('section.division')->where('user_id', request('user_id'))->get()->pluck('section.division.id')->toArray(); // Get divisions aleady  registerer
+        // $division_id = Section::findOrFail(request('section_id'))->division_id; // get current division
+        // // dd($division_id);
         
-        if (in_array($division_id, $divisions_id)) {
-            return back()->withErrors('الطالبة مسجلة في نفس الدورة');
-        }
+        // if (in_array($division_id, $divisions_id)) {
+        //     return back()->withErrors('الطالبة مسجلة في نفس الدورة');
+        // }
 
         Registration::create($request->all() + [
             'created_by' => auth()->id(),
