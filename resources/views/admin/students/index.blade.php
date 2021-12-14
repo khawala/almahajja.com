@@ -8,7 +8,10 @@
 
     <section class="filter-area">
         <ul class="list-inline">
+                    @if(auth()->user()->role != 10)
+       
             <li><a class="btn btn-info" href="{{ route(ADMIN . '.students.create') }}">{{ trans('app.add_button') }}</a></li>
+            @endif
             <li class="pull-left"> <a href="{{ route(ADMIN . '.students.index',['export' => true]) }}" class="btn btn-info"><i class="fa fa-print"></i></a></li>
         </ul>
     </section>

@@ -51,6 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            
         ]);
     }
 
@@ -62,10 +63,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        
+          $user = User::where('username', request('username'))->first();
+
+            if (! $user) { // create new user
+                $user = User::create(request()->all());
+            } else { // user exist
+                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'error');
+                return back();
+            }
+            dd($user);
+        return $user;
     }
 }

@@ -7,7 +7,10 @@
 @section('content')
 
     <ul class="list-inline">
+                @if(auth()->user()->role != 10)
+       
         <li><a class="btn btn-info" href="{{ route(ADMIN . '.teachers.create') }}">{{ trans('app.add_button') }}</a></li>
+        @endif
         <li class="pull-left">
             <a class="btn btn-success" href="{{ route(ADMIN . '.teachers.export') }}"><i class="fa fa-file-excel-o"></i></a>
         </li>

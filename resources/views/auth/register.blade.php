@@ -1,76 +1,116 @@
-@extends('layouts.signin')
+@extends('site.new_default')
 
 @section('content')
-
-    <p class="login-box-msg">Register a new membership</p>
+<!-- Start Login Section  -->
+<section class="login-sec">
 
     <form role="form" method="POST" action="{{ url('/register') }}">
-            {{ csrf_field() }}
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
-                    <input type="text" class="form-control" placeholder="Full name" name="name" value="{{ old('name') }}">
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
-                    @if ($errors->has('name'))
+        @csrf
+        <div class="inputs item-center">
+         
+            @include('admin.commun.flash-message')
+             @guest
+                                    <!-- Start Col  -->
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="name"  value="{{ old('name') }}" placeholder="الاسم الرباعي" required>
+                                                @if ($errors->has('name'))
+                                                    <p class="help-block"><small>{{ $errors->first('name') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
+                                  <div class="col-10">
+                                            <div class="form-group">
+                                                <div class="lemail">
+                                <input type="tel" id="telephone" min="9" max="11" class="form-control"  value="{{ old('mobile') }}" placeholder="الجوال  : 505555555" value="{{old('phone')}}" autocomplete="off" pattern="[0-9]+" titles="الرجاء إدخال رقمك">
+                                <input type="hidden" id="phonevalue" name="mobile1" value="{{old('mobile1')}}">
+                            </div>
+
+                            @if ($errors->has('mobile1'))
+                                <span class="help-block">
+                                <strong>{{ $errors->first('mobile1') }}</strong>
+                                </span>
+                            @endif
+                                            </div>
+                                
+                                        </div>
+                                           <!-- Start Col  -->
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                         <div class="lemail has-feedback">
+                               
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="الإيميل">
+                            </div>
+
+                            @if ($errors->has('email'))
                             <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                    @endif
-        </div>
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-
-                    @if ($errors->has('email'))
-                            <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                    @endif
-        </div>
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
-                    <input type="password" class="form-control" placeholder="Password" name="password" >
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
-                    @if ($errors->has('password'))
-                            <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                    @endif
-        </div>
-        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }} has-feedback">
-                    <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation" >
-                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-
-                    @if ($errors->has('password_confirmation'))
-                            <span class="help-block">
-                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
-                    @endif
-        </div>
-        <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox"> I agree to the <a href="#">terms</a>
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-                    </div>
-            <!-- /.col -->
-        </div>
-    </form>
-
-    <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-            Facebook</a>
-        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-            Google+</a>
+                                <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                              </div>
+                                        </div>
+                                           <div class="col-10">
+                                            <div class="form-group">
+                                             {!! Form::mySelect('gender', 'الجنس', config('variables.gender')) !!}
     </div>
+                                        </div>
+                                        <!-- End Col  -->
+                                    <!-- Start Col  -->
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                              <label>الجنسية</label>
+                                                <select name="nationality_id"  id="selectInput" class="form-control" required>
+                                                    @foreach(App\Nationality::active()->pluck('name', 'id')->toArray() as $key => $value)
+                                                        <option value="{{$key}}">{{$value}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('nationality_id'))
+                                                    <p class="help-block"><small>{{ $errors->first('nationality_id') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                         <div class="col-10">
+                                            <div class="form-group">
+                                               
+                                                <input type="text" class="form-control" name="username"  value="{{ old('username') }}" placeholder="اسم المستخدم" required>
+                                                @if ($errors->has('username'))
+                                                    <p class="help-block"><small>{{ $errors->first('username') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                            <div class="col-10">
+                                            <div class="form-group">
+                                               
+                                                <input type="password" class="form-control" name="password"  value="{{ old('password') }}" placeholder="كلمة السر" required>
+                                                @if ($errors->has('password'))
+                                                    <p class="help-block"><small>{{ $errors->first('password') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
+                                        <!-- Start Col  -->
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                             
+                                                <input type="password" class="form-control" name="password_confirmation"  value="{{ old('password_confirmation') }}" placeholder="تأكيد كلمة السر" required>
+                                                @if ($errors->has('password_confirmation'))
+                                                    <p class="help-block"><small>{{ $errors->first('password_confirmation') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        </div>
+       @endguest
+       
+            <div class="form-group">
+                <input type="submit" class="btn btn-website" name="" value="تسجيل ">
+            </div>
+          
+        </div>
 
-    <a href="{{url('login')}}" class="text-center">I already have a membership</a>
-
-
+    </form>
+</section>
+<!-- End Jobs  -->
 @endsection

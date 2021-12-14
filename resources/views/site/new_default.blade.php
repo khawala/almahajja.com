@@ -9,10 +9,25 @@
     <link rel="stylesheet" href="{{url('css_new/boostrap4.min.css')}}">
     <link rel="stylesheet" href="{{url('css_new/all.min.css')}}">
     <link rel="stylesheet" href="{{url('css_new/style.css')}}">
+     <link rel="stylesheet" href="{{ asset('tel-input/build/css/intlTelInput.css') }} ">
 
+
+    <script src="{{ asset('tel-input/build/js/intlTelInput.js') }}"></script>
+    
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script src="{{ asset('tel-input/build/js/intlTelInput-jquery.min.js') }}"></script>
 
     <link rel="icon" type="image/png" href="{{url('images/logo-fav.png')}}" sizes="32x32">
     @yield('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    .iti{display:block}
+    label {
+    color: #7f999a;
+    float: right;
+}
+</style>
 </head>
 
 <body>
@@ -304,7 +319,14 @@
 <script src="{{url('js/bootstrap4.min.js')}}"></script>
 <script src="{{url('js/all.min.js')}}"></script>
 <script src="{{url('js/custome.js')}}"></script>
-
+<script src="{{url('js/intlphone.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+  $("select").select2();
+  });
+  
+  </script>
 </body>
 
 </html>
