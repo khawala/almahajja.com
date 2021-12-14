@@ -90,8 +90,7 @@ if (auth()->user()->isSupervisor) { // is supervisor
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, User::rules(true, $id));
-
+        
         $item = User::findOrFail($id);
 
         $item->update($request->all());

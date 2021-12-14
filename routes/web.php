@@ -9,6 +9,7 @@ Auth::routes();
 | Admin
 |------------------------------------------------------------------------------------
 */
+
 Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'checkstatus', 'Role:5']], function () {
     Route::get('/', ['uses'=>'ConfigurationController@welcome', 'as'=>'dash']);
 
@@ -62,17 +63,17 @@ Route::get('division/{id}', 'HomeController@division')->name('division.show');
 Route::get('department/{id}', 'HomeController@department')->name('department.show');
 Route::post('department', 'HomeController@postdepartment')->name('department.store');
 Route::post('division', 'HomeController@postDivision')->name('division.store');
+Route::get('/job/list','JobController@list');
+Route::get('/departments/list','DepartmentController@list');
 
 Route::get('job/{id}', 'HomeController@job')->name('job.show');
 Route::post('job-request', 'HomeController@postJobRequest')->name('job.store');
-
 Route::group(['middleware'=>['auth', 'checkstatus']], function () {
     Route::get('profile', 'HomeController@profile')->name('profile.show');
     Route::post('profile', 'HomeController@postProfile')->name('profile.store');
-    
     Route::get('certifications/{id}/print', 'CertificationController@print')->name('certifications.print');
-    
     Route::get('profile/{registration_id}/{section_id}/marks', 'HomeController@marks')->name('profile.marks');
-
     Route::get('registrations/marks', 'RegistrationController@marks')->name('registration.marks');
 });
+
+

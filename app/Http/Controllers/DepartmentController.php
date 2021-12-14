@@ -27,6 +27,16 @@ class DepartmentController extends Controller
         return view('admin.departments.index', compact('items'));
     }
 
+    public function list()
+    {
+        $items = Department::with('supervisor','sections')->latest('updated_at')->paginate(6);
+        if (request()->has('export')) {
+            $this->export($items);
+        }
+
+        return view('site.departments', compact('items'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -88,8 +98,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, Department::rules(true, $id));
-
+      
         $item = Department::findOrFail($id);
         $item->sections()->detach();
         $item->sections()->attach($request->section_id);

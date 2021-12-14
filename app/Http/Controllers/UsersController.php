@@ -22,10 +22,15 @@ class UsersController extends Controller
         if (auth()->user()->role < 20) {
             abort(403);
         }
-        $items = User::notStudent()->with('nationality')->get();
+        if(request('role')=='supervisor')
+        {
+        $items = User::notStudent()->with('nationality')->where('role',10)->get();
+        }
+        else{
+            $items = User::notStudent()->with('nationality')->where('role',20)->get(); 
+        }
         $stats = User::notStudent()->stats('status');
-        // return $stats;
-
+      
         return view('admin.users.index', compact('items', 'stats'));
     }
 
@@ -115,7 +120,13 @@ class UsersController extends Controller
     public function export()
     {
         $items = User::notStudent()->with('nationality')->get();
-
+     if(request('role')=='supervisor')
+        {
+        $items = User::notStudent()->with('nationality')->where('role',10)->get();
+        }
+        else{
+            $items = User::notStudent()->with('nationality')->where('role',20)->get(); 
+        }
         foreach ($items as $item) {
             $data[] = [
                 '#' => $item->id,

@@ -110,12 +110,17 @@
         <ul class="treeview-menu">
                     <li class="<?php echo ( starts_with($route, ADMIN.'.students') ) ? "active" : '' ?>">
                 <a href="<?php echo e(route(ADMIN.'.students.index')); ?>">
-                    <span>الطالبات</span>
+                    <span>الطلاب</span>
                 </a>
             </li>
  <li class="<?php echo ( starts_with($route, ADMIN.'.users') ) ? "active" : '' ?>">
-                    <a href="<?php echo e(route(ADMIN.'.users.index')); ?>">
-                        <span>المستخدمين</span>
+                    <a href="<?php echo e(route(ADMIN.'.users.index',['role'=>'admin'])); ?>">
+                        <span>الإداريين</span>
+                    </a>
+                </li>
+                 <li class="<?php echo ( starts_with($route, ADMIN.'.users') ) ? "active" : '' ?>">
+                    <a href="<?php echo e(route(ADMIN.'.users.index',['role'=>'supervisor'])); ?>">
+                        <span>المشرفين</span>
                     </a>
                 </li>
                          <li class="<?php echo ( starts_with($route, ADMIN.'.teachers') ) ? "active" : '' ?>">

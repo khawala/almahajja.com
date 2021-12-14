@@ -3,24 +3,43 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <!--<section class="filter-area">-->
-    <!--    <form action="" class="form-inline">-->
+    <section class="filter-area">
+        <form action="" class="form-inline">
 
-    <!--        <ul class="list-inline">-->
-    <!--            <li style="float: left">-->
-    <!--              <button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button>-->
+            <ul class="list-inline">
+                <li style="float: left">
+                  <button class="btn btn-success btn-xs"><i class="fa fa-search"></i></button>
                  
-    <!--            </li>-->
-    <!--        </ul>-->
-    <!--        <?php echo Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']); ?>-->
-    <!--        <?php echo Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']); ?>-->
+                </li>
+            </ul>
+                  <?php if(auth()->user()->isSupervisor): ?> 
 
-    <!--        <?php echo Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']); ?>-->
+                       <?php echo Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']); ?>
+
+              <?php echo Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            })->pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']); ?>
+
+            <?php echo Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::whereHas('departments', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            })->pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']); ?>
+
+             
+             <?php else: ?>
+            <?php echo Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']); ?>
+
+            <?php echo Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']); ?>
+
+
+            <?php echo Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']); ?>
+
+            <?php endif; ?>
+           
 
 
 
-    <!--    </form>-->
-    <!--</section>-->
+        </form>
+    </section>
     <br>
     <div class="row">
         <div class="col-xs-12">

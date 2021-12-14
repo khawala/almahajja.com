@@ -7,7 +7,7 @@
     <section class="filter-area">
         <ul class="list-inline">
             <li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.students.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>
-            <!--<li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.students.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>-->
+            <li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.students.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>
         </ul>
     </section>
 
@@ -72,9 +72,7 @@
                                             'method' => 'DELETE',
                                             ]); ?>
 
-
-                                            <button class="btn btn-danger btn-xs" title="<?php echo e(trans('app.delete_title')); ?>"><i class="fa fa-trash"></i></button>
-                                            
+     
                                         <?php echo Form::close(); ?>
 
                                     </li>

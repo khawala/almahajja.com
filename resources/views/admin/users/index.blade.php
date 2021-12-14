@@ -9,7 +9,7 @@
     <ul class="list-inline">
         <li><a class="btn btn-info" href="{{ route(ADMIN . '.users.create') }}">{{ trans('app.add_button') }}</a></li>
         <li class="pull-left">
-            <a class="btn btn-success" href="{{ route(ADMIN . '.users.export') }}"><i class="fa fa-file-excel-o"></i></a>
+            <a class="btn btn-success" href="{{ route(ADMIN . '.users.export',['role'=>request('role')]) }}"><i class="fa fa-file-excel-o"></i></a>
         </li>
     </ul>
 

@@ -67,9 +67,11 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
 
                  <?php echo Form::date('end_date',date('Y-m-d'),['required', 'class' => 'form-control']); ?>  
 <?php endif; ?>
+              <?php if(auth()->user()->role != 10): ?>
+       
                  <?php echo Form::myInput('number', 'price', 'سعر الإشتراك <span class=red>*</span>', ['required']); ?>
 
-
+<?php endif; ?>
             </div>
         </div>
 
@@ -77,7 +79,8 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
     <div class="col-sm-6">
         <div class="box box-info">
             <div class="box-body">
-
+              <?php if(auth()->user()->role != 10): ?>
+       
                 <?php echo Form::mySelect('registeration_status', 'حالة التسجيل', config('variables.registeration_status'), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
 
 
@@ -86,6 +89,7 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
 
                 <?php echo Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
 
+                <?php endif; ?>
                 <div class="box box-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-camera"></i> صورة القسم </h3>

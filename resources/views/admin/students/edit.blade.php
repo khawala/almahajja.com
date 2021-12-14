@@ -22,8 +22,69 @@
               'files' => true
           ])
       !!}
+@php
+$title = isset($item) ? $item->name: "اضافة طالب جديد";
+$disabled = isset($item) ? 'readonly' : '';
+@endphp
 
-      @include('admin.students.form')
+<div class="row">
+  <div class="col-sm-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">{{ $title }}</h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-sm-12">
+                                      <p>الاسم الرباعي </p>
+{{$item->name}}
+<hr>
+            <p>البريد الإلكتروني </p>
+{{$item->email}}
+<hr>
+            <p>رقم الهوية</p>
+{{$item->national_id}}
+<hr>
+            <p>جوال  التواصل </p>
+{{$item->mobile1}}
+<hr>
+                        <p> الجنس </p>
+{{$item->gender}}
+<hr>
+                  <p> الجنسية </p>
+{{$item->nationality_id}}
+<hr>
+
+              {!! Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']) !!}
+
+            <p>جوال  الطوارئ </p>
+{{$item->mobile2}}
+<hr>
+            <p>هاتف ثابت   </p>
+{{$item->phone}}
+<hr>
+            <p>  ملاحظات </p>
+{{$item->note}}
+<hr>
+
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+   
+
+      @if (isset($item) && $item->photo)
+      <div class="text-center">
+        <img src="{{ $item->photo }}" alt="">
+        <hr>
+      </div>
+      @endif
+    </div>
+  
+</div>
 
       <div class="box-footer">
         <button type="submit" class="btn btn-info">{{ trans('app.edit_button') }}</button>

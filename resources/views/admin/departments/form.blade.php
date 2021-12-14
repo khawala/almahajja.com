@@ -60,8 +60,10 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                  {{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}
                  {!! Form::date('end_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!}  
 @endif
+              @if(auth()->user()->role != 10)
+       
                  {!! Form::myInput('number', 'price', 'سعر الإشتراك <span class=red>*</span>', ['required']) !!}
-
+@endif
             </div>
         </div>
 
@@ -69,12 +71,14 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
     <div class="col-sm-6">
         <div class="box box-info">
             <div class="box-body">
-
+              @if(auth()->user()->role != 10)
+       
                 {!! Form::mySelect('registeration_status', 'حالة التسجيل', config('variables.registeration_status'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
 
                 {!! Form::mySelect('register_type', 'نوع التسجيل', config('variables.register_type'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
 
                 {!! Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
+                @endif
                 <div class="box box-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-camera"></i> صورة القسم </h3>

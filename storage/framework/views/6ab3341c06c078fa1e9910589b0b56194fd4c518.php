@@ -1,143 +1,232 @@
 
-
+<?php $__env->startSection('css'); ?>
+    <style>
+        .box-img img {
+            background: no-repeat;
+            height: 150px;
+            width: 200px;
+            background-size: cover !important;
+            display: inline-block;
+        }
+        .about-course .box-img img{
+            width: 75%;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<section class="sub-page">
-    <header>
+    <!-- Start Section Title Main  -->
+    <section class="title-main">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-9">
-                    <h2><?php echo e($department->name); ?></h2>
-                    <p><?php echo e(nl2br($department->description)); ?></p>
+            <div class="all">
+                <div class="text1">
+                    <h3><?php echo e($department->name); ?></h3>
+                    <h5><?php echo e(nl2br($department->description)); ?></h5>
                 </div>
-                <div class="col-sm-3">
-                    <img src="<?php echo e($department->photo); ?>" alt="">
+                <div class="box-img">
+                    <img src="<?php echo e($department->photo); ?>" />
                 </div>
             </div>
         </div>
-    </header>
+    </section>
+    <!-- End Section Title Main  -->
+    <!-- Start Tabs  -->
+    <section class="tabs-sec">
+        <div class="container">
+            <!-- Start Title  -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo e(url('/')); ?>">الرئيسية</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">الأقسام</li>
+                </ol>
+            </nav>
+            <!-- End Title  -->
+            <!-- Start Tabs Content  -->
+            <div class="tabs-content">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                           aria-selected="true">الخطة الدراسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                           aria-selected="false">التسجيل</a>
+                    </li>
 
-    <div class="container">
-        <div class="details">
-            <div class="the-tab">
-
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#tab-01" aria-controls="tab-01" role="tab" data-toggle="tab"><i class="fa fa-book"></i> الخطة الدراسية</a></li>
-                    <li role="presentation"><a href="#tab-02" aria-controls="tab-02" role="tab" data-toggle="tab"><i class="fa fa-user"></i> التسجيل</a></li>
                 </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="tab-01">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <?php $__currentLoopData = $department->sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <h3><?php echo e($section->name); ?></h3>
-                        <div class="table-responsive">
+                            <h6><?php echo e($section->name); ?></h6>
                             <table class="table">
+                                <tbody>
                                 <?php $__currentLoopData = $section->levels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $level): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                    <td><?php echo e($level->name); ?></td>
-                                    <td><?php echo e($level->description); ?></td>
-                                    <td>
-                                        <?php if($level->pivot->pdf_file): ?>
-                                        <a class="btn btn-primary btn-xs" download href="<?php echo e(config('variables.level_sections_pdf_file.public').$level->pivot->pdf_file); ?>"><i class="fa fa-download"></i></a>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td><?php echo e($level->name); ?></td>
+                                        <td><?php echo e($level->description); ?></td>
+                                        <td>
+                                            <?php if($level->pivot->pdf_file): ?>
+                                                <a href="<?php echo e(config('variables.level_sections_pdf_file.public').$level->pivot->pdf_file); ?>">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </tbody>
                             </table>
-                        </div>
-                        <hr>
+                            <hr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab-02">
-                        <?php echo Form::open([
-                        'route' => 'department.store'
-                        ]); ?>
-
-                        <div class="row">
-                            <?php if(auth()->guard()->guest()): ?>
-                            <div class="col-sm-6">
-
-                                <?php echo Form::myInput('text', 'name', 'الاسم الرباعي', ['required']); ?>
-
-                                <?php if($errors->has('name')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('name')); ?></small></p>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="box-inputs">
+                            <form method="post" action="<?php echo e(route('department.store')); ?>">
+                                <?php echo csrf_field(); ?>
+                                <div class="row">
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <!-- Start Col  -->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">الاسم الرباعي</label>
+                                                <input type="text" class="form-control" name="name" placeholder="الاسم الرباعي" required>
+                                                <?php if($errors->has('name')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('name')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
                                 <?php endif; ?>
-
-                                <?php echo Form::myInput('text', 'mobile1', 'الجوال', ['required']); ?>
-
-                                <?php if($errors->has('mobile1')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('mobile1')); ?></small></p>
+                                <!-- Start Col  -->
+                                    <input type="hidden" name="department_id" value="<?php echo e($department->id); ?>">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="">المسار</label>
+                                            <select name="division_id" id="division_id" class="form-control" required>
+                                                <?php $__currentLoopData = App\Section::join('department_section', 'sections.id', '=', 'department_section.section_id')
+                                ->where('department_section.department_id','=',$department->id)->pluck('sections.name', 'sections.id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
+                                            <?php if($errors->has('section_id')): ?>
+                                                <p class="help-block"><small><?php echo e($errors->first('section_id')); ?></small></p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <!-- End Col  -->
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <!-- Start Col  -->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">الجوال</label>
+                                                <input type="text" class="form-control" name="mobile1" placeholder="الجوال" required>
+                                                <?php if($errors->has('mobile1')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('mobile1')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
+                                    <!-- Start Col  -->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">الجنسية</label>
+                                                <select name="nationality_id" id="nationality_id" class="form-control" required>
+                                                    <?php $__currentLoopData = App\Nationality::active()->pluck('name', 'id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                                <?php if($errors->has('nationality_id')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('nationality_id')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
                                 <?php endif; ?>
-
-                                <?php echo Form::mySelect('nationality_id', 'الجنسية', ['' => ''] + App\Nationality::active()->pluck('name', 'id')->toArray(), null, ['required']); ?>
-
-                                <?php if($errors->has('nationality_id')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('nationality_id')); ?></small></p>
+                                <!-- Start Col  -->
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <?php if($department->type == 0): ?>
+                                                <label for="">شريحة الجوال</label>
+                                                <select name="telecom_id" id="telecom_id" class="form-control" required>
+                                                    <?php $__currentLoopData = App\Telecom::pluck('name', 'id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                                <?php if($errors->has('telecom_id')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('telecom_id')); ?></small></p>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <!-- End Col  -->
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <!-- Start Col  -->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">اسم المستخدم</label>
+                                                <input type="text" class="form-control" name="username" placeholder="اسم المستخدم" required>
+                                                <?php if($errors->has('username')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('username')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
                                 <?php endif; ?>
-
-                                <?php echo Form::myInput('text', 'username', 'اسم المستخدم', ['required']); ?>
-
-                                <?php if($errors->has('username')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('username')); ?></small></p>
+                                <!-- Start Col  -->
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <?php if($department->type == 0): ?>
+                                                <label for="">وقت التسميع</label>
+                                                <select name="period_id" id="period_id" class="form-control" required>
+                                                    <?php $__currentLoopData = App\Period::pluck('name', 'id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                                <?php if($errors->has('period_id')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('period_id')); ?></small></p>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <!-- End Col  -->
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <!-- Start Col  -->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">كلمة السر</label>
+                                                <input type="password" class="form-control" name="password" placeholder="كلمة السر" required>
+                                                <?php if($errors->has('password')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('password')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
+                                        <!-- Start Col  -->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">تأكيد كلمة السر</label>
+                                                <input type="password" class="form-control" name="password_confirmation" placeholder="تأكيد كلمة السر" required>
+                                                <?php if($errors->has('password_confirmation')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('password_confirmation')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- End Col  -->
                                 <?php endif; ?>
-
-                                <?php echo Form::myInput('password', 'password', 'كلمة السر', ['required']); ?>
-
-                                <?php if($errors->has('password')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('password')); ?></small></p>
-                                <?php endif; ?>
-
-                                <?php echo Form::myInput('password', 'password_confirmation', 'تأكيد كلمة السر', ['required']); ?>
-
-                                <?php if($errors->has('password_confirmation')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('password_confirmation')); ?></small></p>
-                                <?php endif; ?>
-
-                            </div>
-                            <?php endif; ?>
-<input type="hidden" name="department_id" value="<?php echo e($department->id); ?>">
-                            <div class="col-sm-6">
-                                <?php echo Form::mySelect('section_id', 'المسار', ['' => ''] + App\Section::join('department_section', 'sections.id', '=', 'department_section.section_id')
-                                ->where('department_section.department_id','=',$department->id)->pluck('sections.name', 'sections.id')->toArray(), null, ['required']); ?>
-
-                                <?php if($errors->has('section_id')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('section_id')); ?></small></p>
-                                <?php endif; ?>
-
-                               
-                            
-
-                                <?php if($department->type == 0): ?>
-                                <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['required']); ?>
-
-                                <?php if($errors->has('telecom_id')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('telecom_id')); ?></small></p>
-                                <?php endif; ?>
-
-                                <?php echo Form::mySelect('period_id', 'وقت التسميع', ['' => ''] + App\Period::pluck('name', 'id')->toArray(), null, ['required']); ?>
-
-                                <?php if($errors->has('period_id')): ?>
-                                <p class="help-block"><small><?php echo e($errors->first('period_id')); ?></small></p>
-                                <?php endif; ?>
-                                <?php endif; ?>
-
-                                <div class="form-group">
-                                    <br>
-                                    <button class="btn btn-primary">سجلي الان</button>
+                                <!-- Start Col  -->
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-website" name="" value="سجل الآن">
+                                        </div>
+                                    </div>
+                                    <!-- End Col  -->
                                 </div>
-
-                            </div>
+                            </form>
                         </div>
-                        <?php echo Form::close(); ?>
-
                     </div>
                 </div>
-
             </div>
-
+            <!-- End Tabs Content  -->
         </div>
-    </div>
-</section>
+    </section>
+    <!-- End Tabs  -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('site.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('site.new_default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

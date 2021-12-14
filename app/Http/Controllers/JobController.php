@@ -20,6 +20,13 @@ class JobController extends Controller
         return view('admin.jobs.index', compact('items'));
     }
 
+    public function list()
+    {
+        $items = Job::latest('updated_at')->paginate(6);
+
+        return view('site.jobs', compact('items'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

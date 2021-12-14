@@ -26,11 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     { 
-        $ads        = Advertisement::active()->get();
+        $ads        = Advertisement::active()->get()->take(6);
         $divisions  = Division::forHome()->where('type', 1)->get();
         
         $jobs       = Job::active()->get();
-        $departments = Department::where('registeration_status', 1)->get();
+        $departments = Department::where('registeration_status', 1)->get()->take(3);
 
         return view('site.index', compact('ads', 'divisions', 'departments', 'jobs'));
     }

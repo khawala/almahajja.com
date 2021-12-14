@@ -17,7 +17,7 @@ class Department extends Model
         $common = [
             'name'    => 'required',
             'supervisor_id'    => 'required',
-            'section_id'    => 'required',
+          
             'registeration_status'    => 'required',
             'payment_type'    => 'required',
             'register_type'    => 'required',
