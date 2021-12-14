@@ -78,23 +78,13 @@
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        @auth
+                      
                         <div class="box-inputs">
                             <form method="post" action="{{route('department.store')}}">
                                 @csrf
                                 <div class="row">
-                                @guest
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">الاسم الرباعي</label>
-                                                <input type="text" class="form-control" name="name" placeholder="الاسم الرباعي" required>
-                                                @if ($errors->has('name'))
-                                                    <p class="help-block"><small>{{ $errors->first('name') }}</small></p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                @endguest
+                               
                                 <!-- Start Col  -->
                                     <input type="hidden" name="department_id" value="{{ $department->id }}">
                                     <div class="col-lg-6">
@@ -112,34 +102,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                                @guest
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">الجوال</label>
-                                                <input type="text" class="form-control" name="mobile1" placeholder="الجوال" required>
-                                                @if ($errors->has('mobile1'))
-                                                    <p class="help-block"><small>{{ $errors->first('mobile1') }}</small></p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">الجنسية</label>
-                                                <select name="nationality_id" id="nationality_id" class="form-control" required>
-                                                    @foreach(App\Nationality::active()->pluck('name', 'id')->toArray() as $key => $value)
-                                                        <option value="{{$key}}">{{$value}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if ($errors->has('nationality_id'))
-                                                    <p class="help-block"><small>{{ $errors->first('nationality_id') }}</small></p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                @endguest
+                               
                                 <!-- Start Col  -->
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -157,19 +120,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                                @guest
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">اسم المستخدم</label>
-                                                <input type="text" class="form-control" name="username" placeholder="اسم المستخدم" required>
-                                                @if ($errors->has('username'))
-                                                    <p class="help-block"><small>{{ $errors->first('username') }}</small></p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                @endguest
+                               
                                 <!-- Start Col  -->
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -187,30 +138,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                                @guest
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">كلمة السر</label>
-                                                <input type="password" class="form-control" name="password" placeholder="كلمة السر" required>
-                                                @if ($errors->has('password'))
-                                                    <p class="help-block"><small>{{ $errors->first('password') }}</small></p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                        <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">تأكيد كلمة السر</label>
-                                                <input type="password" class="form-control" name="password_confirmation" placeholder="تأكيد كلمة السر" required>
-                                                @if ($errors->has('password_confirmation'))
-                                                    <p class="help-block"><small>{{ $errors->first('password_confirmation') }}</small></p>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                @endguest
+
                                 <!-- Start Col  -->
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -221,6 +149,10 @@
                                 </div>
                             </form>
                         </div>
+                        @endauth
+                        @guest
+                           <a class="nav-link btn btn-danger btn-website" href="{{url('login')}}">تسجيل دخول</a>
+                        @endguest
                     </div>
                 </div>
             </div>

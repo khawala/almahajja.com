@@ -78,23 +78,13 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <?php if(auth()->guard()->check()): ?>
+                      
                         <div class="box-inputs">
                             <form method="post" action="<?php echo e(route('department.store')); ?>">
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
-                                <?php if(auth()->guard()->guest()): ?>
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">الاسم الرباعي</label>
-                                                <input type="text" class="form-control" name="name" placeholder="الاسم الرباعي" required>
-                                                <?php if($errors->has('name')): ?>
-                                                    <p class="help-block"><small><?php echo e($errors->first('name')); ?></small></p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                <?php endif; ?>
+                               
                                 <!-- Start Col  -->
                                     <input type="hidden" name="department_id" value="<?php echo e($department->id); ?>">
                                     <div class="col-lg-6">
@@ -112,34 +102,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                                <?php if(auth()->guard()->guest()): ?>
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">الجوال</label>
-                                                <input type="text" class="form-control" name="mobile1" placeholder="الجوال" required>
-                                                <?php if($errors->has('mobile1')): ?>
-                                                    <p class="help-block"><small><?php echo e($errors->first('mobile1')); ?></small></p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">الجنسية</label>
-                                                <select name="nationality_id" id="nationality_id" class="form-control" required>
-                                                    <?php $__currentLoopData = App\Nationality::active()->pluck('name', 'id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </select>
-                                                <?php if($errors->has('nationality_id')): ?>
-                                                    <p class="help-block"><small><?php echo e($errors->first('nationality_id')); ?></small></p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                <?php endif; ?>
+                               
                                 <!-- Start Col  -->
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -157,19 +120,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                                <?php if(auth()->guard()->guest()): ?>
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">اسم المستخدم</label>
-                                                <input type="text" class="form-control" name="username" placeholder="اسم المستخدم" required>
-                                                <?php if($errors->has('username')): ?>
-                                                    <p class="help-block"><small><?php echo e($errors->first('username')); ?></small></p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                <?php endif; ?>
+                               
                                 <!-- Start Col  -->
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -187,30 +138,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                                <?php if(auth()->guard()->guest()): ?>
-                                    <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">كلمة السر</label>
-                                                <input type="password" class="form-control" name="password" placeholder="كلمة السر" required>
-                                                <?php if($errors->has('password')): ?>
-                                                    <p class="help-block"><small><?php echo e($errors->first('password')); ?></small></p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                        <!-- Start Col  -->
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="">تأكيد كلمة السر</label>
-                                                <input type="password" class="form-control" name="password_confirmation" placeholder="تأكيد كلمة السر" required>
-                                                <?php if($errors->has('password_confirmation')): ?>
-                                                    <p class="help-block"><small><?php echo e($errors->first('password_confirmation')); ?></small></p>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <!-- End Col  -->
-                                <?php endif; ?>
+
                                 <!-- Start Col  -->
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -221,6 +149,10 @@
                                 </div>
                             </form>
                         </div>
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->guest()): ?>
+                           <a class="nav-link btn btn-danger btn-website" href="<?php echo e(url('login')); ?>">تسجيل دخول</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

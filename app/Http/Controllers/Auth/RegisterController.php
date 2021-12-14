@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/' . ADMIN;
+    protected $redirectTo = '/' ;
 
     /**
      * Create a new controller instance.
@@ -50,6 +50,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+             'username' => 'required|unique:users',
+                 'mobile1' => 'required',
             'password' => 'required|min:6|confirmed',
             
         ]);
@@ -64,15 +66,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
-          $user = User::where('username', request('username'))->first();
 
-            if (! $user) { // create new user
-                $user = User::create(request()->all());
-            } else { // user exist
-                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'error');
-                return back();
-            }
-            dd($user);
+                $user = User::create($data);
+     
+         
         return $user;
     }
 }
