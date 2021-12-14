@@ -59,7 +59,7 @@
                                             ]); ?>
 
 
-                                            <button class="btn btn-danger btn-xs" title="<?php echo e(trans('app.delete_title')); ?>"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-danger btn-xs" title="<?php echo e(trans('app.delete_title')); ?>">حذف</button>
                                             
                                         <?php echo Form::close(); ?>
 
