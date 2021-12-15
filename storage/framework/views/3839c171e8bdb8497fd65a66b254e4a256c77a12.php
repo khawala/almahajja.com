@@ -6,7 +6,10 @@
 
     <section class="filter-area">
         <ul class="list-inline">
+                    <?php if(auth()->user()->role != 10): ?>
+       
             <li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.students.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>
+            <?php endif; ?>
             <li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.students.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>
         </ul>
     </section>
@@ -63,7 +66,9 @@
                                     <li>
                                         <button class="btn btn-default btn-xs" data-clipboard-text="<?php echo e($item->mobile1); ?>"> <i class="fa fa-phone"></i> </button>
                                     </li>
-
+<li>
+                                        <a class="btn btn-default btn-xs" href="http://wa.me/<?php echo e($item->mobile1); ?>" target="_blank"> <i class="fa fa-whatsapp"></i> </a>
+                                    </li>
                                     <li><a href="<?php echo e(route(ADMIN . '.students.edit', $item->id)); ?>" title="<?php echo e(trans('app.edit_title')); ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
                                     <li>
                                         <?php echo Form::open([

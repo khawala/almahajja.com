@@ -35,6 +35,20 @@
                                             </div>
                                 
                                         </div>
+                                              <div class="col-10">
+                                            <div class="form-group">
+                                         <label for="">شريحة الجوال</label>
+                                                <select name="telecom_id" id="telecom_id" class="form-control" required>
+                                                    <?php $__currentLoopData = App\Telecom::pluck('name', 'id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                                <?php if($errors->has('telecom_id')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('telecom_id')); ?></small></p>
+                                                <?php endif; ?>
+                                                     </div>
+                                
+                                        </div>
                                            <!-- Start Col  -->
                                         <div class="col-10">
                                             <div class="form-group">

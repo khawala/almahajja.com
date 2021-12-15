@@ -37,6 +37,20 @@
                                             </div>
                                 
                                         </div>
+                                              <div class="col-10">
+                                            <div class="form-group">
+                                         <label for="">شريحة الجوال</label>
+                                                <select name="telecom_id" id="telecom_id" class="form-control" required>
+                                                    @foreach(App\Telecom::pluck('name', 'id')->toArray() as $key => $value)
+                                                        <option value="{{$key}}">{{$value}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('telecom_id'))
+                                                    <p class="help-block"><small>{{ $errors->first('telecom_id') }}</small></p>
+                                                @endif
+                                                     </div>
+                                
+                                        </div>
                                            <!-- Start Col  -->
                                         <div class="col-10">
                                             <div class="form-group">

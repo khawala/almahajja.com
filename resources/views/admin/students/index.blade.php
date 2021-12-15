@@ -68,7 +68,9 @@
                                     <li>
                                         <button class="btn btn-default btn-xs" data-clipboard-text="{{ $item->mobile1 }}"> <i class="fa fa-phone"></i> </button>
                                     </li>
-
+<li>
+                                        <a class="btn btn-default btn-xs" href="http://wa.me/{{$item->mobile1}}" target="_blank"> <i class="fa fa-whatsapp"></i> </a>
+                                    </li>
                                     <li><a href="{{ route(ADMIN . '.students.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
                                     <li>
                                         {!! Form::open([
