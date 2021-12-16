@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <!-- Start Login Section  -->
-<section class="login-sec">
+
+<section class="login-sec" style="margin-top:150px;margin-bottom:150px;">
 
     <form role="form" method="POST" action="<?php echo e(url('/register')); ?>">
 
@@ -70,6 +71,7 @@
 
     </div>
                                         </div>
+                                       
                                         <!-- End Col  -->
                                     <!-- Start Col  -->
                                         <div class="col-10">

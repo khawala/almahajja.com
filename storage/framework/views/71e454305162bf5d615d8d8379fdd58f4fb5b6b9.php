@@ -5,7 +5,10 @@
 <?php $__env->startSection('content'); ?>
 
     <ul class="list-inline">
+                <?php if(auth()->user()->role != 10): ?>
+       
         <li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.teachers.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>
+        <?php endif; ?>
         <li class="pull-left">
             <a class="btn btn-success" href="<?php echo e(route(ADMIN . '.teachers.export')); ?>"><i class="fa fa-file-excel-o"></i></a>
         </li>

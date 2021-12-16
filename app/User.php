@@ -36,8 +36,9 @@ class User extends Authenticatable
     {
         $commun = [
             'name'        => 'required|max:255',
-            'mobile1'    => 'required|digits_between:10,15',
+            'mobile1'    => 'required',
             'username'    => "max:20|alpha_num|unique:users,username,$id",
+             'email' => "nullable|email|max:255|unique:users,email,$id",
             'password'    => 'nullable|confirmed',
             'contract'    => 'mimes:jpg,jpeg,png,pdf,doc,docs'
         ];

@@ -3,12 +3,12 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
 @endphp
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-5">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $title }}</h3>
             </div>
-            <div class="box-body">
+            <div class="box-body container">
 
                 {!! Form::myInput('text', 'name', 'إسم القسم <span class=red>*</span>', ['required']) !!}
                 @if (!isset($item))
@@ -57,7 +57,18 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                  {{ Form::label('start_date','تاريخ البدء',['class' => 'control-label']) }}
                  {!! Form::date('start_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!} 
                   
-                 {{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}
+               
+
+                <div class="form-group" >
+                    <label>
+                        Date
+                    </label>
+                    <div class="input-group">
+                        <input type="text" id="date" class="form-control hijri-date-input" />
+                    </div>
+                </div>
+
+{{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}
                  {!! Form::date('end_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!}  
 @endif
               @if(auth()->user()->role != 10)
@@ -68,7 +79,7 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
         </div>
 
     </div>
-    <div class="col-sm-6">
+    <div class="col-5">
         <div class="box box-info">
             <div class="box-body">
               @if(auth()->user()->role != 10)

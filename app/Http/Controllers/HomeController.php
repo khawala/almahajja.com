@@ -16,7 +16,7 @@ use App\Mark;
 use App\Classroom;
 use App\Department;
 use App\Registration;
-
+use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
     /**
@@ -182,7 +182,32 @@ class HomeController extends Controller
         $user->load('registrations.section', 'registrations.telecom', 'registrations.period', 'registrations.classroom','registrations.level');
         return view('site.profile', compact('user'));
     }
+    /**
+     * Profile
+     */
+    public function editProfile()
+    {
+        $user = auth()->user();
+        $user->load('registrations.section', 'registrations.telecom', 'registrations.period', 'registrations.classroom','registrations.level');
+        return view('site.edit_profile', compact('user'));
+    }
+        /**
+     * Profile
+     */
+    public function postProfile(Request $request)
+    {
+        
+       $this->validate($request, User::rules(true, auth()->user()->id));
 
+        $user = auth()->user();
+        
+        $user->update($request->all());
+        
+        alert('تم  التعديل بنجاح', 'success');
+
+     
+        return view('site.profile', compact('user'));
+    }
     /**
      * Notes
      */

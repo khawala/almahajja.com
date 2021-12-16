@@ -9,7 +9,7 @@
                             <div class="col-sm-6">
                                 <p>جوال التواصل: <?php echo e($user->mobile1); ?></p>
                                 <p>البريد الالكتروني: <?php echo e($user->email); ?></p>
-                                <p>رقم الهوية: <?php echo e($user->national_id); ?></p>
+                                <p> الشريحة: <?php echo e($user->telecom->name); ?></p>
                             </div>
                             <div class="col-sm-6">
                                 <p>الجنس: <?php echo e($user->GenderName); ?></p>
@@ -17,6 +17,7 @@
                                 <p>حالة الحساب: <?php echo e($user->statusName); ?></p>
                             </div>
                         </div>
+                        <a href="<?php echo e(route('profile.edit')); ?>" class="btn button-info" style="background-color:#7f999a;color:white;">تعديل</a>
                     </div>
                     <div class="col-sm-3">
                         <img src="<?php echo e($user->photo); ?>" alt="">
@@ -36,10 +37,7 @@
                                 <th>رقم التسجيل</th>
                                     <th>القسم</th>
                                 <th>المسار</th>
-                                <th>شريحة الجوال</th>
                                 <th>وقت التسميع</th>
-                                <th>تاريخ التسجيل</th>
-                                <th>المدفوع</th>
                                 <th>المستوى</th>
                                 <th>الحلقة</th>
                                 <th width="270">الحالة</th>
@@ -52,11 +50,10 @@
                                     <td><?php echo e($item->id); ?></td>
                                       <td><?php echo e($item->department->name); ?></td>
                                     <td><?php echo e($item->section->name); ?></td>
-                                    <td><?php echo e($item->telecom->name); ?></td>
+                                
                                     <td><?php echo e($item->period->name); ?></td>
-                                    <td><?php echo e($item->CreatedAtFormated); ?></td>
-                                    <td><?php echo e($item->paid); ?></td>
-                                    
+                                   
+                                 
                                     <?php if($item->level): ?>
                                     <td><?php echo e($item->level->name); ?></td>
                                     <?php else: ?>
@@ -93,6 +90,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('site.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -11,7 +11,7 @@
                             <div class="col-sm-6">
                                 <p>جوال التواصل: {{ $user->mobile1 }}</p>
                                 <p>البريد الالكتروني: {{ $user->email }}</p>
-                                <p>رقم الهوية: {{ $user->national_id }}</p>
+                                <p> الشريحة: {{ $user->telecom->name }}</p>
                             </div>
                             <div class="col-sm-6">
                                 <p>الجنس: {{ $user->GenderName }}</p>
@@ -19,6 +19,7 @@
                                 <p>حالة الحساب: {{ $user->statusName }}</p>
                             </div>
                         </div>
+                        <a href="{{route('profile.edit')}}" class="btn button-info" style="background-color:#7f999a;color:white;">تعديل</a>
                     </div>
                     <div class="col-sm-3">
                         <img src="{{ $user->photo }}" alt="">
@@ -38,10 +39,7 @@
                                 <th>رقم التسجيل</th>
                                     <th>القسم</th>
                                 <th>المسار</th>
-                                <th>شريحة الجوال</th>
                                 <th>وقت التسميع</th>
-                                <th>تاريخ التسجيل</th>
-                                <th>المدفوع</th>
                                 <th>المستوى</th>
                                 <th>الحلقة</th>
                                 <th width="270">الحالة</th>
@@ -54,11 +52,10 @@
                                     <td>{{ $item->id }}</td>
                                       <td>{{ $item->department->name }}</td>
                                     <td>{{ $item->section->name }}</td>
-                                    <td>{{ $item->telecom->name }}</td>
+                                
                                     <td>{{ $item->period->name}}</td>
-                                    <td>{{ $item->CreatedAtFormated }}</td>
-                                    <td>{{ $item->paid }}</td>
-                                    {{-- {{ dd($item->level) }} --}}
+                                   
+                                 
                                     @if($item->level)
                                     <td>{{ $item->level->name }}</td>
                                     @else
@@ -95,5 +92,6 @@
                 </div>
             </div>
         </div>
+        
     </section>
 @endsection

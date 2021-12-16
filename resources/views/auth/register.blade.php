@@ -2,7 +2,8 @@
 
 @section('content')
 <!-- Start Login Section  -->
-<section class="login-sec">
+
+<section class="login-sec" style="margin-top:150px;margin-bottom:150px;">
 
     <form role="form" method="POST" action="{{ url('/register') }}">
 
@@ -25,7 +26,7 @@
                                   <div class="col-10">
                                             <div class="form-group">
                                                 <div class="lemail">
-                                <input type="tel" id="telephone" min="9" max="11" class="form-control"  value="{{ old('mobile1') }}" placeholder="الجوال  : 505555555" value="{{old('phone')}}" autocomplete="off"  titles="الرجاء إدخال رقمك">
+                                <input type="tel" id="telephone" min="9" max="11" class="form-control"  style="direction: ltr!important;"  value="{{ old('mobile1') }}" placeholder="الجوال  : 505555555" value="{{old('phone')}}" autocomplete="off"  titles="الرجاء إدخال رقمك">
                                 <input type="hidden" id="phonevalue" name="mobile1" value="{{old('mobile1')}}">
                             </div>
 
@@ -71,6 +72,7 @@
                                              {!! Form::mySelect('gender', 'الجنس', config('variables.gender')) !!}
     </div>
                                         </div>
+                                       
                                         <!-- End Col  -->
                                     <!-- Start Col  -->
                                         <div class="col-10">

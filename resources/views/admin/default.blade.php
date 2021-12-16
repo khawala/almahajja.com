@@ -15,7 +15,8 @@
     @endif
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('css')
-
+    <link href={{ url('hijri/css/bootstrap.css')}}" rel="stylesheet" />
+ <link href="{{ url('hijri/css/bootstrap-datetimepicker.css')}}" rel="stylesheet" />
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -136,7 +137,8 @@
 
     </div>
     <!-- ./wrapper -->
-
+     <!-- Vendors -->
+        
     @if (! config('app.debug', true))
         <script src="{{ mix('/js/admin-all.js') }}"></script>
     @else
@@ -144,7 +146,60 @@
         <script src="{{ mix('/js/admin-vendor.js') }}"></script>
         <script src="/js/admin-custom.js"></script>
     @endif
+         <script src="{{url('hijri/js/momentjs.js')}}"></script>
+    <script src="{{url('hijri/js/moment-with-locales.js')}}"></script>
+    <script src="{{url('hijri/js/moment-hijri.js')}}"></script>
+    <script src="{{url('hijri/js/bootstrap-hijri-datetimepicker.js')}}"></script>
+ <script type="text/javascript">
+  $(document).ready(function () {
 
+        $(function () {
+
+            initHijrDatePicker();
+
+            //initHijrDatePickerDefault();
+
+            $('.disable-date').hijriDatePicker({
+
+                minDate:"2020-01-01",
+                maxDate:"2021-01-01",
+                viewMode:"years",
+                hijri:true,
+                debug:true
+            });
+
+        });
+
+        function initHijrDatePicker() {
+
+            $(".hijri-date-input").hijriDatePicker({
+                locale: "ar-sa",
+                format: "DD-MM-YYYY",
+                hijriFormat:"iYYYY-iMM-iDD",
+                dayViewHeaderFormat: "MMMM YYYY",
+                hijriDayViewHeaderFormat: "iMMMM iYYYY",
+                showSwitcher: true,
+                allowInputToggle: true,
+                showTodayButton: false,
+                useCurrent: true,
+                isRTL: false,
+                viewMode:'months',
+                keepOpen: false,
+                hijri: false,
+                debug: true,
+                showClear: true,
+                showTodayButton: true,
+                showClose: true
+            });
+        }
+
+        function initHijrDatePickerDefault() {
+
+            $(".hijri-date-input").hijriDatePicker();
+        }
+
+});
+    </script>
     @yield('js')
 
 </body>
