@@ -56,7 +56,7 @@
                             </g>
                         </svg>
                     </div>
-                    <h3>2320</h3>
+                    <h3>{{App\User::where('role',0)->count()}}</h3>
                     <p>الطلاب والطالبات </p>
                 </div>
             </div>
@@ -109,8 +109,8 @@
                             </g>
                         </svg>
                     </div>
-                    <h3>340,000</h3>
-                    <p>المعلمات</p>
+                    <h3>{{App\Registration::where('status',5)->count()}}</h3>
+                    <p>المتخرجات</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -124,7 +124,7 @@
                         </svg>
 
                     </div>
-                    <h3>23</h3>
+                    <h3>{{App\Classroom::count()}}</h3>
                     <p>الحلقات</p>
                 </div>
             </div>

@@ -6,6 +6,8 @@
         
         <?php echo Form::myTextArea('description', 'نبذة عن المستوى'); ?>
 
-        
+           <?php echo Form::mySelect('status', ' حالة المستوى للتسجيل', config('variables.status'),null); ?>
+
+              
     </div>
 </div>

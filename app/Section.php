@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    protected $fillable = [ 'name', 'description', 'division_id', 'supervisor_id', 'category', 'track', 'pdf_file','period_id'];
+    protected $fillable = [ 'name', 'description', 'division_id', 'supervisor_id', 'category', 'track', 'pdf_file','period_id','status'];
 
     /*
     |------------------------------------------------------------------------------------
@@ -52,6 +52,10 @@ class Section extends Model
     public function supervisor()
     {
         return $this->belongsTo(User::class, 'supervisor_id')->withDefault();
+    }
+       public function getStatusNameAttribute()
+    {
+        return config('variables.status')[$this->status];
     }
 
     /*

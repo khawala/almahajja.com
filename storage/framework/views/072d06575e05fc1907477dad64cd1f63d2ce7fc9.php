@@ -11,7 +11,9 @@
 
         <?php echo Form::myTextArea('description', 'نبذة عن المسار'); ?>
 
-        
+            <?php echo Form::mySelect('status', ' حالة المسار للتسجيل', config('variables.status'),null); ?>
+
+                   
     </div>
    
 </div>

@@ -22,6 +22,7 @@ class CreateSectionsTable extends Migration
             $table->integer('supervisor_id')->nullable();
             $table->string('category')->nullable();
             $table->string('track')->nullable();
+             $table->boolean('status')->default(1);
             $table->string('pdf_file')->nullable();
             $table->timestamps();
 

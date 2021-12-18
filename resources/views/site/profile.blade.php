@@ -74,7 +74,7 @@
                                                 <li><a class="btn btn-xs btn-info" href="{{ route('profile.marks', [$item->id, $item->section->id]) }}">كشف الدرجات</a></li>
                                             @endif
 
-                                            @if ($item->status == 3)
+                                            @if ($item->status == 3||$item->status==5)
                                                 <li><a target="_blank" class="btn btn-xs btn-success" href="{{ route('certifications.print', $item) }}">طباعة الشهادة</a></li>
                                             @endif
  

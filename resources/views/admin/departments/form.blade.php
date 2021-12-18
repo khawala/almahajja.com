@@ -3,12 +3,12 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
 @endphp
 
 <div class="row">
-    <div class="col-5">
+    <div class="col-sm-6">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $title }}</h3>
             </div>
-            <div class="box-body container">
+            <div class="box-body">
 
                 {!! Form::myInput('text', 'name', 'إسم القسم <span class=red>*</span>', ['required']) !!}
                 @if (!isset($item))
@@ -45,32 +45,33 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
 @endif
                 {!! Form::myTextArea('description', 'نبذة عن القسم') !!}
         
-                
+                {!! Form::myInput('text', 'start_date', ' تاريخ البدء <span class=red>*</span>', ['required']) !!}
+                {!! Form::myInput('text', 'end_date', ' ناريخ الإنتهاء <span class=red>*</span>', ['required']) !!}
                  
-                 @if (isset($item) )
-                 {{ Form::label('start_date','تاريخ البدء',['class' => 'control-label']) }}
-                 {!! Form::date('start_date',$item->start_date,['required', 'class' => 'form-control']) !!} 
+<!--                 @if (isset($item) )-->
+<!--                 {{ Form::label('start_date','تاريخ البدء',['class' => 'control-label']) }}-->
+<!--                 {!! Form::date('start_date',$item->start_date,['required', 'class' => 'form-control']) !!} -->
                 
-                 {{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}
-                 {!! Form::date('end_date',$item->end_date,['required', 'class' => 'form-control']) !!}  
-                 @else
-                 {{ Form::label('start_date','تاريخ البدء',['class' => 'control-label']) }}
-                 {!! Form::date('start_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!} 
+<!--                 {{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}-->
+<!--                 {!! Form::date('end_date',$item->end_date,['required', 'class' => 'form-control']) !!}  -->
+<!--                 @else-->
+<!--                 {{ Form::label('start_date','تاريخ البدء',['class' => 'control-label']) }}-->
+<!--                 {!! Form::date('start_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!} -->
                   
                
 
-                <div class="form-group" >
-                    <label>
-                        Date
-                    </label>
-                    <div class="input-group">
-                        <input type="text" id="date" class="form-control hijri-date-input" />
-                    </div>
-                </div>
+<!--                <div class="form-group" >-->
+<!--                    <label>-->
+<!--                        Date-->
+<!--                    </label>-->
+<!--                    <div class="input-group">-->
+<!--                        <input type="text" id="date" class="form-control hijri-date-input" />-->
+<!--                    </div>-->
+<!--                </div>-->
 
-{{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}
-                 {!! Form::date('end_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!}  
-@endif
+<!--{{ Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label']) }}-->
+<!--                 {!! Form::date('end_date',date('Y-m-d'),['required', 'class' => 'form-control']) !!}  -->
+<!--@endif-->
               @if(auth()->user()->role != 10)
        
                  {!! Form::myInput('number', 'price', 'سعر الإشتراك <span class=red>*</span>', ['required']) !!}
@@ -79,7 +80,7 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
         </div>
 
     </div>
-    <div class="col-5">
+    <div class="col-sm-6">
         <div class="box box-info">
             <div class="box-body">
               @if(auth()->user()->role != 10)
@@ -89,7 +90,12 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                 {!! Form::mySelect('register_type', 'نوع التسجيل', config('variables.register_type'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
 
                 {!! Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
+                
                 @endif
+                              {!! Form::mySelect('need_teacher', 'يحتاج معلمين', config('variables.need_teacher'),null) !!}
+                   
+  {!! Form::myInput('text', 'certificate_type', ' نوع الشهادة  ', ['required']) !!}
+                 
                 <div class="box box-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-camera"></i> صورة القسم </h3>

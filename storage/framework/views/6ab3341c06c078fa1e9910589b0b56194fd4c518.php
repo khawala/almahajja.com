@@ -90,7 +90,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="">المسار</label>
-                                            <select name="division_id" id="division_id" class="form-control" required>
+                                            <select name="section_id" id="section_id" class="form-control" required>
                                                 <?php $__currentLoopData = App\Section::join('department_section', 'sections.id', '=', 'department_section.section_id')
                                 ->where('department_section.department_id','=',$department->id)->pluck('sections.name', 'sections.id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>

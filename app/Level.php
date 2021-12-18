@@ -26,6 +26,10 @@ class Level extends Model
     | Relations
     |------------------------------------------------------------------------------------
     */
+       public function getStatusNameAttribute()
+    {
+        return config('variables.status')[$this->status];
+    }
 
         public function sections()
     {

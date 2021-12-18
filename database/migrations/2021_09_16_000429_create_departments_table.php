@@ -17,6 +17,9 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('register_type')->nullable();
+               $table->boolean('need_teacher')->default(1);
+                  $table->text('certificate_type')->nullable();
+            
             $table->text('description')->nullable();
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();

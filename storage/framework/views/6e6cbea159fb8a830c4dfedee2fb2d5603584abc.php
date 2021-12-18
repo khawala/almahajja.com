@@ -72,7 +72,7 @@
                                                 <li><a class="btn btn-xs btn-info" href="<?php echo e(route('profile.marks', [$item->id, $item->section->id])); ?>">كشف الدرجات</a></li>
                                             <?php endif; ?>
 
-                                            <?php if($item->status == 3): ?>
+                                            <?php if($item->status == 3||$item->status==5): ?>
                                                 <li><a target="_blank" class="btn btn-xs btn-success" href="<?php echo e(route('certifications.print', $item)); ?>">طباعة الشهادة</a></li>
                                             <?php endif; ?>
  
