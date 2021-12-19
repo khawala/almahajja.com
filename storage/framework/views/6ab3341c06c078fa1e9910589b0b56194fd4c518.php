@@ -56,6 +56,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <?php $__currentLoopData = $department->sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                         <?php if($section->status==1): ?>
                             <h6><?php echo e($section->name); ?></h6>
                             <table class="table">
                                 <tbody>
@@ -75,6 +76,7 @@
                                 </tbody>
                             </table>
                             <hr>
+                            <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -90,10 +92,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="">المسار</label>
+                                                 
                                             <select name="section_id" id="section_id" class="form-control" required>
-                                                <?php $__currentLoopData = App\Section::join('department_section', 'sections.id', '=', 'department_section.section_id')
-                                ->where('department_section.department_id','=',$department->id)->pluck('sections.name', 'sections.id')->toArray(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($key); ?>"><?php echo e($value); ?></option>
+                                          
+    <option value="">اختر المسار</option>
+                                                <?php $__currentLoopData = $department->sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($section->status==1): ?>
+                                                    <option value="<?php echo e($section->id); ?>"><?php echo e($section->name); ?></option>
+                                                    <?php endif; ?>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                             <?php if($errors->has('section_id')): ?>
@@ -103,6 +109,20 @@
                                     </div>
                                     <!-- End Col  -->
                                
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                        
+                                                <label for="">المستوى</label>
+                                                <select name="level_id" id="level_id" class="form-control" required>
+                                                 
+                                                        <option value="">اختر المسار اولاً</option>
+                                                 
+                                                </select>
+                                                <?php if($errors->has('level_id')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('level_id')); ?></small></p>
+                                                <?php endif; ?>
+                                        </div>
+                                    </div>
                                 <!-- Start Col  -->
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -139,6 +159,8 @@
                                     </div>
                                     <!-- End Col  -->
 
+                                    <!-- End Col  -->
+
                                 <!-- Start Col  -->
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -160,5 +182,34 @@
         </div>
     </section>
     <!-- End Tabs  -->
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script>
+$(document).ready(function(){
+ 
+    $('#section_id').on('change', function(){
+        var sectionID = $(this).val();
+        if(sectionID){
+
+            $.ajax({
+                 headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+                type:'POST',
+
+                url:"<?php echo e(route('department.sectionLevel')); ?>",
+                data: { 'section_id':sectionID},
+                success:function(html){
+                    $('#level_id').html(html);
+                }
+            }); 
+        }else{
+            $('#level_id').html('<option value="">قم بإختيار المسار اولاً</option>');
+        }
+    });
+
+});
+
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('site.new_default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

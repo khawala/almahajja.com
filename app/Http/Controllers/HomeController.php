@@ -13,6 +13,7 @@ use Alert;
 use Illuminate\Http\Request;
 use App\User;
 use App\Mark;
+use App\Section;
 use App\Classroom;
 use App\Department;
 use App\Registration;
@@ -113,6 +114,25 @@ class HomeController extends Controller
         return view('site.department', compact('department'));
     }
 
+ public function sectionLevel(Request $request)
+    {
+        $section=Section::find($request->section_id);
+       
+          if($section){ 
+       if(count($section->levels)==0){ 
+            echo '<option value="">لا توجد مستويات</option>'; 
+       }
+       echo '<option value=""></option>'; 
+        foreach($section->levels as $level){  
+            if($level->status==1)
+            {
+            echo '<option value="'.$level->id.'">'.$level->name.'</option>'; 
+        }
+        } 
+    }else{ 
+        echo '<option value="">لا توجد مستويات</option>'; 
+    }  
+    }
     /**
      * Post division
      */
@@ -132,13 +152,13 @@ class HomeController extends Controller
         }
 
         if ($user->registrations()
-                ->where('section_id', request('section_id'))
+                ->where([['section_id', request('section_id')],['level_id', request('level_id')]])
                 ->whereYear('created_at', date('Y'))
                 ->exists()) {
+                    
             alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', '', 'error');
             return back();
         }
-
         $user->registrations()->create(request()->all());
 
         auth()->login($user);

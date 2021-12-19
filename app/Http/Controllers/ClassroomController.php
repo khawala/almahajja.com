@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Classroom;
+use App\Section;
+use App\Department;
 use Excel;
 
 class ClassroomController extends Controller
@@ -54,7 +56,42 @@ if (auth()->user()->isSupervisor) { // is supervisor
         ]);
         return back()->withSuccess(trans('app.success_store'));
     }
+public function sectionClassroom(Request $request)
+    {
+        $department=Department::find($request->department_id);
+       
+          if($department){ 
+       if(count($department->sections)==0){ 
+            echo '<option value="">لا توجد مسارات</option>'; 
+       }
+       echo '<option value=""></option>';
+        foreach($department->sections as $section){  
+      
+            echo '<option value="'.$section->id.'">'.$section->name.'</option>'; 
 
+        } 
+    }else{ 
+        echo '<option value="">لا توجد مسارات</option>'; 
+    }  
+    }
+    public function sectionLevel(Request $request)
+    {
+        $section=Section::find($request->section_id);
+       
+          if($section){ 
+       if(count($section->levels)==0){ 
+            echo '<option value="">لا توجد مستويات</option>'; 
+       }
+       echo '<option value=""></option>';
+        foreach($section->levels as $level){  
+        
+            echo '<option value="'.$level->id.'">'.$level->name.'</option>'; 
+        
+        } 
+    }else{ 
+        echo '<option value="">لا توجد مستويات</option>'; 
+    }  
+    }
     /**
      * Display the specified resource.
      *

@@ -13,10 +13,22 @@
         <link rel="stylesheet" href="<?php echo e(mix('/css/admin-vendor.css')); ?>">
         <link rel="stylesheet" href="/css/admin-custom.css">
     <?php endif; ?>
+    
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php echo $__env->yieldContent('css'); ?>
-    <link href=<?php echo e(url('hijri/css/bootstrap.css')); ?>" rel="stylesheet" />
+
+    <!--<link href="<?php echo e(url('hijri/css/bootstrap.css')); ?>" rel="stylesheet" />-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
  <link href="<?php echo e(url('hijri/css/bootstrap-datetimepicker.css')); ?>" rel="stylesheet" />
+     <style>
+        .select2-container {
+
+    width: 100% !important;
+  
+}
+    </style>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -152,6 +164,7 @@
     <script src="<?php echo e(url('hijri/js/moment-with-locales.js')); ?>"></script>
     <script src="<?php echo e(url('hijri/js/moment-hijri.js')); ?>"></script>
     <script src="<?php echo e(url('hijri/js/bootstrap-hijri-datetimepicker.js')); ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
  <script type="text/javascript">
   $(document).ready(function () {
 
@@ -201,6 +214,10 @@
         }
 
 });
+  $(document).ready(function () {
+  $(".select").select2();
+  });
+  
     </script>
     <?php echo $__env->yieldContent('js'); ?>
 

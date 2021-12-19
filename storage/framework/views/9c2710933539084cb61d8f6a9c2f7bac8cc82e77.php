@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?php echo e(url('css_new/style.css')); ?>">
      <link rel="stylesheet" href="<?php echo e(asset('tel-input/build/css/intlTelInput.css')); ?> ">
 
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <script src="<?php echo e(asset('tel-input/build/js/intlTelInput.js')); ?>"></script>
     
@@ -26,6 +27,11 @@
     label {
     color: #7f999a;
     float: right;
+}
+.select2-container {
+
+    width: 100% !important;
+  
 }
 </style>
 </head>
@@ -317,6 +323,7 @@
 
 
 <script src="<?php echo e(url('js/jquery.js')); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="<?php echo e(url('js/poper.js')); ?>"></script>
 <script src="<?php echo e(url('js/bootstrap4.min.js')); ?>"></script>
 <script src="<?php echo e(url('js/all.min.js')); ?>"></script>
@@ -329,6 +336,7 @@
   });
   
   </script>
+   <?php echo $__env->yieldContent('script'); ?>;
 </body>
 
 </html>

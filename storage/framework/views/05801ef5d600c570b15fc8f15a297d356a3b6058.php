@@ -52,7 +52,7 @@
                         'method' => 'PUT',
                         ]); ?>
 
-                        <?php echo Form::mySelect('level_id', '', ['' => ''] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' =>'FIT-CONTENT']); ?>
+                        <?php echo Form::mySelect('level_id', '', ['' => ''] + $item->section->levels->pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' =>'FIT-CONTENT']); ?>
 
                     <?php echo Form::close(); ?>
 
@@ -63,7 +63,7 @@
                         'method' => 'PUT',
                         ]); ?>
 
-                        <?php echo Form::mySelect('classroom_id', '', ['' => ''] + App\Classroom::where('department_id','=',$item->department->id)->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control onchange', 'width' => 200]); ?>
+                        <?php echo Form::mySelect('classroom_id', '', ['' => ''] + App\Classroom::where([['department_id','=',$item->department->id],['section_id','=',$item->section->id]])->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control onchange', 'width' => 200]); ?>
 
 
                     <?php echo Form::close(); ?>

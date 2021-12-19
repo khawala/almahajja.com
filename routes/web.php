@@ -41,6 +41,8 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
     Route::post('registrations/search', 'RegistrationController@search')->name('registrations.search');
     Route::resource('registrations', 'RegistrationController');
     Route::resource('classrooms', 'ClassroomController');
+        Route::post('sectionclassrooms', 'ClassroomController@sectionClassroom')->name('classrooms.sectionClassroom');
+          Route::post('sectionLevel', 'ClassroomController@sectionLevel')->name('classrooms.sectionLevel');
   Route::resource('departments', 'DepartmentController');
     Route::get('certifications', 'CertificationController@index')->name('certifications.index');
 
@@ -70,6 +72,7 @@ Route::get('job/{id}', 'HomeController@job')->name('job.show');
 Route::post('job-request', 'HomeController@postJobRequest')->name('job.store');
 Route::group(['middleware'=>['auth', 'checkstatus']], function () {
     Route::get('profile', 'HomeController@profile')->name('profile.show');
+    Route::post('sectionLevel', 'HomeController@sectionLevel')->name('department.sectionLevel');
     Route::get('profile/edit', 'HomeController@editProfile')->name('profile.edit');
     Route::post('profile', 'HomeController@postProfile')->name('profile.store');
     Route::get('certifications/{id}/print', 'CertificationController@print')->name('certifications.print');
