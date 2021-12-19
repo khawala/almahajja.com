@@ -55,7 +55,21 @@
                                    
                                  
                                     <?php if($item->level): ?>
-                                    <td><?php echo e($item->level->name); ?></td>
+                                    <td><?php echo e($item->level->name); ?>
+
+                                      <?php
+                                            $file=App\LevelSection::where([['level_id',$item->level->id],['section_id',$item->section->id]])->first();
+                                           
+                                            if($file){  ?>
+                                                <a href="<?php echo e($file->pdf_file); ?>" target="_blnck">
+                                                    <i class="fas fa-download"></i> الخطة
+                                                </a>
+                                              <?php   } ?>
+                                         </td>
+                              
+                                           
+                                          
+                                      
                                     <?php else: ?>
                                     <td>لم يحدد بعد</td>
                                     <?php endif; ?>
@@ -93,4 +107,4 @@
         
     </section>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('site.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('site.new_default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

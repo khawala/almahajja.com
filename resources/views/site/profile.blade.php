@@ -1,4 +1,4 @@
-@extends('site.default')
+@extends('site.new_default')
 
 @section('content')
     <section class="sub-page">
@@ -57,7 +57,20 @@
                                    
                                  
                                     @if($item->level)
-                                    <td>{{ $item->level->name }}</td>
+                                    <td>{{ $item->level->name }}
+                                      <?php
+                                            $file=App\LevelSection::where([['level_id',$item->level->id],['section_id',$item->section->id]])->first();
+                                           
+                                            if($file){  ?>
+                                                <a href="{{$file->pdf_file}}" target="_blnck">
+                                                    <i class="fas fa-download"></i> الخطة
+                                                </a>
+                                              <?php   } ?>
+                                         </td>
+                              
+                                           
+                                          
+                                      
                                     @else
                                     <td>لم يحدد بعد</td>
                                     @endif

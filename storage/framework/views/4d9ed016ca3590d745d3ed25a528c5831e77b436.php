@@ -28,6 +28,10 @@
     width: 100% !important;
   
 }
+select.form-control {
+ 
+    width: 100%;
+}
     </style>
 </head>
 
