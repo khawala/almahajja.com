@@ -21,10 +21,10 @@ class CreateMarksTable extends Migration
             $table->unsignedInteger('month');
             $table->unsignedInteger('semester');
             $table->unsignedInteger('level');
-            $table->float('mark1');
-            $table->float('mark2');
-            $table->float('mark3');
-
+            $table->float('mark1')->nullable();;
+            $table->float('mark2')->nullable();;
+            $table->float('mark3')->nullable();;
+            $table->float('total')->nullable();
             // $table->softDeletes();
             $table->timestamps();
 

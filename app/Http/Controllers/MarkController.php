@@ -52,9 +52,10 @@ class MarkController extends Controller
                     'month'           => $mark['month'],
                     'semester'        => $mark['semester'],
                     'level'           => $mark['level'],
-                    'mark1'           => $mark['mark1'],
-                    'mark2'           => $mark['mark2'],
-                    'mark3'           => $mark['mark3'],
+                    // 'mark1'           => $mark['mark1'],
+                    // 'mark2'           => $mark['mark2'],
+                    // 'mark3'           => $mark['mark3'],
+                    'total'           => $mark['total'],
                     'created_at'      => Carbon::now(),
                 ];
 
@@ -83,10 +84,11 @@ class MarkController extends Controller
                 'رقم التسجيل'          => $item->id,
                 'الطالبة'              => $item->name,
                 'مستوى الطالبة'        => $item->level->name,
-                'الحضور (30)'          => $item->mark1,
-                'التسميع (30)'         => $item->mark2,
-                'الإختبار الشهري (40)' => $item->mark3,
-                'المجموع'              => $item->mark1 + $item->mark2 + $item->mark3,
+                // 'الحضور (30)'          => $item->mark1,
+                // 'التسميع (30)'         => $item->mark2,
+                // 'الإختبار الشهري (40)' => $item->mark3,
+                // 'المجموع'              => $item->mark1 + $item->mark2 + $item->mark3,
+                      'المجموع'              => $item->total,
             ];
         }
 Excel::create('Filename', function($excel) use($data) {

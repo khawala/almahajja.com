@@ -7,43 +7,76 @@
 @section('content')
 
 @php
-$total = App\Registration::TotalMarks($item->id, $item->level);
+$markes = App\Registration::TotalMarks($item->id, $item->level);
+$total=0;
+
+$count=count($markes);
+foreach($markes as $marke){
+$total+=$marke->total;
+}
+if($count!=0)
+{
+$total=$total/$count;
+}
 @endphp
 
-@if ($item->section->division->type == 1)
-<div class="print-certif">
-    {{-- دورة تدريبية‎ --}}
-    <img src="/img/certifications.jpg" alt="">
-    <p class="name">{{ $item->student->name }}</p>
-    {{-- <p class="note">{{ $item->section->division->note }} </p> --}}
-    <p class="supervisor">{{ $item->section->supervisor->name }}</p>
-    {{-- <p class="batch">{{ $item->section->division->batch }}</p> --}}
-    <p class="hours">{{ $item->section->CountHours }}</p>
-    <p class="totalmarks">{{ $total[0]->Marks }}</p>
-    <p class="totalmarks">{{ $total[0]->Marks }}</p>
-</div>
+
+@if($count!=0)
+@if($total<=60)
+<? echo 'لم تجتز درجة النجاح وليس لها شهادة';?>
 @else
 <div class="print-certif-phone">
     {{-- حلقة‎ --}}
-    <img src="/img/certification-phone.png" alt="">
-    <p class="name">{{ $item->student->name }}</p>
-    {{-- <p class="note">{{ $item->section->division->note }} </p> --}}
-    {{-- <p class="batch">{{ substr($item->section->division->batch, 0, 4) }}</p> --}}
-    <p class="classroom">{{ $item->classroom->name }}</p>
-    <p class="teacher">{{ $item->classroom->teacher->name }}</p>
-    <p class="totalmarks">{{ $total[0]->Marks }}</p>
+    <img src="/img/certificate.jpg" alt="">
 
-    @if ($total[0]->Marks >= 90)
-    <p class="marks_name">ممتاز</p>
-    @elseif ($total[0]->Marks >= 80)
-    <p class="marks_name">جيد جدا</p>
-    @elseif ($total[0]->Marks >= 70)
-    <p class="marks_name">جيد</p>
+    <p style="color:#19585f;top: 310px;">مَن كَانَ لِلهِ العَظِيمَ طَرِيقهُ .. كَانَ الكِفَاحُ بِعُمرِهِ مَشكُورًا .. نَالَ المَكارِمَ بَعْدَ طـُول جِهَادِهِ .. نَالَ المَبَاهِجَ ضَاحِكـًا مَسْرُورًا
+
+</p>
+</hr>
+<p style="color:#000000;top: 340px;">
+يسر مؤسسة وقف المحجة البيضاء لتحفيظ القرآن الكريم والسنة النبوية عن بعد بالتعاون مع معهد الشيماء للدراسات القرآنية
+أن تتقدم بتهنئة الطالبة:
+<span>
+  {{ $item->student->name }}  
+</span>
+</br>
+بحلقة 
+<span>
+  {{ $item->classroom->name  }}  
+</span>
+على إجتهادها وحرصها.
+<br>
+لاجتيازها
+<span>
+  {{ $item->classroom->department->certificate_type  }}  
+</span>
+</br>
+حيث حصلت على درجة: 
+<span>
+  {{ $total }}  %
+</span>
+, بتقدير 
+ @if ($total >= 90)
+    <span>ممتاز</span>
+    @elseif ($total >= 80)
+    <span>جيد جدا</span>
+    @elseif ($total >= 70)
+    <span>جيد</span>
     @else
-    <p class="marks_name">مقبول</p>
+    <span>مقبول</span>
     @endif
+على يد المعلمة 
+<span>
+   {{ $item->classroom->teacher->name }} 
+</span>
+</br>
 
-</div>
+وتمنحها هذه الشهادة سائلين الله تعالى لها العلم النافع والعمل الصالح
+</p>
+
+@endif
+@else
+<?php echo'لا يوجد درجات تم رصدها'; ?>
 @endif
 
 @endsection
@@ -58,7 +91,15 @@ $total = App\Registration::TotalMarks($item->id, $item->level);
             /* margin: 30px !important; */
         }
     }
-
+p{
+    width:950px;
+    right:100px;
+    text-align:center;
+        line-height: 2.4;
+}
+span{
+    color:#19585f;
+}
     .print-certif-phone .name {
         top: 424px;
         right: 695px;

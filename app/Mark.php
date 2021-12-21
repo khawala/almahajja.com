@@ -23,7 +23,7 @@ class Mark extends Model
 
             ->where('marks.registration_id', $registration_id)
             ->where('marks.section_id', $section_id)
-            ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name', 'sections.name as sections_name']);
+            ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name','marks.total', 'sections.name as sections_name']);
         ;
     }
         public function levelN()

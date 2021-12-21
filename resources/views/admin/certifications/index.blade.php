@@ -35,7 +35,7 @@
                             <th>تاريخ التسجيل</th>
                             <th>الحلقة</th>
                             <th>الشهادة</th>
-                            <th>كشف الدرجات</th>
+                            <!--<th>كشف الدرجات</th>-->
                         </tr>
                     </thead>
 
@@ -47,7 +47,7 @@
                             <th>تاريخ التسجيل</th>
                             <th>الحلقة</th>
                             <th>الشهادة</th>
-                            <th>كشف الدرجات</th>
+                            <!--<th>كشف الدرجات</th>-->
                         </tr>
                     </tfoot>
 
@@ -62,7 +62,7 @@
                             <td>
                                 <a href="{{ route('certifications.print', $item) }}" target="_blank" class="btn btn-default" title="الشهادة"><i class="fa fa-print"></i></a>
                             </td>
-                            <td>
+                            {--<td>
                                 {!! Form::open([
                                 'class' => 'form-inline',
                                 'method' => 'GET',
@@ -73,7 +73,7 @@
                                 {!! Form::mySelect('level', '',App\Level::pluck('name', 'id')->toArray(), null, ['required']) !!}
                                 <button class="btn btn-success btn-xs" title="الكشف"><i class="fa fa-print"></i></button>
                                 {!! Form::close() !!}
-                            </td>
+                            </td>--}
                         </tr>
                         @endforeach
                     </tbody>

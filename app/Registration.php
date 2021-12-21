@@ -82,10 +82,11 @@ class Registration extends Model
     public function scopeTotalMarks($q, $id, $level)
     {
         
-        return DB::select("SELECT (sum(mark1+mark2+mark3) /600) * 100 AS Marks
+        return DB::select("SELECT *
                             FROM `marks`
                             WHERE (`registration_id` = $id) and (level=$level->id)
         ");
+        
     }
 
     public function scopeStatsByNAtionality($q)
@@ -119,7 +120,7 @@ class Registration extends Model
             ->where('users.status', 1)
             ->where('registrations.level_id', $level)
             // ->select('registrations.id', 'users.name', 'registrations.level_id');
-            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3');
+            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3' ,'marks.total');
             ;
     }
     public function scopeSearch($q)
