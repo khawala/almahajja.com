@@ -25,8 +25,8 @@ $total=$total/$count;
 <? echo 'لم تجتز درجة النجاح وليس لها شهادة';?>
 <?php else: ?>
 <div class="print-certif-phone">
-    
-    <img src="/img/certificate.jpg" alt="">
+    <?php $setting=App\Setting::find(1);?>
+    <img src="<?php echo e($setting->file); ?>" alt="">
 
     <p style="color:#19585f;top: 310px;">مَن كَانَ لِلهِ العَظِيمَ طَرِيقهُ .. كَانَ الكِفَاحُ بِعُمرِهِ مَشكُورًا .. نَالَ المَكارِمَ بَعْدَ طـُول جِهَادِهِ .. نَالَ المَبَاهِجَ ضَاحِكـًا مَسْرُورًا
 
@@ -45,6 +45,10 @@ $total=$total/$count;
 </span>
 على إجتهادها وحرصها.
 <br>
+لعام: <span>
+  <?php echo e(round(($item->created_at->year - 622) * (33 / 32))); ?>  
+</span>
+</br>
 لاجتيازها
 <span>
   <?php echo e($item->classroom->department->certificate_type); ?>  
@@ -52,7 +56,7 @@ $total=$total/$count;
 </br>
 حيث حصلت على درجة: 
 <span>
-  <?php echo e($total); ?>  %
+  <?php echo e(number_format($total, 2)); ?>  %
 </span>
 , بتقدير 
  <?php if($total >= 90): ?>

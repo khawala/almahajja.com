@@ -1,4 +1,4 @@
-@extends('site.default')
+@extends('site.new_default')
 @php
     $months    = config('variables.months');
     $semesters = config('variables.semesters');
@@ -25,7 +25,7 @@
 
         <div class="container">
             <div class="details">
-                <a href="{{ route('registration.marks', ['id' => $registration_id, 'level' => $level]) }}&level=1&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>
+                <a href="{{ route('registration.marks', ['id' => $registration_id, 'level' => $level]) }}&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>
 
                 <h2>الدورات والحلقات</h2>
 
@@ -37,9 +37,6 @@
                                 <th>الشهر</th>
                                 <th>الفصل الدراسي</th>
                                 <th>المستوى</th>
-                                <th>الحظور</th>
-                                <th>التسميع</th>
-                                <th>الإختبار الشهري</th>
                                 <th>المجموع</th>
                             </tr>
                         </thead>
@@ -50,10 +47,10 @@
                                     <td>{{ $months[$mark->month] }}</td>
                                     <td>{{ $semesters[$mark->semester] }}</td>
                                     <td>{{ $levels[$mark->level] }}</td>
-                                    <td>{{ $mark->mark1 }}</td>
-                                    <td>{{ $mark->mark2 }}</td>
-                                    <td>{{ $mark->mark3 }}</td>
-                                    <td>{{ $mark->mark1 + $mark->mark2 + $mark->mark3 }}</td>
+                                    <!--<td>{{ $mark->mark1 }}</td>-->
+                                    <!--<td>{{ $mark->mark2 }}</td>-->
+                                    <!--<td>{{ $mark->mark3 }}</td>-->
+                                    <td>{{ $mark->total}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

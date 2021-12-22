@@ -212,6 +212,11 @@
         <i class="fa fa-life-ring" aria-hidden="true"></i> <span>الدعم الفني</span>
     </a>
 </li>
+ <li class="<?php echo ( starts_with($route, ADMIN.'.settings') ) ? "active" : '' ?>">
+                    <a href="<?php echo e(route(ADMIN.'.settings.index')); ?>">
+                        <span>الإعدادات</span>
+                    </a>
+                </li>
             </ul>
         </li>
     <?php endif; ?>

@@ -164,6 +164,15 @@ return [
             'height' => null,
         ]
     ],
+    'settings_file' => [
+        'public' => '/files/settings_file/',
+        'folder' => public_path() . '/files/settings_file/',
+
+        'image' => [
+            'width'  => null,
+            'height' => null,
+        ]
+    ],
     
     'level_sections_pdf_file' => [
         'public' => '/files/level_sections_pdf_file/',

@@ -34,55 +34,40 @@
         
             <div class="row">
               <div class="col-xs-12">
-                <div class="box box-info">
-                  <!-- /.box-header -->
-                  <div class="box-body table-responsive">
-                    
-                    <table class="table data-tables" cellspacing="0" width="100%">
+
+                    <table class="table " cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                 <th>الفصل الدراسي</th>
                                 <th>الشهر</th>
-                                <th>الفصل الدراسي</th>
                                 <th>المستوى</th>
-                                <th>المراجعة</th>
-                                <th>التسميع</th>
-                                <th>الإختبار الشهري</th>
+                                <!--<th>المراجعة</th>-->
+                                <!--<th>التسميع</th>-->
+                                <!--<th>الإختبار الشهري</th>-->
                                 <th>المجموع</th>
                             </tr>
                         </thead>
                      
-                        <tfoot>
-                            <tr>
-                                <th>الشهر</th>
-                                <th>الفصل الدراسي</th>
-                                <th>المستوى</th>
-                                <th>المراجعة</th>
-                                <th>التسميع</th>
-                                <th>الإختبار الشهري</th>
-                                <th>المجموع</th>
-                            </tr>
-                        </tfoot>
+                      
                      
                         <tbody>
                             @foreach ($registration->marks as $mark)
                                 <tr>
-                                
+                                      <td>{{ $mark->semesterName }}</td>
+                                   
                                     <td>{{ $mark->monthName }}</td>
-                                    <td>{{ $mark->semesterName }}</td>
-                                    <td>{{ $mark->levelN->name }}</td>
-                                    <td>{{ $mark->mark1 }}</td>
-                                    <td>{{ $mark->mark2 }}</td>
-                                    <td>{{ $mark->mark3 }}</td>
-                                    <td>{{ $mark->sum }}</td>
+                               <td>{{ $mark->levelN->name }}</td>
+                                    <!--<td>{{ $mark->mark1 }}</td>-->
+                                    <!--<td>{{ $mark->mark2 }}</td>-->
+                                    <!--<td>{{ $mark->mark3 }}</td>-->
+                                    <td>{{ $mark->total }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                   </div>
                   <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-              </div>
+        
             </div>
         </div>
 

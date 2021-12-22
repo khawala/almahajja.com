@@ -17,6 +17,10 @@
 
     <style>
         body{background-color: #fff;}
+        table, th, td ,tr{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
     </style>
 
     @yield('css')

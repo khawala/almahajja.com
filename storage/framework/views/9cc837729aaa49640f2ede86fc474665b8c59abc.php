@@ -33,55 +33,40 @@
         
             <div class="row">
               <div class="col-xs-12">
-                <div class="box box-info">
-                  <!-- /.box-header -->
-                  <div class="box-body table-responsive">
-                    
-                    <table class="table data-tables" cellspacing="0" width="100%">
+
+                    <table class="table " cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                 <th>الفصل الدراسي</th>
                                 <th>الشهر</th>
-                                <th>الفصل الدراسي</th>
                                 <th>المستوى</th>
-                                <th>المراجعة</th>
-                                <th>التسميع</th>
-                                <th>الإختبار الشهري</th>
+                                <!--<th>المراجعة</th>-->
+                                <!--<th>التسميع</th>-->
+                                <!--<th>الإختبار الشهري</th>-->
                                 <th>المجموع</th>
                             </tr>
                         </thead>
                      
-                        <tfoot>
-                            <tr>
-                                <th>الشهر</th>
-                                <th>الفصل الدراسي</th>
-                                <th>المستوى</th>
-                                <th>المراجعة</th>
-                                <th>التسميع</th>
-                                <th>الإختبار الشهري</th>
-                                <th>المجموع</th>
-                            </tr>
-                        </tfoot>
+                      
                      
                         <tbody>
                             <?php $__currentLoopData = $registration->marks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mark): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                
+                                      <td><?php echo e($mark->semesterName); ?></td>
+                                   
                                     <td><?php echo e($mark->monthName); ?></td>
-                                    <td><?php echo e($mark->semesterName); ?></td>
-                                    <td><?php echo e($mark->levelN->name); ?></td>
-                                    <td><?php echo e($mark->mark1); ?></td>
-                                    <td><?php echo e($mark->mark2); ?></td>
-                                    <td><?php echo e($mark->mark3); ?></td>
-                                    <td><?php echo e($mark->sum); ?></td>
+                               <td><?php echo e($mark->levelN->name); ?></td>
+                                    <!--<td><?php echo e($mark->mark1); ?></td>-->
+                                    <!--<td><?php echo e($mark->mark2); ?></td>-->
+                                    <!--<td><?php echo e($mark->mark3); ?></td>-->
+                                    <td><?php echo e($mark->total); ?></td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                   </div>
                   <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-              </div>
+        
             </div>
         </div>
 

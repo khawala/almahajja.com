@@ -62,22 +62,13 @@
                             <td>
                                 <a href="<?php echo e(route('certifications.print', $item)); ?>" target="_blank" class="btn btn-default" title="الشهادة"><i class="fa fa-print"></i></a>
                             </td>
-                            {--<td>
-                                <?php echo Form::open([
-                                'class' => 'form-inline',
-                                'method' => 'GET',
-                                'target' => '_blank',
-                                'route' => ADMIN . '.registrations.marks',
-                                ]); ?>
-
-                                <?php echo Form::hidden('id', $item->id); ?>
-
-                                <?php echo Form::mySelect('level', '',App\Level::pluck('name', 'id')->toArray(), null, ['required']); ?>
-
-                                <button class="btn btn-success btn-xs" title="الكشف"><i class="fa fa-print"></i></button>
-                                <?php echo Form::close(); ?>
-
-                            </td>--}
+                            <!--<td>-->
+                            <!--   <?php echo Form::open([ 'class' => 'form-inline', 'method' => 'GET',  'target' => '_blank', 'route' => ADMIN . '.registrations.marks',    ]); ?>-->
+                            <!--    <?php echo Form::hidden('id', $item->id); ?>-->
+                            <!--    <?php echo Form::mySelect('level', '',App\Level::pluck('name', 'id')->toArray(), null, ['required']); ?>-->
+                            <!--    <button class="btn btn-success btn-xs" title="الكشف"><i class="fa fa-print"></i></button>-->
+                            <!--    <?php echo Form::close(); ?>-->
+                            <!--</td>-->
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>

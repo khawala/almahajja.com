@@ -24,7 +24,7 @@
 
         <div class="container">
             <div class="details">
-                <a href="<?php echo e(route('registration.marks', ['id' => $registration_id, 'level' => $level])); ?>&level=1&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>
+                <a href="<?php echo e(route('registration.marks', ['id' => $registration_id, 'level' => $level])); ?>&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>
 
                 <h2>الدورات والحلقات</h2>
 
@@ -36,9 +36,6 @@
                                 <th>الشهر</th>
                                 <th>الفصل الدراسي</th>
                                 <th>المستوى</th>
-                                <th>الحظور</th>
-                                <th>التسميع</th>
-                                <th>الإختبار الشهري</th>
                                 <th>المجموع</th>
                             </tr>
                         </thead>
@@ -49,10 +46,10 @@
                                     <td><?php echo e($months[$mark->month]); ?></td>
                                     <td><?php echo e($semesters[$mark->semester]); ?></td>
                                     <td><?php echo e($levels[$mark->level]); ?></td>
-                                    <td><?php echo e($mark->mark1); ?></td>
-                                    <td><?php echo e($mark->mark2); ?></td>
-                                    <td><?php echo e($mark->mark3); ?></td>
-                                    <td><?php echo e($mark->mark1 + $mark->mark2 + $mark->mark3); ?></td>
+                                    <!--<td><?php echo e($mark->mark1); ?></td>-->
+                                    <!--<td><?php echo e($mark->mark2); ?></td>-->
+                                    <!--<td><?php echo e($mark->mark3); ?></td>-->
+                                    <td><?php echo e($mark->total); ?></td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
@@ -74,4 +71,4 @@
     </style>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('site.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('site.new_default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
