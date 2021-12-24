@@ -35,7 +35,7 @@
               <?php echo Form::myInput('text', 'bank_account', 'رقم الحساب البنكي'); ?>
 
 
-            <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+            <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
       
               <?php echo Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']); ?>

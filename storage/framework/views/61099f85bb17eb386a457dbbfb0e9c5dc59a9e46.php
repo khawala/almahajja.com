@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-sm-12">
 
-        <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>',['' => ''] +  App\Section::pluck('name', 'id')->toArray(),null, ['class' => 'chosen-rtl form-contro']); ?>
+        <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>',['' => ''] +  App\Section::pluck('name', 'id')->toArray(),null, ['class' => 'form-control select']); ?>
 
-        <?php echo Form::mySelect('level_id', 'المستوى <span class=red>*</span>',['' => ''] +  App\Level::pluck('name', 'id')->toArray(),null, ['class' => 'chosen-rtl form-contro']); ?>
+        <?php echo Form::mySelect('level_id', 'المستوى <span class=red>*</span>',['' => ''] +  App\Level::pluck('name', 'id')->toArray(),null, ['class' => 'form-control select']); ?>
 
 
 

@@ -12,10 +12,10 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
 
                 {!! Form::myInput('text', 'name', 'إسم الحلقة <span class=red>*</span>', ['required']) !!}
                 @if (auth()->user()->isSupervisor) 
-   {!! Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']) !!}
+   {!! Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select', 'id' => 'department']) !!}
     
              @else   
-                {!! Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']) !!}
+                {!! Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select', 'id' => 'department']) !!}
               
                 @endif
 @if(isset($item))
@@ -56,8 +56,8 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         </div>
                                         
                            @endif  
-                {!! Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'chosen-rtl form-contro']) !!}
-                {!! Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'chosen-rtl form-contro']) !!}
+                {!! Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'form-control select']) !!}
+                {!! Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'form-control select']) !!}
 
                
                 {!! Form::myTextArea('description', 'نبذة  <span class=red>*</span>', ['required']) !!}

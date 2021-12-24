@@ -6,7 +6,7 @@
 
 <section class="filter-area">
     <form action="" class="form-inline">
-        <?php echo Form::mySelect('section_id', '', [''=>'المسار'] + App\Section::ListGroup(), request('section_id'), ['required', 'class' => 'chosen-rtl form-control']); ?>
+        <?php echo Form::mySelect('section_id', '', [''=>'المسار'] + App\Section::ListGroup(), request('section_id'), ['required', 'class' => 'form-control select']); ?>
 
 
         <?php echo Form::mySelect('classroom_id', '', [''=>'الحلقة'] + App\Classroom::myList(), request('classroom_id')); ?>

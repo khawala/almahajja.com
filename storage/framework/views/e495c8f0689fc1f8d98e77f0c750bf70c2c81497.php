@@ -13,11 +13,11 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                 <?php echo Form::myInput('text', 'name', 'إسم الحلقة <span class=red>*</span>', ['required']); ?>
 
                 <?php if(auth()->user()->isSupervisor): ?> 
-   <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']); ?>
+   <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select', 'id' => 'department']); ?>
 
     
              <?php else: ?>   
-                <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']); ?>
+                <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select', 'id' => 'department']); ?>
 
               
                 <?php endif; ?>
@@ -62,9 +62,9 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         </div>
                                         
                            <?php endif; ?>  
-                <?php echo Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'chosen-rtl form-contro']); ?>
+                <?php echo Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'form-control select']); ?>
 
-                <?php echo Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'chosen-rtl form-contro']); ?>
+                <?php echo Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'form-control select']); ?>
 
 
                

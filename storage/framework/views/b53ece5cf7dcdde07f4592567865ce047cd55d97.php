@@ -13,17 +13,17 @@
         </div>
         <div class="box-body">
   
-          <?php echo Form::mySelect('user_id', 'الطالبة <span class=red>*</span>', ['' => ''] + App\User::students()->active()->pluck('name', 'id')->toArray(), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+          <?php echo Form::mySelect('user_id', 'الطالبة <span class=red>*</span>', ['' => ''] + App\User::students()->active()->pluck('name', 'id')->toArray(), null, ['required', 'class' => 'form-control select']); ?>
 
   
   
-          <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+          <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
   
-          <?php echo Form::mySelect('period_id', 'وقت التسميع', ['' => ''] + App\Period::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+          <?php echo Form::mySelect('period_id', 'وقت التسميع', ['' => ''] + App\Period::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
   
-          <?php echo Form::mySelect('activity_id', 'الانشطة', ['' => ''] + App\Activity::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+          <?php echo Form::mySelect('activity_id', 'الانشطة', ['' => ''] + App\Activity::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
           
         </div>
@@ -38,26 +38,26 @@
   
           <div class="box-body">
             <?php if(auth()->user()->isSupervisor): ?> 
-            <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl   form-contro', 'id' => 'department']); ?>
+            <?php echo Form::mySelect('department_id', 'القسم <span class=red>*</span>', ['' => ''] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select', 'id' => 'department']); ?>
 
                         <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::whereHas('departments', function ($q) {
                          $q->where('supervisor_id', auth()->id());
-                     })->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-contro']); ?>
+                     })->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
               <?php echo Form::mySelect('classroom_id', 'الحلقة', ['' => 'إختر حلقة ...'] + App\Classroom::whereHas('department', function ($q) {
                 $q->where('supervisor_id', auth()->id());
-            })->pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+            })->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
                         
                       <?php else: ?>   
-              <?php echo Form::mySelect('department_id', 'القسم', ['' => 'إختر القسم ...'] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+              <?php echo Form::mySelect('department_id', 'القسم', ['' => 'إختر القسم ...'] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
-              <?php echo Form::mySelect('classroom_id', 'الحلقة', ['' => 'إختر حلقة ...'] + App\Classroom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+              <?php echo Form::mySelect('classroom_id', 'الحلقة', ['' => 'إختر حلقة ...'] + App\Classroom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
-              <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::pluck('name', 'id')->toArray(), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+              <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::pluck('name', 'id')->toArray(), null, ['required', 'class' => 'form-control select']); ?>
 
              <?php endif; ?>
-              <?php echo Form::mySelect('level_id', 'المستوى', ['' => 'إختر المستوى ...'] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+              <?php echo Form::mySelect('level_id', 'المستوى', ['' => 'إختر المستوى ...'] + App\Level::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
               <?php echo Form::mySelect('status', 'حالة التسجيل <span class=red>*</span>', config('variables.registrations_status')); ?>
 

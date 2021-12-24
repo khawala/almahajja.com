@@ -29,7 +29,7 @@
               {!! Form::myInput('text', 'bank_account', 'رقم الحساب البنكي') !!}
             {!! Form::textarea('text', 'cv_text', 'السيرة الذاتية  ') !!}
 
-            {!! Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']) !!}
+            {!! Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']) !!}
       
               {!! Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']) !!}
 

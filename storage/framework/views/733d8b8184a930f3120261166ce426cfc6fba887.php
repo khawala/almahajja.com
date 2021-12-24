@@ -35,7 +35,7 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                         <?php } ?>
                     </div>
                 <?php endif; ?>
-                <?php echo Form::mySelect('supervisor_id','المشرفة/المدربه  <span class=red>*</span>',App\User::supervisor()->pluck('name', 'id')->toArray(),null,['required', 'class' => 'chosen-rtl form-control']); ?>
+                <?php echo Form::mySelect('supervisor_id','المشرفة/المدربه  <span class=red>*</span>',App\User::supervisor()->pluck('name', 'id')->toArray(),null,['required', 'class' => 'form-control select']); ?>
 
 
                 <?php echo Form::myTextArea('description', 'نبذة عن القسم'); ?>
@@ -71,13 +71,13 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
         <div class="box box-info">
             <div class="box-body">
 
-                <?php echo Form::mySelect('registeration_status', 'حالة التسجيل', config('variables.registeration_status'), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+                <?php echo Form::mySelect('registeration_status', 'حالة التسجيل', config('variables.registeration_status'), null, ['required', 'class' => 'form-control select']); ?>
 
 
-                <?php echo Form::mySelect('register_type', 'نوع التسجيل', config('variables.register_type'), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+                <?php echo Form::mySelect('register_type', 'نوع التسجيل', config('variables.register_type'), null, ['required', 'class' => 'form-control select']); ?>
 
 
-                <?php echo Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+                <?php echo Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'form-control select']); ?>
 
                 <div class="box box-warning">
                     <div class="box-header with-border">

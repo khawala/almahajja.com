@@ -13,19 +13,19 @@
       </div>
       <div class="box-body">
 
-        <?php echo Form::mySelect('user_id', 'الطالبة <span class=red>*</span>', ['' => ''] + App\User::students()->active()->pluck('name', 'id')->toArray(), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+        <?php echo Form::mySelect('user_id', 'الطالبة <span class=red>*</span>', ['' => ''] + App\User::students()->active()->pluck('name', 'id')->toArray(), null, ['required', 'class' => 'form-control select']); ?>
 
 
-        <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::ListGroup(), null, ['required', 'class' => 'chosen-rtl form-control']); ?>
+        <?php echo Form::mySelect('section_id', 'المسار <span class=red>*</span>', ['' => ''] + App\Section::ListGroup(), null, ['required', 'class' => 'form-control select']); ?>
 
 
-        <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+        <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
 
-        <?php echo Form::mySelect('period_id', 'وقت التسميع', ['' => ''] + App\Period::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+        <?php echo Form::mySelect('period_id', 'وقت التسميع', ['' => ''] + App\Period::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
 
-        <?php echo Form::mySelect('activity_id', 'الانشطة', ['' => ''] + App\Activity::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+        <?php echo Form::mySelect('activity_id', 'الانشطة', ['' => ''] + App\Activity::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
         
       </div>
@@ -43,7 +43,7 @@
             <?php echo Form::mySelect('level', 'المستوى', config('variables.sections_level')); ?>
 
     
-            <?php echo Form::mySelect('classroom_id', 'الحلقة', ['' => 'إختر حلقة ...'] + App\Classroom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']); ?>
+            <?php echo Form::mySelect('classroom_id', 'الحلقة', ['' => 'إختر حلقة ...'] + App\Classroom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
 
             <?php echo Form::mySelect('status', 'حالة التسجيل <span class=red>*</span>', config('variables.registrations_status')); ?>

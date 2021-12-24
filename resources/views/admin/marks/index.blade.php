@@ -16,19 +16,19 @@
             </ul>
                   @if (auth()->user()->isSupervisor) 
 
-                       {!! Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']) !!}
+                       {!! Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::where('supervisor_id',auth()->user()->id)->pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'form-control select']) !!}
               {!! Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::whereHas('department', function ($q) {
                 $q->where('supervisor_id', auth()->id());
-            })->pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']) !!}
+            })->pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'form-control select']) !!}
             {!! Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::whereHas('departments', function ($q) {
                 $q->where('supervisor_id', auth()->id());
-            })->pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']) !!}
+            })->pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'form-control select']) !!}
              
              @else
-            {!! Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'chosen-rtl form-control']) !!}
-            {!! Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'chosen-rtl form-control']) !!}
+            {!! Form::mySelect('department_id', '', ['' => 'القسم'] + App\Department::pluck('name', 'id')->toArray(), request('department_id'), ['class' => 'form-control select']) !!}
+            {!! Form::mySelect('classroom_id', '', ['' => 'الحلقة'] + App\Classroom::pluck('name', 'id')->toArray(), request('classroom_id'), ['class' => 'form-control select']) !!}
 
-            {!! Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'chosen-rtl form-control']) !!}
+            {!! Form::mySelect('section_id', '', ['' => 'المسار'] + App\Section::pluck('name', 'id')->toArray(), request('section_id'), ['class' => 'form-control select']) !!}
             @endif
            
 

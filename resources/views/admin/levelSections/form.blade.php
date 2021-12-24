@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-sm-12">
 
-        {!! Form::mySelect('section_id', 'المسار <span class=red>*</span>',['' => ''] +  App\Section::pluck('name', 'id')->toArray(),null, ['class' => 'chosen-rtl form-contro']) !!}
-        {!! Form::mySelect('level_id', 'المستوى <span class=red>*</span>',['' => ''] +  App\Level::pluck('name', 'id')->toArray(),null, ['class' => 'chosen-rtl form-contro']) !!}
+        {!! Form::mySelect('section_id', 'المسار <span class=red>*</span>',['' => ''] +  App\Section::pluck('name', 'id')->toArray(),null, ['class' => 'form-control select']) !!}
+        {!! Form::mySelect('level_id', 'المستوى <span class=red>*</span>',['' => ''] +  App\Level::pluck('name', 'id')->toArray(),null, ['class' => 'form-control select']) !!}
 
 
         {!! Form::myTextArea('brief', 'نبذة') !!}

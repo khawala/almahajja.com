@@ -17,11 +17,11 @@
                 </li>
             </ul>
           
-            {!! Form::mySelect('section_id', '', [''=>'المسار'] + App\Section::ListGroup(), request('section_id'), ['class' => 'chosen-rtl form-control']) !!}
+            {!! Form::mySelect('section_id', '', [''=>'المسار'] + App\Section::ListGroup(), request('section_id'), ['class' => 'form-control select']) !!}
 
-            {!! Form::mySelect('telecom_id', '', [''=>'شريحة الجوال'] + App\Telecom::pluck('name', 'id')->toArray(), request('telecom_id'), ['class' => 'chosen-rtl form-control']) !!}
+            {!! Form::mySelect('telecom_id', '', [''=>'شريحة الجوال'] + App\Telecom::pluck('name', 'id')->toArray(), request('telecom_id'), ['class' => 'form-control select']) !!}
 
-            {!! Form::mySelect('period_id', '', [''=>'وقت التسميع'] + App\Period::pluck('name', 'id')->toArray(), request('period_id'), ['class' => 'chosen-rtl form-control']) !!}
+            {!! Form::mySelect('period_id', '', [''=>'وقت التسميع'] + App\Period::pluck('name', 'id')->toArray(), request('period_id'), ['class' => 'form-control select']) !!}
             
             {!! Form::mySelect('status', '', ['' => "إختر الحالة"] + config('variables.registrations_status'), request('status')) !!}
             

@@ -37,7 +37,7 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                 @if(auth()->user()->role != 10)
                
 
-                {!! Form::mySelect('supervisor_id','المشرفة/المدربه  <span class=red>*</span>',App\User::supervisor()->pluck('name', 'id')->toArray(),null,['required', 'class' => 'chosen-rtl form-control']) !!}
+                {!! Form::mySelect('supervisor_id','المشرفة/المدربه  <span class=red>*</span>',App\User::supervisor()->pluck('name', 'id')->toArray(),null,['required', 'class' => 'form-control select']) !!}
 @else
  @if (isset($item) )
  <input type="hidden" name="supervisor_id" value="{{ $item->supervisor_id }}">
@@ -85,11 +85,11 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
             <div class="box-body">
               @if(auth()->user()->role != 10)
        
-                {!! Form::mySelect('registeration_status', 'حالة التسجيل', config('variables.registeration_status'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
+                {!! Form::mySelect('registeration_status', 'حالة التسجيل', config('variables.registeration_status'), null, ['required', 'class' => 'form-control select']) !!}
 
-                {!! Form::mySelect('register_type', 'نوع التسجيل', config('variables.register_type'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
+                {!! Form::mySelect('register_type', 'نوع التسجيل', config('variables.register_type'), null, ['required', 'class' => 'form-control select']) !!}
 
-                {!! Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'chosen-rtl form-control']) !!}
+                {!! Form::mySelect('payment_type', 'نوع الدفع', config('variables.payment_type'), null, ['required', 'class' => 'form-control select']) !!}
                 
                 @endif
                               {!! Form::mySelect('need_teacher', 'يحتاج معلمين', config('variables.need_teacher'),null) !!}

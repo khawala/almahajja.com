@@ -8,7 +8,7 @@
 
 <section class="filter-area">
     <form action="" class="form-inline">
-        {!! Form::mySelect('section_id', '', [''=>'المسار'] + App\Section::ListGroup(), request('section_id'), ['required', 'class' => 'chosen-rtl form-control']) !!}
+        {!! Form::mySelect('section_id', '', [''=>'المسار'] + App\Section::ListGroup(), request('section_id'), ['required', 'class' => 'form-control select']) !!}
 
         {!! Form::mySelect('classroom_id', '', [''=>'الحلقة'] + App\Classroom::myList(), request('classroom_id')) !!}
 
