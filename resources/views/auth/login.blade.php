@@ -44,6 +44,7 @@
                 <input type="submit" class="btn btn-website" name="" value="تسجيل دخول">
             </div>
             <hr>
+            <a class="nav-link" href="{{url('/register')}}">  تسجيل حساب جديد</a>
             <div class="description">
                 <p>
                     الموقع الرسمي لوقف المحجة البيضاء

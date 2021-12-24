@@ -88,7 +88,8 @@ class JobRequestController extends Controller
         $item = JobRequest::findOrFail($id);
 
         $item->update($request->all());
-
+$item->user->department_id=$item->department_id;
+$item->user->save();
         return redirect()->route(ADMIN . '.job-requests.index')->withSuccess(trans('app.success_update'));
     }
 

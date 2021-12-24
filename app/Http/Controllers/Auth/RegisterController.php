@@ -67,6 +67,10 @@ class RegisterController extends Controller
     {
         
 
+if(isset($data['bank_account']))
+{
+$data['role']=5;
+}
                 $user = User::create($data);
      
          

@@ -28,7 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('country_code')->nullable();
             $table->integer('telecom_id')->nullable();
+              $table->integer('department_id')->nullable();
             $table->text('cv')->nullable();
+            $table->text('cv_text')->nullable();
             $table->string('phone')->nullable();
             $table->boolean('status')->default(0);
             $table->string('photo')->nullable();

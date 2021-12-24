@@ -27,6 +27,7 @@
           <div class="col-sm-6">
                {!! Form::myInput('text', 'mobile1', 'جوال التواصل <span class=red>*</span>', ['required']) !!}
               {!! Form::myInput('text', 'bank_account', 'رقم الحساب البنكي') !!}
+            {!! Form::textarea('text', 'cv_text', 'السيرة الذاتية  ') !!}
 
             {!! Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'chosen-rtl form-control']) !!}
       

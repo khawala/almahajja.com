@@ -19,7 +19,10 @@ class CreateJobRequestsTable extends Migration
             $table->string('name');
             $table->string('mobile');
             $table->unsignedInteger('nationality_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('deparment_id')->nullable();
             $table->text('cv_description')->nullable();
+              $table->text('note')->nullable();
             $table->unsignedInteger('status');
             $table->timestamps();
 

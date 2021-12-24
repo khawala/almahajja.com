@@ -99,6 +99,36 @@
                                                 @endif
                                             </div>
                                         </div>
+                                           <!-- Start Col  -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="bank_account"  value="{{ $user->bank_account }}" placeholder=" رقم الحساب" required>
+                                                @if ($errors->has('bank_account'))
+                                                    <p class="help-block"><small>{{ $errors->first('bank_account') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <!-- Start Col  -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="address"  value="{{ $user->address }}" placeholder=" مكان الإقامة" required>
+                                                @if ($errors->has('address'))
+                                                    <p class="help-block"><small>{{ $errors->first('address') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <!-- Start Col  -->
+                                        <div class="col-12" >
+                                            <div class="form-group">
+                                              
+                                                <textarea type="text" class="form-control" style="direction:rtl !important" name="cv_text" placeholder="السيرة الذاتية " required>{{ $user->cv_text }} </textarea>
+                                                @if ($errors->has('cv_text'))
+                                                    <p class="help-block"><small>{{ $errors->first('cv_text') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
                                          <div class="col-12">
                                             <div class="form-group">
                                                

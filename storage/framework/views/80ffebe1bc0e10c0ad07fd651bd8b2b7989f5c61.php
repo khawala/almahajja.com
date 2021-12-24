@@ -6,8 +6,8 @@
 
     <section class="filter-area">
         <ul class="list-inline">
-            <li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.job-requests.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>
-            <li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.job-requests.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>
+            <!--<li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.job-requests.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>-->
+            <!--<li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.job-requests.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>-->
         </ul>
     </section>
 
@@ -47,8 +47,8 @@
 						<tr>
                             <td><a href="<?php echo e(route(ADMIN . '.job-requests.edit', $item->id)); ?>"><?php echo e($item->id); ?></a></td>
 	                        <td><a href="<?php echo e(route(ADMIN . '.job-requests.edit', $item->id)); ?>"><?php echo e($item->job->name); ?></a></td>
-                            <td><?php echo e($item->name); ?></td>
-                            <td><?php echo e($item->mobile); ?></td>
+                            <td><?php echo e($item->user->name); ?></td>
+                            <td><?php echo e($item->user->mobile1); ?></td>
                             <td><?php echo e($item->statusName); ?></td>
 	                        <td class="actions">
                                 <ul class="list-inline">

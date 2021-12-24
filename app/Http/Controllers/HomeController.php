@@ -67,6 +67,14 @@ class HomeController extends Controller
 
         return view('site.division', compact('division'));
     }
+/**
+     * teacher registration Page
+     */
+    public function teacherRegister()
+    {
+
+        return view('site.teacher_register');
+    }
 
     /**
      * Post division
@@ -185,7 +193,8 @@ class HomeController extends Controller
     public function postJobRequest()
     {
         JobRequest::create(request()->all() + [
-            'status' => 0
+            'status' => 0,
+            'user_id'=>auth()->user()->id
         ]);
 
         alert('تم استلام طلب التوظيف بنجاح', '', 'success');

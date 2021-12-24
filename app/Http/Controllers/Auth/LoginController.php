@@ -45,11 +45,11 @@ class LoginController extends Controller
     protected function authenticated(\Illuminate\Http\Request $request, $user)
     {
         // dd(session('_previous.url', '/'));
-        if ($request->user()->role == 0) { // student
+        if ($request->user()->role <=5) { // student
             return redirect()->intended(route('profile.show'));
         }
 
-        if ($request->user()->role > 0) {
+        if ($request->user()->role > 5) {
             return redirect()->intended('/' . ADMIN);
         }
 

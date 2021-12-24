@@ -123,7 +123,7 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-website" name="" value="تسجيل ">
             </div>
-          
+           <a class="nav-link" href="{{url('/login')}}">  لدي حساب تسجيل دخول </a>
         </div>
 
     </form>

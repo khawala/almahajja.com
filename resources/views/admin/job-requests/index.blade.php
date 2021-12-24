@@ -8,8 +8,8 @@
 
     <section class="filter-area">
         <ul class="list-inline">
-            <li><a class="btn btn-info" href="{{ route(ADMIN . '.job-requests.create') }}">{{ trans('app.add_button') }}</a></li>
-            <li class="pull-left"> <a href="{{ route(ADMIN . '.job-requests.index',['export' => true]) }}" class="btn btn-info"><i class="fa fa-print"></i></a></li>
+            <!--<li><a class="btn btn-info" href="{{ route(ADMIN . '.job-requests.create') }}">{{ trans('app.add_button') }}</a></li>-->
+            <!--<li class="pull-left"> <a href="{{ route(ADMIN . '.job-requests.index',['export' => true]) }}" class="btn btn-info"><i class="fa fa-print"></i></a></li>-->
         </ul>
     </section>
 
@@ -49,8 +49,8 @@
 						<tr>
                             <td><a href="{{ route(ADMIN . '.job-requests.edit', $item->id) }}">{{ $item->id }}</a></td>
 	                        <td><a href="{{ route(ADMIN . '.job-requests.edit', $item->id) }}">{{ $item->job->name }}</a></td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->mobile }}</td>
+                            <td>{{ $item->user->name }}</td>
+                            <td>{{ $item->user->mobile1 }}</td>
                             <td>{{ $item->statusName }}</td>
 	                        <td class="actions">
                                 <ul class="list-inline">

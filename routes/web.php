@@ -10,7 +10,7 @@ Auth::routes();
 |------------------------------------------------------------------------------------
 */
 
-Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'checkstatus', 'Role:5']], function () {
+Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'checkstatus', 'Role:6']], function () {
     Route::get('/', ['uses'=>'ConfigurationController@welcome', 'as'=>'dash']);
 
     Route::resource('configurations', 'ConfigurationController');
@@ -68,17 +68,21 @@ Route::post('department', 'HomeController@postdepartment')->name('department.sto
 Route::post('division', 'HomeController@postDivision')->name('division.store');
 Route::get('/job/list','JobController@list');
 Route::get('/departments/list','DepartmentController@list');
-
+Route::get('/teacher/register','HomeController@teacherRegister');
+Route::post('/teacher/register','HomeController@teacherRegisterPost');
 Route::get('job/{id}', 'HomeController@job')->name('job.show');
 Route::post('job-request', 'HomeController@postJobRequest')->name('job.store');
 Route::group(['middleware'=>['auth', 'checkstatus']], function () {
     Route::get('profile', 'HomeController@profile')->name('profile.show');
-    Route::post('sectionLevel', 'HomeController@sectionLevel')->name('department.sectionLevel');
+
     Route::get('profile/edit', 'HomeController@editProfile')->name('profile.edit');
     Route::post('profile', 'HomeController@postProfile')->name('profile.store');
+//   Route::group(['middleware'=>['Role:0']], function () {  
     Route::get('certifications/{id}/print', 'CertificationController@print')->name('certifications.print');
+    Route::post('sectionLevel', 'HomeController@sectionLevel')->name('department.sectionLevel');
     Route::get('profile/{registration_id}/{section_id}/marks', 'HomeController@marks')->name('profile.marks');
     Route::get('registrations/marks', 'RegistrationController@marks')->name('registration.marks');
+//   });
 });
 
 

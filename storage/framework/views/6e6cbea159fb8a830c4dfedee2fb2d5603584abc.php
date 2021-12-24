@@ -25,7 +25,7 @@
                 </div>
             </div>
         </header>
-
+<?php if(auth()->user()->role==0): ?>
         <div class="container">
             <div class="details">
                 <h2>الدورات والحلقات</h2>
@@ -104,6 +104,56 @@
                 </div>
             </div>
         </div>
+        <?php else: ?>
+         <div class="container">
+            <div class="details">
+                <h2> طلبات التوظيف</h2>
+
+                <div class="box-body table-responsive no-padding">
+            
+	        <table class="table data-tables" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                     
+                        <th>الوظيفة</th>
+                        <th> القسم</th>
+                        <th>الملاحظات</th>
+                        <th>الحالة</th>
+
+                    </tr>
+                </thead>
+             
+                <tfoot>
+                    <tr>
+
+                        <th>الوظيفة</th>
+                        <th>القسم </th>
+                        <th>الملاحظات</th>
+                        <th>الحالة</th>
+                      
+                    </tr>
+                </tfoot>
+             
+                <tbody>
+                 
+					<?php $__currentLoopData = auth()->user()->jobRequest; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<tr>
+						   
+	                        <td><?php echo e($item->job->name); ?></a></td>
+	                        
+                            <td><?php if($item->department): ?><?php echo e($item->department->name); ?> <?php else: ?> '_' <?php endif; ?></td>
+                            <td><?php echo e($item->note); ?></td>
+                            <td><?php echo e($item->statusName); ?></td>
+	                       
+						</tr>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+	      </div>
+	      <!-- /.box-body -->
+            </div>
+        </div>
+        <?php endif; ?>
         
     </section>
 <?php $__env->stopSection(); ?>

@@ -3,33 +3,28 @@
 ?>
 
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-12">
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo e($title); ?></h3>
       </div>
       <div class="box-body">
 
-        <?php echo Form::mySelect('job_id', 'الوظيفة  <span class=red>*</span>', ['' => 'الوظيفة'] + App\Job::pluck('name', 'id')->toArray(), null, ['required']); ?>
 
+        <?php echo Form::mySelect('job_id', 'الوظيفة  <span class=red>*</span>', ['' => 'الوظيفة'] + App\Job::pluck('name', 'id')->toArray(), null, ['required','class' =>'form-control select']); ?>
 
-        <?php echo Form::myInput('text', 'name', 'الاسم الرباعي <span class=red>*</span>', ['required']); ?>
+        
+        <?php echo Form::mySelect('department_id', 'الوظيفة  ', ['' => 'القسم'] + App\Department::where('need_teacher',1)->pluck('name', 'id')->toArray(),null, ['class' =>'form-control select']); ?>
 
+     <?php if(isset($item)): ?>
+ <a class="nav-link " href="<?php echo e(route(ADMIN . '.teachers.edit', $item->user->id)); ?>">  بيانات مقدم الطلب:  <?php echo e($item->user->name); ?>  </a>
+      <?php endif; ?>
+        <!--<?php echo Form::myInput('text', 'name', 'الاسم الرباعي <span class=red>*</span>', ['required']); ?>-->
 
-        <?php echo Form::myInput('text', 'mobile', 'الجوال <span class=red>*</span>', ['required']); ?>
+        <!--<?php echo Form::myInput('text', 'mobile', 'الجوال <span class=red>*</span>', ['required']); ?>-->
 
-
-        <?php echo Form::mySelect('nationality_id', 'الجنسية <span class=red>*</span>', ['' => 'الجنسية'] + App\Nationality::active()->pluck('name', 'id')->toArray(), null, ['required']); ?>
-
-
-      </div>
-    </div>
-
-  </div>
-  <div class="col-sm-4">
-    <div class="box box-info">
-      <div class="box-body">
-          <?php echo Form::myTextArea('cv_description', 'السيرة الذاتية', ['rows' => 13]); ?>
+        <!--<?php echo Form::mySelect('nationality_id', 'الجنسية <span class=red>*</span>', ['' => 'الجنسية'] + App\Nationality::active()->pluck('name', 'id')->toArray(), null, ['required']); ?>-->
+          <?php echo Form::myTextArea('note', 'الملاحظات', ['rows' => 13]); ?>
 
 
           <?php if(isset($item)): ?>

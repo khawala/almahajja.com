@@ -62,7 +62,10 @@
 <?php echo e($item->national_id); ?>
 
 <hr>
+   
           <p>السيرة الذاتية </p>
+          <?php echo e($item->cv_text); ?>
+
           <?php if(isset($item) && $item->cv): ?>
         <div class="text-center">
        <a href="<?php echo e($item->cv); ?>"> السيرة الذاتية </a>

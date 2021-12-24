@@ -55,7 +55,9 @@
             <p>رقم الهوية</p>
 {{$item->national_id}}
 <hr>
+   
           <p>السيرة الذاتية </p>
+          {{$item->cv_text}}
           @if (isset($item) && $item->cv)
         <div class="text-center">
        <a href="{{ $item->cv }}"> السيرة الذاتية </a>

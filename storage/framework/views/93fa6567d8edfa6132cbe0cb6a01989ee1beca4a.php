@@ -97,6 +97,36 @@
                                                 <?php endif; ?>
                                             </div>
                                         </div>
+                                           <!-- Start Col  -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="bank_account"  value="<?php echo e($user->bank_account); ?>" placeholder=" رقم الحساب" required>
+                                                <?php if($errors->has('bank_account')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('bank_account')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- Start Col  -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="address"  value="<?php echo e($user->address); ?>" placeholder=" مكان الإقامة" required>
+                                                <?php if($errors->has('address')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('address')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <!-- Start Col  -->
+                                        <div class="col-12" >
+                                            <div class="form-group">
+                                              
+                                                <textarea type="text" class="form-control" style="direction:rtl !important" name="cv_text" placeholder="السيرة الذاتية " required><?php echo e($user->cv_text); ?> </textarea>
+                                                <?php if($errors->has('cv_text')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('cv_text')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
                                          <div class="col-12">
                                             <div class="form-group">
                                                

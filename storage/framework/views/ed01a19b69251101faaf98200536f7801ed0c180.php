@@ -24,7 +24,7 @@
                                   <div class="col-10">
                                             <div class="form-group">
                                                 <div class="lemail">
-                                <input type="tel" id="telephone" min="9" max="11" class="form-control"  value="<?php echo e(old('mobile1')); ?>" placeholder="الجوال  : 505555555" value="<?php echo e(old('phone')); ?>" autocomplete="off"  titles="الرجاء إدخال رقمك">
+                                <input type="tel" id="telephone" min="9" max="11" class="form-control"  style="direction: ltr!important;"  value="<?php echo e(old('mobile1')); ?>" placeholder="الجوال  : 505555555" value="<?php echo e(old('phone')); ?>" autocomplete="off"  titles="الرجاء إدخال رقمك">
                                 <input type="hidden" id="phonevalue" name="mobile1" value="<?php echo e(old('mobile1')); ?>">
                             </div>
 
@@ -122,7 +122,7 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-website" name="" value="تسجيل ">
             </div>
-          
+           <a class="nav-link" href="<?php echo e(url('/login')); ?>">  لدي حساب تسجيل دخول </a>
         </div>
 
     </form>

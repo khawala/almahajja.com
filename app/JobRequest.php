@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobRequest extends Model
 {
-    protected $fillable = [ 'job_id', 'name', 'mobile', 'nationality_id', 'cv_description', 'status', ];
+    protected $fillable = [ 'job_id', 'name', 'mobile', 'nationality_id', 'cv_description', 'status','department_id','note','user_id' ];
     protected $with = ['job'];
 
     /*
@@ -17,8 +17,8 @@ class JobRequest extends Model
     public static function rules($update = false, $id=null)
     {
         $common = [
-            'name'              => 'required',
-            'mobile'            => 'required',
+            // 'name'              => 'required',
+            // 'mobile'            => 'required',
         ];
     
         return $common;
@@ -38,6 +38,14 @@ class JobRequest extends Model
         return $this->belongsTo(Job::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+        public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
     /*
     |------------------------------------------------------------------------------------
     | Scopes

@@ -27,7 +27,7 @@
                 </div>
             </div>
         </header>
-
+@if(auth()->user()->role==0)
         <div class="container">
             <div class="details">
                 <h2>الدورات والحلقات</h2>
@@ -105,6 +105,56 @@
                 </div>
             </div>
         </div>
+        @else
+         <div class="container">
+            <div class="details">
+                <h2> طلبات التوظيف</h2>
+
+                <div class="box-body table-responsive no-padding">
+            
+	        <table class="table data-tables" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                     
+                        <th>الوظيفة</th>
+                        <th> القسم</th>
+                        <th>الملاحظات</th>
+                        <th>الحالة</th>
+
+                    </tr>
+                </thead>
+             
+                <tfoot>
+                    <tr>
+
+                        <th>الوظيفة</th>
+                        <th>القسم </th>
+                        <th>الملاحظات</th>
+                        <th>الحالة</th>
+                      
+                    </tr>
+                </tfoot>
+             
+                <tbody>
+                 
+					@foreach (auth()->user()->jobRequest as $item)
+						<tr>
+						   
+	                        <td>{{ $item->job->name }}</a></td>
+	                        
+                            <td>@if($item->department){{ $item->department->name }} @else '_' @endif</td>
+                            <td>{{ $item->note }}</td>
+                            <td>{{ $item->statusName }}</td>
+	                       
+						</tr>
+					@endforeach
+                </tbody>
+            </table>
+	      </div>
+	      <!-- /.box-body -->
+            </div>
+        </div>
+        @endif
         
     </section>
 @endsection

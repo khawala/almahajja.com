@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [ 'name', 'username', 'password', 'email', 'national_id', 'nationality_id', 'gender', 'mobile1', 'mobile2', 'phone', 'status', 'photo', 'note', 'role','bank_account','cv','address','telecom_id'];
+    protected $fillable = [ 'name', 'username', 'password', 'email', 'national_id', 'nationality_id', 'gender', 'mobile1', 'mobile2', 'phone', 'status', 'photo', 'note', 'role','bank_account','cv','address','telecom_id','cv_text'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -65,6 +65,10 @@ class User extends Authenticatable
         public function telecom()
     {
         return $this->belongsTo(Telecom::class)->withDefault();
+    }
+            public function jobRequest()
+    {
+        return $this->hasMany(JobRequest::class,'user_id');
     }
     public function registrations()
     {
