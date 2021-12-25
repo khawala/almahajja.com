@@ -392,13 +392,13 @@ div.dataTables_wrapper div.dataTables_filter input {
 .skin-purple .sidebar-menu>li.active>a,
 .skin-purple .main-header .logo:hover,
 .skin-purple .main-header .navbar .sidebar-toggle:hover {
-    background: #859963;
+    background: #000000;
     color: #fff;
 }
 
 .skin-purple .sidebar-menu>li:hover>a,
 .skin-purple .sidebar-menu>li.active>a {
-    border-left-color: #859963;
+    border-left-color: #000000;
 }
 
 .skin-purple .treeview-menu>li>a {
@@ -418,7 +418,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 .btn-info {
-    background-color: #859963;
+    background-color: #000000;
 }
 
 .btn-info:hover,
@@ -455,12 +455,12 @@ div.phpdebugbar {
 }
 
 .modal-header {
-    background-color: #859963;
+    background-color: #000000;
     color: #fff;
 }
 
 .dropzone.dz-clickable {
-    background-color: #859963;
+    background-color: #000000;
     border: 1px solid #ccc;
 }
 
@@ -631,7 +631,7 @@ input[type=number]::-moz-outer-spin-button {
 .skin-purple .treeview-menu>li.active>a,
 .skin-purple .treeview-menu>li>a:hover {
     background-color: transparent;
-    color: #859963;
+    color: #000000;
 }
 
 .skin-purple .sidebar a.logo {
@@ -646,7 +646,7 @@ input[type=number]::-moz-outer-spin-button {
 }
 
 .btn-warning {
-    background-color: #859963;
+    background-color: #000000;
 }
 
 @media print {
