@@ -58,7 +58,7 @@
                         'method' => 'PUT',
                         ]) 
                     !!}
-                        {!! Form::mySelect('level_id', '', ['' => ''] + $item->section->levels->pluck('name', 'id')->toArray(), null, ['class' => 'form-control onchange', 'width' =>'FIT-CONTENT']) !!}
+                        {!! Form::mySelect('level_id', '', ['' => ''] + $item->section->levels->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select onchange', 'width' =>'FIT-CONTENT']) !!}
                     {!! Form::close() !!}
                 </td>
                 <td width="130">
@@ -77,7 +77,7 @@
                         'method' => 'PUT',
                         ]) 
                     !!}
-                        {!! Form::mySelect('status', '', config('variables.registrations_status'), null, ['class' => 'form-control onchange', 'width' => 200]) !!}
+                        {!! Form::mySelect('status', '', config('variables.registrations_status'), null, ['class' => 'form-control select onchange', 'width' => 200]) !!}
                     {!! Form::close() !!}
                 </td>
                   

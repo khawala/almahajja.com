@@ -203,11 +203,12 @@ class RegistrationController extends Controller
     {
         $registrationsBySection     = Registration::stats('section_id')->with('section')->get();
         $registrationsByClassroom   = Registration::stats('classroom_id')->with('classroom')->get();
+        $registrationsByDepartment   = Registration::stats('department_id')->with('department')->get();
         $registrationsByStatus      = Registration::stats('status')->get();
         $registrationsByNationality = Registration::statsByNAtionality()->get();
 
         // return $registrationsByNationality;
         
-        return view('admin.registrations.stats', compact('registrationsBySection', 'registrationsByClassroom', 'registrationsByStatus', 'registrationsByNationality'));
+        return view('admin.registrations.stats', compact('registrationsBySection', 'registrationsByClassroom', 'registrationsByStatus', 'registrationsByNationality','registrationsByDepartment'));
     }
 }

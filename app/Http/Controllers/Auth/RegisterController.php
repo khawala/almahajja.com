@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Mail\Email;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -72,8 +73,19 @@ if(isset($data['bank_account']))
 $data['role']=5;
 }
                 $user = User::create($data);
-     
-         
+                $subject='بيانات الدخول الخاصة بك في '.env('APP_NAME');
+                $content='رابط الدخول:'.url('login').'<br>';
+     $content.='اسم المستخدم:'.$data['username'].'<br>'.'كلمة المرور: '.$data['password'];
+      $this->sendEmail($user,$content,$subject);
         return $user;
+    }
+    
+  public function sendEmail(User $user, $content ,$subject)
+    {
+try {
+            \Mail::to($user->email)->send(new Email($content,$subject));
+        } catch (\Exception $e) {
+            \Log::info($e->getMessage() . ' for order error');
+        }
     }
 }

@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'YOUR_GMAIL_ACCOUNT@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'almahajja'),
+        'address' => env('MAIL_FROM_ADDRESS', 'logicgatetrainingcenter@gmail.com'),
+        'name' => 'المحجبة البيضاء',
     ],
 
     /*
@@ -83,10 +83,23 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-
+'encryption' =>'tls',
     'username' => env('MAIL_USERNAME'),
 
     'password' => env('MAIL_PASSWORD'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sendmail System Path
+    |--------------------------------------------------------------------------
+    |
+    | When using the "sendmail" driver to send e-mails, we will need to know
+    | the path to where Sendmail lives on this server. A default path has
+    | been provided here, which will work well on most of your systems.
+    |
+    */
+
+    'sendmail' => '/usr/sbin/sendmail -bs',
 
     /*
     |--------------------------------------------------------------------------

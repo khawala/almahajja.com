@@ -131,11 +131,13 @@ class TeacherController extends Controller
                 '#' => $item->id,
                 'الاسم الرباعي' => $item->name,
                 'رقم الهوية' => $item->national_id,
+                      'الإيميل ' => $item->email,
                 'الجنسية' => $item->nationality->name,
                 'الجنس' => $item->genderName,
                 'الجوال' => $item->mobile1,
                 'الصلاحيات' => $item->roleName,
-                'السيرة الذاتية' => $item->cv,
+                // 'السيرة الذاتية' => $item->cv,
+                'السيرة الذاتية' => $item->cv_text,
                 'العنوان' => $item->address,
                 'الشريحة' => $item->telecom->name,
                  'رقم الحساب البنكي' => $item->bank_account,
@@ -144,17 +146,23 @@ class TeacherController extends Controller
         }
  }
  else{
-        $items = User::notStudent()->with('nationality')->get();
+        $items = User::where('role',5)->with('nationality')->get();
 
         foreach ($items as $item) {
             $data[] = [
-                '#' => $item->id,
+                 '#' => $item->id,
                 'الاسم الرباعي' => $item->name,
                 'رقم الهوية' => $item->national_id,
+                      'الإيميل ' => $item->email,
                 'الجنسية' => $item->nationality->name,
                 'الجنس' => $item->genderName,
                 'الجوال' => $item->mobile1,
                 'الصلاحيات' => $item->roleName,
+                // 'السيرة الذاتية' => $item->cv,
+                'السيرة الذاتية' => $item->cv_text,
+                'العنوان' => $item->address,
+                'الشريحة' => $item->telecom->name,
+                 'رقم الحساب البنكي' => $item->bank_account,
                 'الحالة' => $item->statusName,
             ];
         }

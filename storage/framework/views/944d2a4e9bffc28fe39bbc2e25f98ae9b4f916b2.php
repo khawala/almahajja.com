@@ -24,7 +24,7 @@
             <?php echo Form::mySelect('period_id', '', [''=>'وقت التسميع'] + App\Period::pluck('name', 'id')->toArray(), request('period_id'), ['class' => 'form-control select']); ?>
 
             
-            <?php echo Form::mySelect('status', '', ['' => "إختر الحالة"] + config('variables.registrations_status'), request('status')); ?>
+            <?php echo Form::mySelect('status', '', ['' => "إختر الحالة"] + config('variables.registrations_status'), request('status'), ['class' => 'form-control select']); ?>
 
             
         </form>

@@ -22,4 +22,9 @@
             @include('admin.registrations.registrationsByNationality')
         </div>
     </div>
+        <div class="row">
+
+            @include('admin.registrations.registrationsByDepartment')
+       
+    </div>
 @endsection

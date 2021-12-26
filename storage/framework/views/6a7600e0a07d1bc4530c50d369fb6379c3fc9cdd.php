@@ -20,5 +20,10 @@
             <?php echo $__env->make('admin.registrations.registrationsByNationality', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
+        <div class="row">
+
+            <?php echo $__env->make('admin.registrations.registrationsByDepartment', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+       
+    </div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
