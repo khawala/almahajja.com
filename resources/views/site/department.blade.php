@@ -39,6 +39,7 @@
                     <li class="breadcrumb-item active" aria-current="page">الأقسام</li>
                 </ol>
             </nav>
+
             <!-- End Title  -->
             <!-- Start Tabs Content  -->
             <div class="tabs-content">
@@ -83,7 +84,7 @@
                         @auth
                       
                         <div class="box-inputs">
-                            <form method="post" action="{{route('department.store')}}">
+                            <form method="post" action="{{route('department.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                
@@ -160,7 +161,78 @@
                                     <!-- End Col  -->
 
                                     <!-- End Col  -->
+@if( $department->price !=  0)
+                            <hr>
+                            <hr class="space">
+                           
 
+                            <h4 class="marker">
+                              وسيلة الدفع :
+                            </h4>
+                            <p>
+                              اختر طريقة الدفع  التي تناسبك
+                            </p>
+
+                            <div>
+                               
+                                <div class="row border">
+                                    
+                                    <div class="col-lg-3">
+                                      <div class="form-checkbox" >
+                                           <label >
+                                          <input type="radio"  name="payment_type" value="2"  checked>
+                                
+                                            تحويل بنكي
+                                          </label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-9 ">
+
+                                      إن كنت قد قمت بالدفع عن طريق التحويل للحساب الخاص بالمركز ففضلاً قم برفع صورة من التحويل الخاص بمبلغ القسم
+
+                                        <br>
+                                        انقر هنا لتحديد صورة من التحويل
+                                        <input name="receipt_image" class="btn-text btn-xs" type="file" value="" accept="image/*"  >
+                                        <div class="row">
+
+                                          <div class="col-md-7 text-left">
+                                              <?php $setting=App\Setting::find(4);?>
+                                            <p>
+                                       <hr>
+                                      البيانات البنكية للمعهد
+                                      :
+                                          {{$setting->content}}
+                                            </p>
+                                          </div>
+                                        
+                                        </div>
+
+                                  
+                                      
+                                    </div>
+                                  </div>
+                                  <hr class="space space-25">
+
+                                  <div class="row border">
+                                    <div class="col-lg-3">
+                                      <div class="form-checkbox" >
+                                           <label >
+                                          <input type="radio"  name="payment_type" value="1"  checked  >
+                                         
+                                             الدفع الإلكتروني
+                                          </label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                      سيتم تحويلك لصفحة الدفع إلكتروني كوسيلة آمنة  ، هذه العملية تدعم كلاً من
+
+                                      <img src="{{asset('images/payment.png')}}" alt="payment">
+                                    </div>
+                                  </div>
+                                  <hr class="space space-25">
+
+                            </div>
+@endif
                                 <!-- Start Col  -->
                                     <div class="col-lg-12">
                                         <div class="form-group">

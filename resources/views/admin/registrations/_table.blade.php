@@ -10,9 +10,12 @@
             <th> الشريحة</th>
             <th>الوقت </th>
             <th>تاريخ التسجيل</th>
+                     <th>طريقة الدفع</th>
+           
             <th>المدفوع</th>
             <th>المستوى</th>
             <th>الحلقة</th>
+         
             <th>الحالة</th>
             <th class="actions">اجراءات</th>
         </tr>
@@ -27,10 +30,12 @@
                 <th> الشريحة</th>
             <th>الوقت </th>
             <th>تاريخ التسجيل</th>
+                     <th>طريقة الدفع</th>
+           
             <th>المدفوع</th>
             <th>المستوى</th>
             <th>الحلقة</th>
-            <th>الحالة</th>
+        <th>الحالة</th>
             <th class="actions">اجراءات</th>
         </tr>
     </tfoot>
@@ -45,6 +50,7 @@
                 <td>{{ $item->telecom->name }}</td>
                 <td>{{ $item->period->name}}</td>
                 <td>{{ $item->created_at }}</td>
+                     <td>{{ $item->PaymentTypeName }}</td>
                 <td>{{ $item->paid }}</td>
                 <td style="width:250 px;">
                     {!! Form::model($item, [
@@ -74,6 +80,7 @@
                         {!! Form::mySelect('status', '', config('variables.registrations_status'), null, ['class' => 'form-control onchange', 'width' => 200]) !!}
                     {!! Form::close() !!}
                 </td>
+                  
                 <td class="actions">
                     <ul class="list-inline">
                         <li><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>

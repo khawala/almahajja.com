@@ -48,6 +48,7 @@ class HomeController extends Controller
         return back();
     }
 
+
     /**
      * Advertisements Page
      */
@@ -160,23 +161,165 @@ class HomeController extends Controller
         }
 
         if ($user->registrations()
-                ->where([['section_id', request('section_id')],['level_id', request('level_id')]])
+                ->where([['section_id', request('section_id')],['level_id', request('level_id')],['department_id', request('department_id')]])
                 ->whereYear('created_at', date('Y'))
                 ->exists()) {
                     
             alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', '', 'error');
             return back();
         }
-        $user->registrations()->create(request()->all());
-
-        auth()->login($user);
-
-        alert('تم ارسال طلب التسجيل والدخول التلقائي للحساب.', '', 'success');
-        // alert('نعتذر عن قبول التسجيل.', '', 'error');
+          if($request->payment_type==2){
+              if (! ($request->hasFile('receipt_image'))) {
+                  $this->validate($request, [
+            'receipt_image' => 'required',
+        ], ['receipt_image.required' => 'الرجاء ارفاق صورة إيصال التحويل'] );
+ 
+ }  
+            
+          }
+     
+   $registration= $user->registrations()->create(request()->all());
+    if($registration->department->price==0){
+        $registration->status=1;
+        $registration->save();
+        alert('تم ارسال طلب التسجيل   بنجاح.', '', 'success');
 
         return redirect('/profile');
     }
 
+if($request->payment_type==1&&($registration->department->price!=0)){
+
+
+        $tapSecretAPIKey = "sk_test_XKokBfNWv6FIYuTMg5sLPjhJ";
+      
+        $key = "Bearer $tapSecretAPIKey";
+      $amount=$registration->department->price;
+   $curl = curl_init();
+        $url = \Request::fullUrl();
+        $url2 = route('tap.check');
+        $currency ="SAR";
+$cid=$registration->id;
+$phone=$user->mobile1;
+$email=$user->email;
+$name=$user->name;
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.tap.company/v2/charges",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "{\"amount\":$amount,\"currency\":\"$currency\",\"threeDSecure\":true,\"save_card\":false,\"receipt\":{\"email\":false,\"sms\":true},\"reference\":{\"transaction\":\"$cid\",\"order\":\"$cid\"},\"customer\":{\"first_name\":\"$name\",\"last_name\":\"$name\",\"email\":\"$email\",\"phone\":{\"number\":\"$phone\"}},\"source\":{\"id\":\"src_all\"},\"post\":{\"url\":\"$url\"},\"redirect\":{\"url\":\"$url2\"}}",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: $key",
+                "content-type: application/json"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        $data = json_decode($response);
+
+        $response = json_decode($response, true);
+
+        curl_close($curl);
+
+        if (isset($response['errors'])) {
+            return back()->with('errors', $response['errors'][0]);
+        }
+
+        if ($err) {
+
+            return back()->with('errors', 'حدث خطأ ما');
+        } else {
+
+            $redirectUrl = $data->transaction->url;
+            return redirect($redirectUrl);
+          }
+}
+    
+
+        return redirect('/profile');
+    }
+/**
+     * Success payment
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function check(\Illuminate\Http\Request $request)
+    {
+        
+         
+  
+           $tapSecretAPIKey = "sk_test_XKokBfNWv6FIYuTMg5sLPjhJ";
+      
+        $key = "Bearer $tapSecretAPIKey";
+        
+        $tap_id = $request->tap_id;
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.tap.company/v2/charges/$tap_id",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "{}",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: $key"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        $data = json_decode($response);
+        $response = json_decode($response, true);
+     
+$registration=Registration::find($response['reference']['order']);
+if(!$registration)
+{
+    return redirect('/profile')->with(
+        'errors',
+     ' حدث خطأ ما بعملية الدفع '
+      );   
+}
+      
+        curl_close($curl);
+       $tap_id = $request->tap_id;
+        if (isset($response['errors'])) {
+             return redirect('/course_apply/'.$cid)->with(
+        'errors', $response['errors'][0]);
+        }
+        if ($err) {
+
+           return redirect('/profile')->with(
+        'errors',
+     ' حدث خطأ ما بعملية الدفع '
+      );
+        } else {
+
+            if ($data->status == 'CAPTURED') {
+       $registration->status=1;
+         $registration->paid=$response['amount'];
+          $registration->reference_no=$tap_id;
+          $registration->payment_data=json_encode($data);
+           $registration->save();
+    
+    return redirect('/profile')->with(
+        'success',
+     '    تم التسجيل بنجاح  '
+      );   
+            }
+        }
+        }
+    
+    public function success()
+    {
+    }
     /**
      * job Page
      */

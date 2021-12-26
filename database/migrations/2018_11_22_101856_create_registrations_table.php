@@ -29,6 +29,10 @@ class CreateRegistrationsTable extends Migration
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
             $table->text('note')->nullable();
+             $table->integer('payment_type')->default(0)->comment('1-online, 2 - receipt, 3 - Offline');
+             $table->string('reference_no')->nullable();
+            $table->string('receipt_image')->nullable();
+              $table->json('payment_data')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

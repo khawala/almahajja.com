@@ -23,9 +23,31 @@
           <?php echo Form::mySelect('period_id', 'وقت التسميع', ['' => ''] + App\Period::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
   
+          <?php echo Form::mySelect('payment_type', 'طريقة الدفع',  config('variables.payment_type2'), null, ['class' => 'form-control select']); ?>
+
+        
           <?php echo Form::mySelect('activity_id', 'الانشطة', ['' => ''] + App\Activity::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
-          
+         <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-camera"></i> صورة الإيصال </h3>
+                    </div>
+
+                    <?php echo Form::myFile('receipt_image', 'الصورة'); ?>
+
+
+                    <p><small>جميع الصور مع التمديد
+                            <span class="btn btn-default btn-xs">JPG</span>
+                            <span class="btn btn-default btn-xs">JPEG</span>
+                            <span class="btn btn-default btn-xs">PNG</span></small></p>
+                </div>
+
+                <?php if(isset($item) && $item->receipt_image): ?>
+                    <div class="text-center">
+                        <img src="<?php echo e($item->receipt_image); ?>" alt="">
+                        <hr>
+                    </div>
+                <?php endif; ?> 
         </div>
       </div>
   

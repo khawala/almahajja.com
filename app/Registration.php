@@ -7,7 +7,7 @@ use DB;
 
 class Registration extends Model
 {
-    protected $fillable = ['user_id', 'section_id', 'batch', 'telecom_id', 'period_id', 'activity_id', 'classroom_id', 'paid', 'level', 'status', 'created_by', 'updated_by', 'note','department_id','level_id'];
+    protected $fillable = ['user_id', 'section_id', 'batch', 'telecom_id', 'period_id', 'activity_id', 'classroom_id', 'paid', 'level', 'status', 'created_by', 'updated_by', 'note','department_id','level_id','receipt_image','payment_data','reference_no','payment_type'];
 
     /*
     |------------------------------------------------------------------------------------
@@ -102,6 +102,16 @@ class Registration extends Model
         return $q->selectRaw('`' . $data . '` , count(*) as count')
             ->groupBy($data)
             ->orderBy($data);
+    }
+        public function getreceiptImageAttribute($value)
+    {
+        if ($value) {
+            return url(config('variables.receipt_image.public').$value);
+        }
+    }
+    public function setreceiptImageAttribute($photo)
+    {
+        $this->attributes['receipt_image'] = move_file($photo, 'receipt_image');
     }
     public function scopeStudentsForMark($q, $month = 1, $semester = 1, $level = 1)
     {
@@ -198,6 +208,10 @@ $q->whereHas('department', function ($q) {
     public function getStatusNameAttribute()
     {
         return config('variables.registrations_status')[$this->status];
+    }
+   public function getPaymentTypeNameAttribute()
+    {
+        return config('variables.payment_type2')[$this->payment_type];
     }
 
     public function getLevelNameAttribute()

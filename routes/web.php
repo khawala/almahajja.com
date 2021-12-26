@@ -72,9 +72,12 @@ Route::get('/teacher/register','HomeController@teacherRegister');
 Route::post('/teacher/register','HomeController@teacherRegisterPost');
 Route::get('job/{id}', 'HomeController@job')->name('job.show');
 Route::post('job-request', 'HomeController@postJobRequest')->name('job.store');
+
 Route::group(['middleware'=>['auth', 'checkstatus']], function () {
     Route::get('profile', 'HomeController@profile')->name('profile.show');
-
+Route::get('/check',  "HomeController@check")->name('tap.check');
+Route::get('/success', "HomeController@success")->name('tap.success');
+Route::get('/cancel',  "HomeController@cancel")->name('tap.cancel');
     Route::get('profile/edit', 'HomeController@editProfile')->name('profile.edit');
     Route::post('profile', 'HomeController@postProfile')->name('profile.store');
 //   Route::group(['middleware'=>['Role:0']], function () {  

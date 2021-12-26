@@ -18,6 +18,12 @@ return [
         '2' => 'متاح للكل',
     ],
 
+    'payment_type2' => [
+        '1' => 'إلكتروني',
+        '2' => 'رفع صورة الإيصال',
+        '0' => ' غير ذلك',
+    ],
+
     'sections_level' => [
         '1'   => 'المستوى الأول',
         '2'   => 'المستوى الثاني',
@@ -133,6 +139,15 @@ return [
     'classrooms_pdf_file' => [
         'public' => '/files/classrooms_pdf_file/',
         'folder' => public_path() . '/files/classrooms_pdf_file/',
+
+        'image' => [
+            'width'  => null,
+            'height' => null,
+        ]
+    ],
+'receipt_image' => [
+        'public' => '/files/receipt_image/',
+        'folder' => public_path() . '/files/receipt_image/',
 
         'image' => [
             'width'  => null,

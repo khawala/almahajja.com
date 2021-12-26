@@ -25,6 +25,9 @@
                 </div>
             </div>
         </header>
+      
+     
+  
 <?php if(auth()->user()->role==0): ?>
         <div class="container">
             <div class="details">

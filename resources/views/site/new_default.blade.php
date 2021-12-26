@@ -195,6 +195,10 @@
         </nav>
     </div>
 </section>
+   <section class="content">
+
+ @include('admin.commun.flash-message')
+ </section>
 <!-- End Navbar  -->
 @yield('content')
 <!-- Start About Course Section  -->
@@ -226,6 +230,7 @@
     </div>
 </section>
 <!-- End About Course Section  -->
+
 @yield('content2')
 <!-- Start contact Section  -->
 <section class="contact-sec" id="contact">

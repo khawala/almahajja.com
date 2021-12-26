@@ -195,6 +195,10 @@
         </nav>
     </div>
 </section>
+   <section class="content">
+
+ <?php echo $__env->make('admin.commun.flash-message', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+ </section>
 <!-- End Navbar  -->
 <?php echo $__env->yieldContent('content'); ?>
 <!-- Start About Course Section  -->
@@ -228,6 +232,7 @@
     </div>
 </section>
 <!-- End About Course Section  -->
+
 <?php echo $__env->yieldContent('content2'); ?>
 <!-- Start contact Section  -->
 <section class="contact-sec" id="contact">
