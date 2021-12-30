@@ -45,6 +45,8 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
         Route::post('sectionclassrooms', 'ClassroomController@sectionClassroom')->name('classrooms.sectionClassroom');
           Route::post('sectionLevel', 'ClassroomController@sectionLevel')->name('classrooms.sectionLevel');
   Route::resource('departments', 'DepartmentController');
+   Route::get('department/complete_mark/{id}', 'DepartmentController@completeMark')->name('departments.complete_mark');
+     Route::get('department/report/{id}', 'DepartmentController@report')->name('departments.report');
     Route::get('certifications', 'CertificationController@index')->name('certifications.index');
 
     Route::get('marks', 'MarkController@index')->name('marks.index');

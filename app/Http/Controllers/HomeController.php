@@ -8,6 +8,7 @@ use App\Job;
 use App\Configuration;
 use App\Mail\Contact;
 use Mail;
+use App\General;
 use App\JobRequest;
 use Alert;
 use Illuminate\Http\Request;
@@ -179,11 +180,21 @@ class HomeController extends Controller
           }
      
    $registration= $user->registrations()->create(request()->all());
-    if($registration->department->price==0){
+     $subject='    التسجيل في  '.$registration->department->name;
+                $content='تم إستقبال طلبك للتسجيل في   '.$registration->department->name.'<br>';
+                                $content1='تم إستقبال طلب تسجيل جديد  في   '.$registration->department->name.'<br>';
+$supervisor=$registration->department->supervisor;
+ if($registration->department->price==0){
         $registration->status=1;
         $registration->save();
+             $content.='وسيتم مراجعة طلبك في اسرع وقت ';
+           $content1.='ويجب عليك مراجعة الطلب ';
+   
         alert('تم ارسال طلب التسجيل   بنجاح.', '', 'success');
-
+  General::sendEmail($user,$content,$subject);
+    General::sendEmail($supervisor,$content1,$subject);
+     
+     
         return redirect('/profile');
     }
 
@@ -239,8 +250,12 @@ $name=$user->name;
             return redirect($redirectUrl);
           }
 }
-    
-
+             $content.='وسيتم مراجعة طلبك في اسرع وقت ';
+           $content1.='ويجب عليك مراجعة الطلب ';
+   
+      General::sendEmail($user,$content,$subject);
+    General::sendEmail($supervisor,$content1,$subject);
+     
         return redirect('/profile');
     }
 /**
@@ -308,7 +323,16 @@ if(!$registration)
           $registration->reference_no=$tap_id;
           $registration->payment_data=json_encode($data);
            $registration->save();
-    
+                $subject='    التسجيل في  '.$registration->department->name;
+                $content='تم إستقبال طلبك للتسجيل في   '.$registration->department->name.'<br>';
+                                $content1='تم إستقبال طلب تسجيل جديد  في   '.$registration->department->name.'<br>';
+$supervisor=$registration->department->supervisor;
+                 $content.='وتم قبولة ';
+           $content1.='وتم قبولة ';
+         $user = auth()->user();
+      General::sendEmail($user,$content,$subject);
+    General::sendEmail($supervisor,$content1,$subject);
+     
     return redirect('/profile')->with(
         'success',
      '    تم التسجيل بنجاح  '

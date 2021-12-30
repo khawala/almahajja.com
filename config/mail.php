@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'sendmail'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'localhost'),
+    'host' => env('MAIL_HOST', 'p3plzcpnl489434.prod.phx3.secureserver.net'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'logicgatetrainingcenter@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@almahajja.com'),
         'name' => 'المحجبة البيضاء',
     ],
 
@@ -83,7 +83,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-'encryption' =>'tls',
+'encryption' =>env('MAIL_ENCRYPTION'),
     'username' => env('MAIL_USERNAME'),
 
     'password' => env('MAIL_PASSWORD'),

@@ -24,7 +24,7 @@
     
     <?php $__env->slot('footer'); ?>
         <?php $__env->startComponent('mail::footer'); ?>
-            &copy; <?php echo e(date('Y')); ?> <?php echo e(config('app.name')); ?>. All rights reserved.
+            &copy; <?php echo e(date('Y')); ?> <?php echo e(config('app.name')); ?>. جميع الحقوق محفوظه لدى
         <?php echo $__env->renderComponent(); ?>
     <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>

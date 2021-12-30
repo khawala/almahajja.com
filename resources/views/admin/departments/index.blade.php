@@ -12,6 +12,7 @@
             <li><a class="btn btn-info" href="{{ route(ADMIN . '.departments.create') }}">{{ trans('app.add_button') }}</a></li>
             @endif
             <li class="pull-left"> <a href="{{ route(ADMIN . '.departments.index',['export' => true]) }}" class="btn btn-info"><i class="fa fa-print"></i></a></li>
+            
         </ul>
     </section>
 
@@ -77,6 +78,10 @@
                                         {!! Form::close() !!}
                                     </li>
                                 </ul>
+                                 <a class="btn btn-success" href="{{ route(ADMIN . '.departments.report',$item->id) }}">تقرير شامل </a>
+                                        @if(auth()->user()->role == 10)
+            <a class="btn btn-info" href="{{ route(ADMIN . '.departments.complete_mark',$item->id) }}">إرسال ايميل استكمال رصد الدرجات للقسم</a>
+            @endif
                             </td>
 						</tr>
 					@endforeach

@@ -10,6 +10,7 @@
             <li><a class="btn btn-info" href="<?php echo e(route(ADMIN . '.departments.create')); ?>"><?php echo e(trans('app.add_button')); ?></a></li>
             <?php endif; ?>
             <li class="pull-left"> <a href="<?php echo e(route(ADMIN . '.departments.index',['export' => true])); ?>" class="btn btn-info"><i class="fa fa-print"></i></a></li>
+            
         </ul>
     </section>
 
@@ -77,6 +78,10 @@
 
                                     </li>
                                 </ul>
+                                 <a class="btn btn-success" href="<?php echo e(route(ADMIN . '.departments.report',$item->id)); ?>">تقرير شامل </a>
+                                        <?php if(auth()->user()->role == 10): ?>
+            <a class="btn btn-info" href="<?php echo e(route(ADMIN . '.departments.complete_mark',$item->id)); ?>">إرسال ايميل استكمال رصد الدرجات للقسم</a>
+            <?php endif; ?>
                             </td>
 						</tr>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

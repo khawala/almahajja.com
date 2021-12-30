@@ -40,6 +40,14 @@ class Department extends Model
     {
         return $this->belongsTo(User::class, 'supervisor_id')->withDefault();
     }
+        public function classrooms()
+    {
+        return $this->hasMany(Classroom::class);
+    }
+            public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
     // public function section()
     // {
     //     return $this->belongsTo(Section::class);
