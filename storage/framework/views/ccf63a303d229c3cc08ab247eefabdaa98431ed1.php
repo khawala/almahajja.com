@@ -1,18 +1,20 @@
-@extends('admin.print')
 
-@section('page-header')
-   ملخص {{$department->name}}
-@stop
 
-@section('title')
-    {{ $department->id }}_{{ $department->name }}
-@endsection
+<?php $__env->startSection('page-header'); ?>
+   ملخص <?php echo e($department->name); ?>
 
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?>
+    <?php echo e($department->id); ?>_<?php echo e($department->name); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
 
         <div class="wrapper">
-<h1>{{ $department->id }}_{{ $department->name }}</h1>
-            <!--<a href="{{ request()->fullUrl() }}&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>-->
+<h1><?php echo e($department->id); ?>_<?php echo e($department->name); ?></h1>
+            <!--<a href="<?php echo e(request()->fullUrl()); ?>&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>-->
             <hr>
         
             <div class="row">
@@ -33,53 +35,53 @@
                       
                                 <tr>
                                       <td>المسارات</td>
-                                    <td>{{ count($department->sections) }}</td>
-                                    <td>{!!$sectionName !!}</td>
+                                    <td><?php echo e(count($department->sections)); ?></td>
+                                    <td><?php echo $sectionName; ?></td>
                                 </tr>
                                  <tr>
                                       <td>الحلقات</td>
-                                    <td>{{ count($department->classrooms) }}</td>
-                                    <td>{!!$classroomName !!}</td>
+                                    <td><?php echo e(count($department->classrooms)); ?></td>
+                                    <td><?php echo $classroomName; ?></td>
                                 </tr>
                                  <tr>
                                       <td>المستويات</td>
-                                    <td>{{ $levelCount }}</td>
-                                    <td>{!!$levelName !!}</td>
+                                    <td><?php echo e($levelCount); ?></td>
+                                    <td><?php echo $levelName; ?></td>
                                 </tr>
                                  <tr>
                                       <td>المعلمات</td>
-                                    <td>{{ $teacherCount }}</td>
-                                    <td>{!!$teacherName !!}</td>
+                                    <td><?php echo e($teacherCount); ?></td>
+                                    <td><?php echo $teacherName; ?></td>
                                 </tr>
                                  <tr>
                                       <td>الطلاب</td>
-                                    <td colspan="2">{{ count($department->registrations) }}</td>
+                                    <td colspan="2"><?php echo e(count($department->registrations)); ?></td>
                                   
                                 </tr>
                                           <tr>
                               
                                       <td colspan="3">الشريحة</td>
                                 </tr>
-                                @foreach($telecom_array as $key => $item)
-                            @foreach($item as $key => $item2)
+                                <?php $__currentLoopData = $telecom_array; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                      <td>{{ $key }}</td>
-                                      <td colspan="2">{{$item2}}</td>
+                                      <td><?php echo e($key); ?></td>
+                                      <td colspan="2"><?php echo e($item2); ?></td>
                                 </tr>
-                                @endforeach
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                       <tr>
                               
                                       <td colspan="3">الفترة</td>
                                 </tr>
-                                  @foreach($period_array as $key => $item)
-                            @foreach($item as $key => $item2)
+                                  <?php $__currentLoopData = $period_array; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                      <td>{{ $key }}</td>
-                                      <td colspan="2">{{$item2}}</td>
+                                      <td><?php echo e($key); ?></td>
+                                      <td colspan="2"><?php echo e($item2); ?></td>
                                 </tr>
-                                @endforeach
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                   </div>
@@ -90,9 +92,9 @@
 
         <div class="pagebreak"></div>
         
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('css')
+<?php $__env->startSection('css'); ?>
     <style>
                 
             body{margin: 0;}
@@ -142,4 +144,5 @@
 }
     </style>
     
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.print', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

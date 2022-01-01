@@ -154,7 +154,7 @@ if($department->supervisor_id==auth()->user()->id)
             $sectionName='';
             foreach( $item->sections as $section)
             {
-                $sectionName.='<br>'.$section->name;
+                $sectionName.=$section->name;
             }
             $data[] = [
                 "#"          => $item->id,
@@ -185,8 +185,8 @@ if($department->supervisor_id!=auth()->user()->id)
 { return redirect()->route(ADMIN . '.departments.index')->withSuccess('غير مصرح   ');}}
    foreach( $department->classrooms as $classroom)
             {
-                // $classroomName.='<br>'.$classroom->name;
-                // $teacherName.='<br>'.$classroom->teacher->name;
+                $classroomName.=$classroom->name.'<br>';
+                $teacherName.=$classroom->teacher->name.'<br>';
                 if($classroom->teacher){
                     $teacherCount+=1;
                 }
@@ -194,11 +194,11 @@ if($department->supervisor_id!=auth()->user()->id)
 
        foreach( $department->sections as $section)
             {
-                // $sectionName.='<br>'.$section->name;
+                $sectionName.=$section->name.'<br>';
                 $levelCount+=count($section->levels);
                 foreach( $section->levels as $level)
             {
-                // $levelName.='<br>'.$level->name;  
+                $levelName.=$level->name.'<br>';  
             }
             }
             
@@ -233,6 +233,8 @@ if($department->supervisor_id!=auth()->user()->id)
            
           $period_array[]=[$period->name =>$registration];
       }
+    //   dd($telecom_array);
+        return view('admin.departments.report', compact('data','telecom_array','period_array','department','levelName','levelCount','sectionName','classroomName','teacherName','teacherCount'));
     //   $data = array_merge($data, $data2);
 //  dd($data2,$data);
         // Excel::create($department->name, function ($excel) use ($data,$data2) {
