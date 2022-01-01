@@ -11,6 +11,7 @@
       </div>
       <div class="box-body">
         <div class="row">
+     
           <div class="col-sm-6">
             <?php echo Form::myInput('text', 'name', 'الاسم الرباعي <span class=red>*</span>', ['required']); ?>
 
@@ -29,13 +30,18 @@
              <?php echo Form::myInput('text', 'address', ' مكان الإقامة '); ?>
 
           </div>
+          
           <div class="col-sm-6">
                <?php echo Form::myInput('text', 'mobile1', 'جوال التواصل <span class=red>*</span>', ['required']); ?>
 
               <?php echo Form::myInput('text', 'bank_account', 'رقم الحساب البنكي'); ?>
 
+            <?php echo Form::myInput('textarea', 'cv_text', 'السيرة الذاتية  '); ?>
 
+     
             <?php echo Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
+
+                  <?php echo Form::mySelect('department_id', ' القسم', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
 
       
               <?php echo Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']); ?>

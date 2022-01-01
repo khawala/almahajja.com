@@ -66,6 +66,9 @@
       @endif
 <hr>
 
+@if(auth()->user()->isAdmin)
+{!! Form::mySelect('department_id', ' القسم', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']) !!}
+      @endif
               {!! Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']) !!}
 
           </div>

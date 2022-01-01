@@ -21,15 +21,17 @@ class TeacherController extends Controller
     {
      
         $items = User::where('role',5)->get();
+            $departments=Department::where('supervisor_id',auth()->user()->id)->pluck('id')->toArray();
         if (auth()->user()->isSupervisor) { // is supervisor
  $items = User::where('role',5)->whereHas('classrooms', function ($q) {
                 $q->whereHas('department', function ($q) {
                 $q->where('supervisor_id', auth()->id());
             });
-            })->get();
+            })->orWhereIn('department_id',$departments)->get();
         }
+
+          
         $stats = User::notStudent()->stats('status');
-        // return $stats;
 
         return view('admin.teachers.index', compact('items', 'stats'));
     }
@@ -41,6 +43,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
+        
         return view('admin.teachers.create');
     }
 

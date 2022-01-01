@@ -74,6 +74,10 @@
       <?php endif; ?>
 <hr>
 
+<?php if(auth()->user()->isAdmin): ?>
+<?php echo Form::mySelect('department_id', ' القسم', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']); ?>
+
+      <?php endif; ?>
               <?php echo Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']); ?>
 
 

@@ -38,7 +38,9 @@ if (auth()->user()->isSupervisor) { // is supervisor
      */
     public function create()
     {
-        return view('admin.classrooms.create');
+         $departments=Department::where('supervisor_id',auth()->user()->id)->pluck('id')->toArray();
+     
+        return view('admin.classrooms.create',compact('departments'));
     }
 
     /**
@@ -113,8 +115,9 @@ public function sectionClassroom(Request $request)
     {
         $item = Classroom::findOrFail($id);
         $item->load('registrations.section', 'registrations.telecom', 'registrations.period', 'registrations.student');
-
-        return view('admin.classrooms.edit', compact('item'));
+  $departments=Department::where('supervisor_id',auth()->user()->id)->pluck('id')->toArray();
+     
+        return view('admin.classrooms.edit', compact('item','departments'));
     }
 
     /**

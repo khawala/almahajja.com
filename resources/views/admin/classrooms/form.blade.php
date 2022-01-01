@@ -56,7 +56,18 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         </div>
                                         
                            @endif  
+                           
+                            @if(auth()->user()->isSupervisor) 
+         {!! Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role',5)->whereHas('classrooms', function ($q) {
+                $q->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            });
+            })->orWhereIn('department_id',$departments)->pluck('name','id')->toArray(),null,['class' => 'form-control select']) !!}
+             
+@else
+          
                 {!! Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'form-control select']) !!}
+               @endif
                 {!! Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'form-control select']) !!}
 
                

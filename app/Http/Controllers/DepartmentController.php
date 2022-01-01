@@ -9,7 +9,9 @@ use App\Setting;
 use Excel;
 use App\Mail\Email;
 use App\General;
-
+use App\Telecom;
+use App\Period;
+use App\Registration;
 class DepartmentController extends Controller
 {
     /**
@@ -214,12 +216,31 @@ if($department->supervisor_id!=auth()->user()->id)
                 "المشرفة"    => $department->supervisor->name,
             ];
         
-       
-        Excel::create($department->name, function ($excel) use ($data) {
-            $excel->sheet('Sheetname', function ($sheet) use ($data) {
-                $sheet->fromArray($data);
-            });
-        })->export('xls');
+      $telecoms=Telecom::all();
+            $periods=Period::all();
+      
+    //   $telecoms= Registration::stats('telecom_id')->where('department_id',$department->id)->get();
+    //   dd($telecoms);
+      foreach ($telecoms as $telecom)
+      {
+          $registration=Registration::where([['department_id',$department->id],['telecom_id',$telecom->id]])->count();
+           
+          $telecom_array[]=[$telecom->name =>$registration];
+      }
+        foreach ($periods as $period)
+      {
+          $registration=Registration::where([['department_id',$department->id],['period_id',$period->id]])->count();
+           
+          $period_array[]=[$period->name =>$registration];
+      }
+    //   $data = array_merge($data, $data2);
+//  dd($data2,$data);
+        // Excel::create($department->name, function ($excel) use ($data,$data2) {
+        //     $excel->sheet('Sheetname', function ($sheet) use ($data,$data2) {
+        //         $sheet->fromArray($data);
+        //          $sheet->fromArray($data2);
+        //     });
+        // })->export('xls');
     } 
 }
 

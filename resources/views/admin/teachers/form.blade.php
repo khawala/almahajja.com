@@ -11,6 +11,7 @@
       </div>
       <div class="box-body">
         <div class="row">
+     
           <div class="col-sm-6">
             {!! Form::myInput('text', 'name', 'الاسم الرباعي <span class=red>*</span>', ['required']) !!}
 
@@ -24,12 +25,14 @@
     
              {!! Form::myInput('text', 'address', ' مكان الإقامة ') !!}
           </div>
+          
           <div class="col-sm-6">
                {!! Form::myInput('text', 'mobile1', 'جوال التواصل <span class=red>*</span>', ['required']) !!}
               {!! Form::myInput('text', 'bank_account', 'رقم الحساب البنكي') !!}
-            {!! Form::textarea('text', 'cv_text', 'السيرة الذاتية  ') !!}
-
+            {!! Form::myInput('textarea', 'cv_text', 'السيرة الذاتية  ') !!}
+     
             {!! Form::mySelect('telecom_id', 'شريحة الجوال', ['' => ''] + App\Telecom::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']) !!}
+                  {!! Form::mySelect('department_id', ' القسم', ['' => ''] + App\Department::pluck('name', 'id')->toArray(), null, ['class' => 'form-control select']) !!}
       
               {!! Form::mySelect('status', 'الحالة', config('variables.status'), null, [auth()->user()->isNotAdmin ? 'disabled' : '']) !!}
 

@@ -62,8 +62,20 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         </div>
                                         
                            <?php endif; ?>  
+                           
+                            <?php if(auth()->user()->isSupervisor): ?> 
+         <?php echo Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role',5)->whereHas('classrooms', function ($q) {
+                $q->whereHas('department', function ($q) {
+                $q->where('supervisor_id', auth()->id());
+            });
+            })->orWhereIn('department_id',$departments)->pluck('name','id')->toArray(),null,['class' => 'form-control select']); ?>
+
+             
+<?php else: ?>
+          
                 <?php echo Form::mySelect('teacher_id','المعلمة <span class=red>*</span>',['' => ''] +App\User::where('role', 5)->pluck('name', 'id')->toArray(),null,['class' => 'form-control select']); ?>
 
+               <?php endif; ?>
                 <?php echo Form::mySelect('code', 'رصد الدرجات', config('variables.classrooms_code'), null, ['class' => 'form-control select']); ?>
 
 
