@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '04358785b314d1134266b9858f70a7e3bd492a33',
+    'reference' => '6646e37f8519c496f4effb9ed5a6afd4f72edd86',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -451,7 +451,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '04358785b314d1134266b9858f70a7e3bd492a33',
+      'reference' => '6646e37f8519c496f4effb9ed5a6afd4f72edd86',
     ),
     'laravel/nexmo-notification-channel' => 
     array (
@@ -847,8 +847,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0|2.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0|2.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -889,12 +889,12 @@
     ),
     'realrashid/sweet-alert' => 
     array (
-      'pretty_version' => 'v1.1.2',
-      'version' => '1.1.2.0',
+      'pretty_version' => 'v4.1.0',
+      'version' => '4.1.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7bd78445947ef8ce483412afbddb2dec7fc40eb0',
+      'reference' => '7615c5799fbc8743a6b5a7bd7f645f55a1d62723',
     ),
     'rhumsaa/uuid' => 
     array (

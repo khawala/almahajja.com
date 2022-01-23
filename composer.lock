@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d68521323204921a1aff2a096b262ad",
+    "content-hash": "0521595752f72e7b8ec387ad61f07a58",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -3293,26 +3293,24 @@
         },
         {
             "name": "realrashid/sweet-alert",
-            "version": "v1.1.2",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "7bd78445947ef8ce483412afbddb2dec7fc40eb0"
+                "reference": "7615c5799fbc8743a6b5a7bd7f645f55a1d62723"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/7bd78445947ef8ce483412afbddb2dec7fc40eb0",
-                "reference": "7bd78445947ef8ce483412afbddb2dec7fc40eb0",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/7615c5799fbc8743a6b5a7bd7f645f55a1d62723",
+                "reference": "7615c5799fbc8743a6b5a7bd7f645f55a1d62723",
                 "shasum": ""
             },
             "require": {
-                "illuminate/session": "~5.1",
-                "illuminate/support": "~5.1",
-                "php": "~5.6|~7.0"
+                "laravel/framework": "^5.6|^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=5.4.3",
-                "squizlabs/php_codesniffer": "^2.3"
+                "symfony/thanks": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -3327,7 +3325,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "RealRashid\\SweetAlert\\": "src"
+                    "RealRashid\\SweetAlert\\": "src/"
                 },
                 "files": [
                     "src/functions.php"
@@ -3345,23 +3343,43 @@
                     "role": "Developer"
                 }
             ],
-            "description": "SweetAlert2 for Laravel 5.5.* by Rashid Ali",
+            "description": "A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES FOR LARAVEL BY RASHID ALI",
             "homepage": "https://github.com/realrashid/sweet-alert",
             "keywords": [
                 "alert",
                 "laravel",
+                "laravel-package",
                 "notifier",
                 "noty",
-                "sweet",
-                "sweet-alert2"
+                "sweet-alert",
+                "sweet-alert2",
+                "toast"
             ],
             "support": {
-                "docs": "https://github.com/realrashid/sweet-alert/README.md",
+                "docs": "https://realrashid.github.io/sweet-alert/",
                 "email": "realrashid05@gmail.com",
                 "issues": "https://github.com/realrashid/sweet-alert/issues",
                 "source": "https://github.com/realrashid/sweet-alert"
             },
-            "time": "2019-03-29T18:34:57+00:00"
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.buymeacoffee.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://issuehunt.io/r/realrashid",
+                    "type": "issuehunt"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-11-06T09:34:33+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

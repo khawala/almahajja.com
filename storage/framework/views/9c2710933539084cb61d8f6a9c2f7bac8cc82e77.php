@@ -119,6 +119,8 @@
     $config = $config->first()
 ?>
 <!-- Start Social Div  -->
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
 <div class="social-div" id="header">
     <ul class="list-inline">
         <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp"></i></a></li>

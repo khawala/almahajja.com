@@ -14,7 +14,9 @@
                             <p>المسار: <?php echo e($marks->first()->sections_name); ?></p>
                         </div>
                         <div class="col-sm-6">
-                            <p>الحلقة: <?php echo e($marks->first()->registration->classroom->name); ?></p>
+                        <?php $rid=\App\Registration::where('id',$marks->first()->rid)->first();?>
+                     
+                            <p>الحلقة: <?php echo e($rid->classroom->name); ?></p>
                             <p>المعلمة: <?php echo e($marks->first()->users_name); ?></p>
                         </div>
                     </div>

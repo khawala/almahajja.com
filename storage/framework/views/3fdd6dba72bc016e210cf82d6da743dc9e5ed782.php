@@ -12,7 +12,7 @@
                 <?php $__currentLoopData = $ads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ad): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="carousel-item <?php echo e($loop->first ? 'active' : ''); ?>">
                         <img class="d-block w-100 back-img"
-                             style="background: url(<?php echo e($ad->photo); ?>) no-repeat center center;">
+                             style="background: url(<?php echo e($ad->photo); ?>) no-repeat center center;background-size: contain !important;">
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?php echo e($ad->name); ?></h5>
                             <p><?php echo e($ad->short_description); ?></p>
@@ -152,7 +152,7 @@
             <?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $department): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-4">
                     <div class="box">
-                        <img src="<?php echo e(url('images/news-courses/supporting-quran-memorization-workshops.png')); ?>" alt="">
+                        <img src="<?php echo e(url('images/news-courses/supporting-quran-memorization-workshops.png')); ?>" alt="" style="height: auto !important;">
                         <h4><?php echo e($department->name); ?>ً</h4>
                         <div class="row justify-content-between text-right">
                             <div class="col-6">

@@ -228,6 +228,7 @@
                                       سيتم تحويلك لصفحة الدفع إلكتروني كوسيلة آمنة  ، هذه العملية تدعم كلاً من
 
                                       <img src="<?php echo e(asset('images/payment.png')); ?>" alt="payment">
+                                       <img src="<?php echo e(asset('images/apple.png')); ?>"width="80" height="50" alt="payment">
                                     </div>
                                   </div>
                                   <hr class="space space-25">

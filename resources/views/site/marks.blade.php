@@ -15,8 +15,10 @@
                             <p>المسار: {{ $marks->first()->sections_name }}</p>
                         </div>
                         <div class="col-sm-6">
-                            <p>الحلقة: {{ $marks->first()->registration->classroom->name }}</p>
-                            <p>المعلمة: {{ $marks->first()->users_name }}</p>
+                        <?php $rid=\App\Registration::where('id',$marks->first()->rid)->first();?>
+                     
+                            <p>الحلقة: {{ $rid->classroom->name }}</p>
+                            <!--<p>المعلمة: {{ $marks->first()->users_name }}</p>-->
                         </div>
                     </div>
                 @endif

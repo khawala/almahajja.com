@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title', config('app.name') . " | Admin")</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">-->
+<meta name="viewport" content="width=device-width, initial-scale=0" />
+
 
     @if (! config('app.debug', true))
         <link rel="stylesheet" href="{{ mix('/css/admin-all.css') }}">
@@ -32,10 +34,15 @@ select.form-control {
  
     width: 100%;
 }
+.page-wrap { width: 100%; }
+
+@media (max-width: 600px) {
+  .resp .page-wrap { width: 100%; }
+}
     </style>
 </head>
 
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini page-wrap">
     <div class="wrapper">
 
         <!-- Main Header -->

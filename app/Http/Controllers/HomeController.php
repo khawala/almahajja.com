@@ -90,7 +90,7 @@ class HomeController extends Controller
                 $user = User::create(request()->all());
             } else { // user exist
                 alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'error');
-                return back();
+               return back();
             }
         } else {
             $user = auth()->user();
@@ -165,8 +165,9 @@ class HomeController extends Controller
                 ->where([['section_id', request('section_id')],['level_id', request('level_id')],['department_id', request('department_id')]])
                 ->whereYear('created_at', date('Y'))
                 ->exists()) {
-                    
-            alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', '', 'error');
+                       Alert::warning('الطالبة مسجله', 'جل في نفس المسار إلا مرة واحدة خلال السنة الحالية');
+            
+            // alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', 'error');
             return back();
         }
           if($request->payment_type==2){

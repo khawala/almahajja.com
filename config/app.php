@@ -145,7 +145,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+ RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -220,6 +220,7 @@ return [
         'Image'    => Intervention\Image\Facades\Image::class,
         'Restable' => Teepluss\Restable\Facades\Restable::class,
         'Excel'    => Maatwebsite\Excel\Facades\Excel::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
     ],
 

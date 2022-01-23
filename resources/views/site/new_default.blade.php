@@ -119,6 +119,8 @@
     $config = $config->first()
 @endphp
 <!-- Start Social Div  -->
+    @include('sweetalert::alert')
+    
 <div class="social-div" id="header">
     <ul class="list-inline">
         <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp"></i></a></li>
