@@ -89,7 +89,7 @@ class HomeController extends Controller
             if (! $user) { // create new user
                 $user = User::create(request()->all());
             } else { // user exist
-                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'error');
+                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'خطأ');
                return back();
             }
         } else {
@@ -100,7 +100,7 @@ class HomeController extends Controller
                 ->where('section_id', request('section_id'))
                 ->whereYear('created_at', date('Y'))
                 ->exists()) {
-            alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', '', 'error');
+            alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', '', 'خطأ');
             return back();
         }
 
@@ -109,7 +109,7 @@ class HomeController extends Controller
         auth()->login($user);
 
         alert('تم ارسال طلب التسجيل والدخول التلقائي للحساب.', '', 'success');
-        // alert('نعتذر عن قبول التسجيل.', '', 'error');
+        // alert('نعتذر عن قبول التسجيل.', '', 'خطأ');
 
         return redirect('/profile');
     }
@@ -154,7 +154,7 @@ class HomeController extends Controller
             if (! $user) { // create new user
                 $user = User::create(request()->all());
             } else { // user exist
-                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'error');
+                alert('مستخدم موجود يرجى تسجيل الدخول.', '', 'خطأ');
                 return back();
             }
         } else {
@@ -165,9 +165,8 @@ class HomeController extends Controller
                 ->where([['section_id', request('section_id')],['level_id', request('level_id')],['department_id', request('department_id')]])
                 ->whereYear('created_at', date('Y'))
                 ->exists()) {
-                       Alert::warning('الطالبة مسجله', 'جل في نفس المسار إلا مرة واحدة خلال السنة الحالية');
-            
-            // alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', 'error');
+                    
+            alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', 'خطأ');
             return back();
         }
           if($request->payment_type==2){

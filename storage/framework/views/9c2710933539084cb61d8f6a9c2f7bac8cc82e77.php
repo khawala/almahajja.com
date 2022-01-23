@@ -109,6 +109,9 @@
 .myinput.large.custom[type="checkbox"]:not(:disabled):checked:hover:after {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGHRFWHRBdXRob3IAbWluZWNyYWZ0aW5mby5jb23fZidLAAAAk0lEQVQ4y2P4//8/AyUYwcAD+OzN/oMwshjRBoA0Gr8+DcbIhhBlAEyz+qZZ/7WPryHNAGTNMOxpJvo/w0/uP0kGgGwGaZbrKgfTGnLc/0nyAgiDbEY2BCRGdCDCnA2yGeYVog0Aae5MV4c7Gzk6CRqAbDM2w/EaQEgzXgPQnU2SAcTYjNMAYm3GaQCxNuM0gFwMAPUKd8XyBVDcAAAAAElFTkSuQmCC'), linear-gradient(135deg, #8BB0C2 0%, #FFF 100%);
 }
+.swal2-container .select-wrapper{
+display: none !important;
+}
 </style>
 </head>
 
@@ -119,8 +122,7 @@
     $config = $config->first()
 ?>
 <!-- Start Social Div  -->
-    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    
+
 <div class="social-div" id="header">
     <ul class="list-inline">
         <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp"></i></a></li>
@@ -198,7 +200,8 @@
     </div>
 </section>
    <section class="content">
-
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
  <?php echo $__env->make('admin.commun.flash-message', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
  </section>
 <!-- End Navbar  -->
@@ -413,10 +416,13 @@
 <script src="<?php echo e(url('js/custome.js')); ?>"></script>
 <script src="<?php echo e(url('js/intlphone.js')); ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
 <script>
   $(document).ready(function () {
-  $("select").select2();
+  $(".form-group select").select2();
+  
   });
+  
   
   </script>
    <?php echo $__env->yieldContent('script'); ?>;
