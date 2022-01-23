@@ -203,7 +203,7 @@
             @foreach ($jobs->chunk(3) as $row)
                 @foreach ($row as $job)
                     <div class="col-lg-4">
-                        <div class="box">
+                        <div class="box" onclick="location.href='{{url('job/' . $job->id)}}'" style="cursor: pointer;";>
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="icon-box">

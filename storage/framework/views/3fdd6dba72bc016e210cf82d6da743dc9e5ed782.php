@@ -201,7 +201,7 @@
             <?php $__currentLoopData = $jobs->chunk(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php $__currentLoopData = $row; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-lg-4">
-                        <div class="box">
+                        <div class="box" onclick="location.href='<?php echo e(url('job/' . $job->id)); ?>'" style="cursor: pointer;";>
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="icon-box">

@@ -49,6 +49,12 @@
                         <p> رقم الحساب البنكي </p>
 {{$item->bank_account}}
 <hr>
+                        <p> اسم صاحب الحساب   </p>
+{{$item->name_account}}
+<hr>
+                        <p>   رقم الايبان </p>
+{{$item->iban}}
+<hr>
             <p>شريحة الجوال  </p>
 {{$item->telecom_id}}
 <hr>

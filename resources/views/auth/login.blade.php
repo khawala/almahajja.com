@@ -42,9 +42,13 @@
             @endif
             <div class="form-group">
                 <input type="submit" class="btn btn-website" name="" value="تسجيل دخول">
+                      <hr>
+            <a class="btn btn-website" href="{{url('/register')}}">  تسجيل حساب جديد</a>
+                          <hr>
+            <a class="btn btn-website" href="{{url('teacher/register')}}">  تسجيل حساب جديد كمعلم</a>
+           
             </div>
-            <hr>
-            <a class="nav-link" href="{{url('/register')}}">  تسجيل حساب جديد</a>
+
             <div class="description">
                 <p>
                     الموقع الرسمي لوقف المحجة البيضاء

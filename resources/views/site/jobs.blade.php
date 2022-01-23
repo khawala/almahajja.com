@@ -11,6 +11,9 @@
         .about-course .box-img img{
             width: 75%;
         }
+        .box{
+            cursor: pointer;
+        }
     </style>
 @endsection
 @section('content')
@@ -33,7 +36,7 @@
             <div class="row">
                 @foreach ($items as $item)
                     <div class="col-lg-4">
-                        <div class="box">
+                        <div class="box" onclick="location.href='{{url('job/' . $item->id)}}'";>
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="icon-box">

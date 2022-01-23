@@ -6,7 +6,7 @@
             <div class="container">
                 <h2>{{ $job->name }}</h2>
                 <p>{{ nl2br($job->description) }}</p>
-                <p> {{ $job->salary }} ريال : {{ $job->time }}</p>
+                <p> {{ $job->salary }}   {{ $job->time }}</p>
                 
             </div>
         </header>

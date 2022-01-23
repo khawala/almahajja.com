@@ -14,7 +14,7 @@
                             <p>المسار: <?php echo e($marks->first()->sections_name); ?></p>
                         </div>
                         <div class="col-sm-6">
-                            <p>الحلقة: <?php echo e($marks->first()->classrooms_name); ?></p>
+                            <p>الحلقة: <?php echo e($marks->first()->registration->classroom->name); ?></p>
                             <p>المعلمة: <?php echo e($marks->first()->users_name); ?></p>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 <tr>
                                     <td><?php echo e($months[$mark->month]); ?></td>
                                     <td><?php echo e($semesters[$mark->semester]); ?></td>
-                                    <td><?php echo e($levels[$mark->level]); ?></td>
+                                    <td><?php echo e($mark->leveln->name); ?></td>
                                     <!--<td><?php echo e($mark->mark1); ?></td>-->
                                     <!--<td><?php echo e($mark->mark2); ?></td>-->
                                     <!--<td><?php echo e($mark->mark3); ?></td>-->

@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <!-- Start Login Section  -->
 
-<section class="login-sec" style="margin-top:150px;margin-bottom:150px;">
+<section class="login-sec" style="height:auto!important;">
 
     <form role="form" method="POST" action="<?php echo e(url('/profile')); ?>">
 
@@ -97,6 +97,7 @@
                                                 <?php endif; ?>
                                             </div>
                                         </div>
+                                        <?php if(\Auth::user()->role==5): ?>
                                            <!-- Start Col  -->
                                         <div class="col-12">
                                             <div class="form-group">
@@ -104,6 +105,24 @@
                                                 <input type="text" class="form-control" name="bank_account"  value="<?php echo e($user->bank_account); ?>" placeholder=" رقم الحساب" required>
                                                 <?php if($errors->has('bank_account')): ?>
                                                     <p class="help-block"><small><?php echo e($errors->first('bank_account')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                 <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="iban"  value="<?php echo e($user->iban); ?>" placeholder=" رقم الايبان" required>
+                                                <?php if($errors->has('iban')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('iban')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                         <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="name_account"  value="<?php echo e($user->name_account); ?>" placeholder="  اسم صاحب الحساب" required>
+                                                <?php if($errors->has('name_account')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('name_account')); ?></small></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -120,13 +139,15 @@
                                         <!-- Start Col  -->
                                         <div class="col-12" >
                                             <div class="form-group">
-                                              
+                                                <label>السيرة الذاتية</label>
+                                                
                                                 <textarea type="text" class="form-control" style="direction:rtl !important" name="cv_text" placeholder="السيرة الذاتية " required><?php echo e($user->cv_text); ?> </textarea>
                                                 <?php if($errors->has('cv_text')): ?>
                                                     <p class="help-block"><small><?php echo e($errors->first('cv_text')); ?></small></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
+                                        <?php endif; ?>
                                          <div class="col-12">
                                             <div class="form-group">
                                                

@@ -67,7 +67,7 @@ $total=$total/$count;
 </span>
  <?php echo e($registration->classroom->department->certificate_type); ?>  :
 <span>
-  <?php echo e($registration->section->name); ?>  
+  <?php echo e($registration->level->name); ?>  
 </span>
 <br>
 على يد المعلمة:

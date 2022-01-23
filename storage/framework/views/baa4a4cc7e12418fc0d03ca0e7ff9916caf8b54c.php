@@ -4,7 +4,7 @@
             <div class="container">
                 <h2><?php echo e($job->name); ?></h2>
                 <p><?php echo e(nl2br($job->description)); ?></p>
-                <p> <?php echo e($job->salary); ?> ريال : <?php echo e($job->time); ?></p>
+                <p> <?php echo e($job->salary); ?>   <?php echo e($job->time); ?></p>
                 
             </div>
         </header>

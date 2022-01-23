@@ -68,7 +68,7 @@ $total=$total/$count;
 </span>
  {{ $registration->classroom->department->certificate_type  }}  :
 <span>
-  {{ $registration->section->name  }}  
+  {{ $registration->level->name  }}  
 </span>
 <br>
 على يد المعلمة:

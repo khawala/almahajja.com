@@ -13,7 +13,7 @@
 
         {!! Form::mySelect('job_id', 'الوظيفة  <span class=red>*</span>', ['' => 'الوظيفة'] + App\Job::pluck('name', 'id')->toArray(), null, ['required','class' =>'form-control select']) !!}
         
-        {!! Form::mySelect('department_id', 'الوظيفة  ', ['' => 'القسم'] + App\Department::where('need_teacher',1)->pluck('name', 'id')->toArray(),null, ['class' =>'form-control select']) !!}
+        {!! Form::mySelect('department_id', 'القسم  ', ['' => 'القسم'] + App\Department::where('need_teacher',1)->pluck('name', 'id')->toArray(),null, ['class' =>'form-control select']) !!}
      @isset($item)
  <a class="nav-link " href="{{ route(ADMIN . '.teachers.edit', $item->user->id) }}">  بيانات مقدم الطلب:  {{$item->user->name}}  </a>
       @endisset

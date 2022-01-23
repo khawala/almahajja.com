@@ -179,7 +179,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                @if (auth()->user()->role > 0)
+                                @if (auth()->user()->role > 5)
                                 <a class="dropdown-item" href="{{ route(ADMIN . '.dash') }}">صفحتي</a>
                                 @else
                                     <a class="dropdown-item" href="{{ route('profile.show') }}">صفحتي</a>

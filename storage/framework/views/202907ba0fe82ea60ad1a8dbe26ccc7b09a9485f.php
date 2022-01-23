@@ -14,7 +14,7 @@
         <?php echo Form::mySelect('job_id', 'الوظيفة  <span class=red>*</span>', ['' => 'الوظيفة'] + App\Job::pluck('name', 'id')->toArray(), null, ['required','class' =>'form-control select']); ?>
 
         
-        <?php echo Form::mySelect('department_id', 'الوظيفة  ', ['' => 'القسم'] + App\Department::where('need_teacher',1)->pluck('name', 'id')->toArray(),null, ['class' =>'form-control select']); ?>
+        <?php echo Form::mySelect('department_id', 'القسم  ', ['' => 'القسم'] + App\Department::where('need_teacher',1)->pluck('name', 'id')->toArray(),null, ['class' =>'form-control select']); ?>
 
      <?php if(isset($item)): ?>
  <a class="nav-link " href="<?php echo e(route(ADMIN . '.teachers.edit', $item->user->id)); ?>">  بيانات مقدم الطلب:  <?php echo e($item->user->name); ?>  </a>

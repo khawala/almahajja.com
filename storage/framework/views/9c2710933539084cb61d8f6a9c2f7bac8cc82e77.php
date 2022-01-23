@@ -179,7 +179,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <?php if(auth()->user()->role > 0): ?>
+                                <?php if(auth()->user()->role > 5): ?>
                                 <a class="dropdown-item" href="<?php echo e(route(ADMIN . '.dash')); ?>">صفحتي</a>
                                 <?php else: ?>
                                     <a class="dropdown-item" href="<?php echo e(route('profile.show')); ?>">صفحتي</a>

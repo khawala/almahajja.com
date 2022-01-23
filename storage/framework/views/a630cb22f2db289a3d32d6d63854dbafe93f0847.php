@@ -54,6 +54,14 @@
 <?php echo e($item->bank_account); ?>
 
 <hr>
+                        <p> اسم صاحب الحساب   </p>
+<?php echo e($item->name_account); ?>
+
+<hr>
+                        <p>   رقم الايبان </p>
+<?php echo e($item->iban); ?>
+
+<hr>
             <p>شريحة الجوال  </p>
 <?php echo e($item->telecom_id); ?>
 

@@ -52,7 +52,7 @@ $total=$total/$count;
 </br>
 لاجتيازها
 <span>
-  {{ $item->classroom->department->certificate_type  }}  
+  {{ $item->classroom->department->certificate_type  }}    {{ $item->level->name  }}  
 </span>
 </br>
 حيث حصلت على درجة: 

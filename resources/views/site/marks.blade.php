@@ -15,7 +15,7 @@
                             <p>المسار: {{ $marks->first()->sections_name }}</p>
                         </div>
                         <div class="col-sm-6">
-                            <p>الحلقة: {{ $marks->first()->classrooms_name }}</p>
+                            <p>الحلقة: {{ $marks->first()->registration->classroom->name }}</p>
                             <p>المعلمة: {{ $marks->first()->users_name }}</p>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>{{ $months[$mark->month] }}</td>
                                     <td>{{ $semesters[$mark->semester] }}</td>
-                                    <td>{{ $levels[$mark->level] }}</td>
+                                    <td>{{ $mark->leveln->name }}</td>
                                     <!--<td>{{ $mark->mark1 }}</td>-->
                                     <!--<td>{{ $mark->mark2 }}</td>-->
                                     <!--<td>{{ $mark->mark3 }}</td>-->

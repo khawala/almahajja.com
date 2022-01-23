@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- Start Login Section  -->
+<section class="login-sec" style="height:auto!important;">
 
-<section class="login-sec" style="margin-top:150px;margin-bottom:150px;">
 
     <form role="form" method="POST" action="{{ url('register') }}">
 
@@ -98,6 +98,24 @@
                                                 @endif
                                             </div>
                                         </div>
+                                         <div class="col-10">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="name_account"  value="{{ old('name_account') }}" placeholder="  اسم صاحب الحساب" required>
+                                                @if ($errors->has('name_account'))
+                                                    <p class="help-block"><small>{{ $errors->first('name_account') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                         <div class="col-10">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="iban"  value="{{ old('iban') }}" placeholder=" رقم الايبان" required>
+                                                @if ($errors->has('iban'))
+                                                    <p class="help-block"><small>{{ $errors->first('iban') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
                                         <!-- Start Col  -->
                                         <div class="col-10">
                                             <div class="form-group">
@@ -111,7 +129,7 @@
                                         <!-- Start Col  -->
                                         <div class="col-10">
                                             <div class="form-group">
-                                              
+                                                <label>السيرة الذاتية</label>
                                                 <textarea type="text" class="form-control" name="cv_text" placeholder="السيرة الذاتية " required>{{ old('cv_text') }} </textarea>
                                                 @if ($errors->has('cv_text'))
                                                     <p class="help-block"><small>{{ $errors->first('cv_text') }}</small></p>
@@ -154,7 +172,8 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-website" name="" value="تسجيل ">
             </div>
-           <a class="nav-link" href="{{url('/login')}}">  لدي حساب تسجيل دخول </a>
+         
+           <a    class="btn btn-website" href="{{url('/login')}}">  لدي حساب تسجيل دخول </a>
         </div>
 
     </form>

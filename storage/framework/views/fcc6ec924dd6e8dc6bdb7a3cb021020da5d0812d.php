@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <!-- Start Login Section  -->
+<section class="login-sec" style="height:auto!important;">
 
-<section class="login-sec" style="margin-top:150px;margin-bottom:150px;">
 
     <form role="form" method="POST" action="<?php echo e(url('register')); ?>">
 
@@ -97,6 +97,24 @@
                                                 <?php endif; ?>
                                             </div>
                                         </div>
+                                         <div class="col-10">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="name_account"  value="<?php echo e(old('name_account')); ?>" placeholder="  اسم صاحب الحساب" required>
+                                                <?php if($errors->has('name_account')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('name_account')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                         <div class="col-10">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="iban"  value="<?php echo e(old('iban')); ?>" placeholder=" رقم الايبان" required>
+                                                <?php if($errors->has('iban')): ?>
+                                                    <p class="help-block"><small><?php echo e($errors->first('iban')); ?></small></p>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
                                         <!-- Start Col  -->
                                         <div class="col-10">
                                             <div class="form-group">
@@ -110,7 +128,7 @@
                                         <!-- Start Col  -->
                                         <div class="col-10">
                                             <div class="form-group">
-                                              
+                                                <label>السيرة الذاتية</label>
                                                 <textarea type="text" class="form-control" name="cv_text" placeholder="السيرة الذاتية " required><?php echo e(old('cv_text')); ?> </textarea>
                                                 <?php if($errors->has('cv_text')): ?>
                                                     <p class="help-block"><small><?php echo e($errors->first('cv_text')); ?></small></p>
@@ -153,7 +171,8 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-website" name="" value="تسجيل ">
             </div>
-           <a class="nav-link" href="<?php echo e(url('/login')); ?>">  لدي حساب تسجيل دخول </a>
+         
+           <a    class="btn btn-website" href="<?php echo e(url('/login')); ?>">  لدي حساب تسجيل دخول </a>
         </div>
 
     </form>

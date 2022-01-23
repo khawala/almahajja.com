@@ -51,7 +51,7 @@ $total=$total/$count;
 </br>
 لاجتيازها
 <span>
-  <?php echo e($item->classroom->department->certificate_type); ?>  
+  <?php echo e($item->classroom->department->certificate_type); ?>    <?php echo e($item->level->name); ?>  
 </span>
 </br>
 حيث حصلت على درجة: 

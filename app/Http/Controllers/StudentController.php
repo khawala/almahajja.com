@@ -120,7 +120,8 @@ if (auth()->user()->isSupervisor) { // is supervisor
             $data[] = [
                 '#' => $item->id,
                 'الاسم الرباعي' => $item->name,
-                'رقم الهوية' => $item->national_id,
+                   ' الايميل' => $item->email,
+                // 'رقم الهوية' => $item->national_id,
                 'الجنس' => $item->genderName,
                 'الجوال' => $item->mobile1,
                 'الجنسية' => $item->nationality->name,

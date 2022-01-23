@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'info@almahajja.com'),
-        'name' => 'المحجبة البيضاء',
+        'name' => 'المحجة البيضاء',
     ],
 
     /*

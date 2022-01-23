@@ -3,7 +3,7 @@
 @section('content')
 <!-- Start Login Section  -->
 
-<section class="login-sec" style="margin-top:150px;margin-bottom:150px;">
+<section class="login-sec" style="height:auto!important;">
 
     <form role="form" method="POST" action="{{ url('/profile') }}">
 
@@ -99,6 +99,7 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        @if(\Auth::user()->role==5)
                                            <!-- Start Col  -->
                                         <div class="col-12">
                                             <div class="form-group">
@@ -106,6 +107,24 @@
                                                 <input type="text" class="form-control" name="bank_account"  value="{{ $user->bank_account }}" placeholder=" رقم الحساب" required>
                                                 @if ($errors->has('bank_account'))
                                                     <p class="help-block"><small>{{ $errors->first('bank_account') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                 <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="iban"  value="{{ $user->iban }}" placeholder=" رقم الايبان" required>
+                                                @if ($errors->has('iban'))
+                                                    <p class="help-block"><small>{{ $errors->first('iban') }}</small></p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                         <div class="col-12">
+                                            <div class="form-group">
+                                              
+                                                <input type="text" class="form-control" name="name_account"  value="{{ $user->name_account }}" placeholder="  اسم صاحب الحساب" required>
+                                                @if ($errors->has('name_account'))
+                                                    <p class="help-block"><small>{{ $errors->first('name_account') }}</small></p>
                                                 @endif
                                             </div>
                                         </div>
@@ -122,13 +141,15 @@
                                         <!-- Start Col  -->
                                         <div class="col-12" >
                                             <div class="form-group">
-                                              
+                                                <label>السيرة الذاتية</label>
+                                                
                                                 <textarea type="text" class="form-control" style="direction:rtl !important" name="cv_text" placeholder="السيرة الذاتية " required>{{ $user->cv_text }} </textarea>
                                                 @if ($errors->has('cv_text'))
                                                     <p class="help-block"><small>{{ $errors->first('cv_text') }}</small></p>
                                                 @endif
                                             </div>
                                         </div>
+                                        @endif
                                          <div class="col-12">
                                             <div class="form-group">
                                                

@@ -123,12 +123,13 @@ class TeacherController extends Controller
     public function export()
     {
          if (auth()->user()->isSupervisor) { // is supervisor
- $items = User::where('role',5)->whereHas('classrooms', function ($q) {
+       $departments=Department::where('supervisor_id',auth()->user()->id)->pluck('id')->toArray();
+  $items = User::where('role',5)->whereHas('classrooms', function ($q) {
                 $q->whereHas('department', function ($q) {
                 $q->where('supervisor_id', auth()->id());
             });
-            })->get();
- 
+            })->orWhereIn('department_id',$departments)->get();
+        
         foreach ($items as $item) {
             $data[] = [
                 '#' => $item->id,
@@ -144,6 +145,8 @@ class TeacherController extends Controller
                 'العنوان' => $item->address,
                 'الشريحة' => $item->telecom->name,
                  'رقم الحساب البنكي' => $item->bank_account,
+                     'اسم صاحب الحساب  ' => $item->name_account,
+                         'الايبان  ' => $item->iban,
                 'الحالة' => $item->statusName,
             ];
         }

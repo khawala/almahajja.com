@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('mobile1');
             $table->string('mobile2')->nullable();
             $table->string('bank_account')->nullable();
+             $table->string('iban')->nullable();
+              $table->string('name_account')->nullable();
             $table->string('address')->nullable();
             $table->string('country_code')->nullable();
             $table->integer('telecom_id')->nullable();
