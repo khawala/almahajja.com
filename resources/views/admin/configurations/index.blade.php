@@ -54,7 +54,7 @@
 
 						{!! Form::myInput('text', 'instagram', 'انستغرام') !!}
 
-						{!! Form::myInput('text', 'facebook', 'الفيسبوك') !!}
+						{!! Form::myInput('text', 'facebook', 'التلقرام') !!}
 
 						{!! Form::myInput('text', 'youtube', 'اليوتيوب') !!}
 

@@ -6,7 +6,10 @@ $bgSection1: #f0f0f0;
 $bgSection2: #f5f5f5;
 $paddingSections: 80px 0;
 
-
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
 // Start Global 
 * {
     box-sizing: border-box;
@@ -530,9 +533,17 @@ label {
     background-color: $bgSection1;
     .title-footer {
         margin-bottom: 70px;
+            @media (max-width: 976px) {
         img {
-            width: 402px;
+            width: 100%;
         }
+            }
+                 @media (min-width: 976px) {
+        img {
+            width: 424px;
+        }
+            }
+            
     }
     li {
         margin-bottom: 20px;

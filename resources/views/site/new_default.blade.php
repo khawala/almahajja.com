@@ -125,11 +125,13 @@ display: none !important;
 
 <div class="social-div" id="header">
     <ul class="list-inline">
-        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-instagram"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-twitter"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-youtube"></i></a></li>
-        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-telegram-plane"></i></a></li>
+                                  <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp" target="_blank"></i></a></li>
+        <li class="list-inline-item"><a href="{{$config->instagram}}" target="_blank"><i class="fab fa-fw fa-instagram"></i></a></li>
+        <li class="list-inline-item"><a href="{{$config->twitter}}" target="_blank"><i class="fab fa-fw fa-twitter" ></i></a></li>
+        <!--<li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-youtube"></i></a></li>-->
+        
+          <li class="list-inline-item"><a href="{{$config->snapchat}}" target="_blank"><i class="fab fa-fw fa-snapchat"></i></a></li>
+        <li class="list-inline-item"><a href="{{$config->facebook}}" target="_blank"><i class="fab fa-fw fa-telegram-plane"></i></a></li>
     </ul>
 </div>
 <!-- End Social Div  -->
@@ -138,7 +140,7 @@ display: none !important;
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{url('/') . '#'}}">
-                <img src="{{url('images/logo.png')}}" alt="">
+                <img src="{{url('images/logo.png')}}" alt="" width="300">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,9 +157,7 @@ display: none !important;
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/') . '#course'}}">الدورات</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/') . '#'}}">الحلقات</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/') . '#job'}}">التوظيف</a>
                     </li>
@@ -316,35 +316,35 @@ display: none !important;
         </div>
         <!-- Start Lists  -->
         <div class="row text-right">
-            <div class="col-lg-4">
-                <ul class="list-unstyled">
-                    <li>
-                        <h5>العنوان</h5>
-                        <h6>{{ $config->address }}</h6>
-                    </li>
-                    <li>
-                        <h5>الرقم الموحد</h5>
-                        <h6> {{ $config->toll_free }}یمكنكم الاتصال بنا من الساعة 10:00 صباحا حتى 6:00 مساء</h6>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-4">
+            <!--<div class="col-lg-4">-->
+            <!--    <ul class="list-unstyled">-->
+                    <!--<li>-->
+                    <!--    <h5>العنوان</h5>-->
+                    <!--    <h6>{{ $config->address }}</h6>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--    <h5>الرقم الموحد</h5>-->
+                    <!--    <h6> {{ $config->toll_free }}یمكنكم الاتصال بنا من الساعة 10:00 صباحا حتى 6:00 مساء</h6>-->
+                    <!--</li>-->
+            <!--    </ul>-->
+            <!--</div>-->
+            <div class="col-lg-6">
                 <ul class="list-unstyled">
                     <li>
                         <h5>التواصل بالواتس اب</h5>
                         <h6>{{ $config->mobile }}</h6>
                     </li>
-                    <li>
-                        <h5>التواصل عبر الهاتف </h5>
-                        <h6>{{ $config->phone }}</h6>
-                    </li>
+                    <!--<li>-->
+                    <!--    <h5>التواصل عبر الهاتف </h5>-->
+                    <!--    <h6>{{ $config->phone }}</h6>-->
+                    <!--</li>-->
                     <li>
                         <h5>التواصل على البريد الالكتروني</h5>
                         <h6>{{ $config->mobile }}</h6>
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <h4>المنصة</h4>
                 <ul class="list-unstyled">
                     <li>
@@ -358,7 +358,7 @@ display: none !important;
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <h4>مساعدة & دعم</h4>
                 <ul class="list-unstyled">
                     <li>
@@ -387,11 +387,14 @@ display: none !important;
             <div class="col-xs-6">
                 <div class="right text-right">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-youtube"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-telegram-plane"></i></a></li>
+                              <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp" target="_blank"></i></a></li>
+        <li class="list-inline-item"><a href="{{$config->instagram}}" target="_blank"><i class="fab fa-fw fa-instagram"></i></a></li>
+        <li class="list-inline-item"><a href="{{$config->twitter}}" target="_blank"><i class="fab fa-fw fa-twitter" ></i></a></li>
+        <!--<li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-youtube"></i></a></li>-->
+        
+          <li class="list-inline-item"><a href="{{$config->snapchat}}" target="_blank"><i class="fab fa-fw fa-snapchat"></i></a></li>
+        <li class="list-inline-item"><a href="{{$config->facebook}}" target="_blank"><i class="fab fa-fw fa-telegram-plane"></i></a></li>
+   
                     </ul>
                 </div>
             </div>

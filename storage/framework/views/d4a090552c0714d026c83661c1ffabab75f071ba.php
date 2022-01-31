@@ -52,8 +52,10 @@
                             <td><a href="<?php echo e(route(ADMIN . '.departments.edit', $item->id)); ?>"><?php echo e($item->name); ?></a></td>
 	                        <td>
 	                            <?php $__currentLoopData = $item->sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+	                            <?php if($section): ?>
 	                            <?php echo e($section->name); ?>
 
+	                            <?php endif; ?>
 	                                <br>
 	                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 	                        

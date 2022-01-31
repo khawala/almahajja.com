@@ -50,10 +50,10 @@
 						<tr>
                             <td><a href="{{ route(ADMIN . '.classrooms.edit', $item->id) }}">{{ $item->id }}</a></td>
                             <td><a href="{{ route(ADMIN . '.classrooms.edit', $item->id) }}">{{ $item->name }}</a></td>
-	                        <td>{{ $item->section->name }}</td>
-	                        <td>{{ $item->level->name }}</td>
-	                       <td>{{ $item->department->name }}</td>
-                            <td>{{ $item->teacher->name }}</td>
+	                        <td>@if( $item->section){{ $item->section->name }} @endif</td>
+	                        <td>@if( $item->level){{ $item->level->name }} @endif</td>
+	                       <td>@if( $item->department){{ $item->department->name }} @endif</td>
+                            <td>@if( $item->teacher){{ $item->teacher->name }} @endif</td>
 	                        <td class="actions">
                                 <ul class="list-inline">
                                     <li><a href="{{ route(ADMIN . '.classrooms.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>

@@ -15,7 +15,7 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                         <img class="d-block w-100 back-img"
                              style="background: url({{$ad->photo}}) no-repeat center center;background-size: contain !important;">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-md-block">
                             <h5>{{$ad->name}}</h5>
                             <p>{{$ad->short_description}}</p>
                         </div>
@@ -154,7 +154,7 @@
             @foreach ($departments as $department)
                 <div class="col-lg-4">
                     <div class="box">
-                        <img src="{{url('images/news-courses/supporting-quran-memorization-workshops.png')}}" alt="" style="height: auto !important;">
+                        <img src="{{url($department->photo)}}" alt="" style="height: auto !important;">
                         <h4>{{$department->name}}ً</h4>
                         <div class="row justify-content-between text-right">
                             <div class="col-6">

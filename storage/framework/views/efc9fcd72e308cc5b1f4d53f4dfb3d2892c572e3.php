@@ -67,7 +67,7 @@
 						<?php echo Form::myInput('text', 'instagram', 'انستغرام'); ?>
 
 
-						<?php echo Form::myInput('text', 'facebook', 'الفيسبوك'); ?>
+						<?php echo Form::myInput('text', 'facebook', 'التلقرام'); ?>
 
 
 						<?php echo Form::myInput('text', 'youtube', 'اليوتيوب'); ?>

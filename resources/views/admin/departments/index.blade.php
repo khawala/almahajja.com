@@ -54,7 +54,9 @@
                             <td><a href="{{ route(ADMIN . '.departments.edit', $item->id) }}">{{ $item->name }}</a></td>
 	                        <td>
 	                            @foreach ($item->sections as $section)
+	                            @if($section)
 	                            {{ $section->name }}
+	                            @endif
 	                                <br>
 	                            @endforeach
 	                        
