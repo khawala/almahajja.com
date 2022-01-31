@@ -130,7 +130,7 @@ class Registration extends Model
             ->where('users.status', 1)
             ->where('registrations.level_id', $level)
             // ->select('registrations.id', 'users.name', 'registrations.level_id');
-            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3' ,'marks.total');
+            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3' ,'marks.total', 'marks.separate_section_from', 'marks.separate_section_to');
             ;
     }
     public function scopeSearch($q)

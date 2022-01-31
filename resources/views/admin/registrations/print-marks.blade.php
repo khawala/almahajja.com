@@ -68,7 +68,11 @@ $total=$total/$count;
 </span>
  {{ $registration->classroom->department->certificate_type  }}  :
 <span>
-  {{ $registration->level->name  }}  
+        @if($registration->classroom->department->separate_section==1)
+         من {{$markes[0]->separate_section_from}} الى {{$markes[0]->separate_section_to}}
+                            @else
+  {{ $registration->level->name  }} 
+     @endif
 </span>
 <br>
 على يد المعلمة:

@@ -52,7 +52,11 @@ $total=$total/$count;
 </br>
 لاجتيازها
 <span>
-  {{ $item->classroom->department->certificate_type  }}    {{ $item->level->name  }}  
+  {{ $item->classroom->department->certificate_type  }}            @if($item->classroom->department->separate_section==1)
+         من {{$markes[0]->separate_section_from}} الى {{$markes[0]->separate_section_to}}
+                            @else
+  {{ $item->level->name  }} 
+     @endif
 </span>
 </br>
 حيث حصلت على درجة: 
