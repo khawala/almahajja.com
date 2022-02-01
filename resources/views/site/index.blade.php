@@ -155,7 +155,7 @@
                 <div class="col-lg-4">
                     <div class="box">
                         <img src="{{url($department->photo)}}" alt="" style="height: auto !important;">
-                        <h4>{{$department->name}}ً</h4>
+                        <h4>{{$department->name}}</h4>
                         <div class="row justify-content-between text-right">
                             <div class="col-6">
                                 <div class="one">

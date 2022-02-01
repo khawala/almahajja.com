@@ -153,7 +153,7 @@
                 <div class="col-lg-4">
                     <div class="box">
                         <img src="<?php echo e(url($department->photo)); ?>" alt="" style="height: auto !important;">
-                        <h4><?php echo e($department->name); ?>ً</h4>
+                        <h4><?php echo e($department->name); ?></h4>
                         <div class="row justify-content-between text-right">
                             <div class="col-6">
                                 <div class="one">
