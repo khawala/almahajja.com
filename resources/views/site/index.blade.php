@@ -14,7 +14,7 @@
                 @foreach ($ads as $ad)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                         <img class="d-block w-100 back-img"
-                             style="background: url({{$ad->photo}}) no-repeat center center;background-size: contain !important;">
+                             style="background: url({{$ad->photo}}) no-repeat center center;">
                         <div class="carousel-caption d-md-block">
                                @if($ad->name!=null)
                             <h5>{{$ad->name}}</h5>

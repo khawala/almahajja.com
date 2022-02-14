@@ -114,8 +114,38 @@ display: none !important;
 }
 @media (min-width: 976px) {
 .navbar-sec nav .navbar-brand {
-    width: 400px;
+    width: 115px;
+    
 }
+}
+@media (min-width: 992px)
+{
+.navbar-expand-lg .navbar-collapse {
+margin-right:100px;
+}
+}
+@media (max-width: 976px) {
+.main-slider .carousel .carousel-item .back-img {
+    background-size: contain !important;
+    height: 250px;
+}
+.navbar-sec nav .navbar-brand {
+    width: 70px;
+    
+}
+}
+.nav-text{
+    
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 5px;
+        line-height: 1;
+    font-size: 25px;
+    color:black;
+}
+.nav-text2{
+    font-size: 15px;
+
 }
 </style>
 </head>
@@ -145,7 +175,12 @@ display: none !important;
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="{{url('/') . '#'}}"  style="margin-right: 0;">
-                <img src="{{url('images/logo.png')}}" alt="" width="100%">
+                <img src="{{url('images/logon.png')}}" alt="" width="100%">
+                <span class="nav-text">المحجة البيضاء                
+                </br>
+                <span class="nav-text2">
+                         لتحفيظ القران الكريم عن بعد
+                      </span>  
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -432,7 +467,7 @@ display: none !important;
   
   
   </script>
-   @yield('script');
+   @yield('script')
 </body>
 
 </html>

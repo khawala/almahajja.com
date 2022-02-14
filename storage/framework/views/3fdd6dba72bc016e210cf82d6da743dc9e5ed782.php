@@ -12,7 +12,7 @@
                 <?php $__currentLoopData = $ads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ad): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="carousel-item <?php echo e($loop->first ? 'active' : ''); ?>">
                         <img class="d-block w-100 back-img"
-                             style="background: url(<?php echo e($ad->photo); ?>) no-repeat center center;background-size: contain !important;">
+                             style="background: url(<?php echo e($ad->photo); ?>) no-repeat center center;">
                         <div class="carousel-caption d-md-block">
                                <?php if($ad->name!=null): ?>
                             <h5><?php echo e($ad->name); ?></h5>
