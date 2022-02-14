@@ -10,11 +10,11 @@
       </div>
       <div class="box-body">
 
-        {!! Form::myInput('text', 'name', 'عنوان الاعلان  <span class=red>*</span>', ['required']) !!}
+        {!! Form::myInput('text', 'name', 'عنوان الاعل') !!}
 
-        {!! Form::myTextArea('short_description', 'مختصر الاعلان  <span class=red>*</span>', ['required']) !!}
+        {!! Form::myTextArea('short_description', 'مختصر الاعل') !!}
 
-        {!! Form::myTextArea('description', 'نص الاعلان  <span class=red>*</span>', ['required']) !!}
+        {!! Form::myTextArea('description', 'نص الاعلان') !!}
 
         {!! Form::myInput('url', 'url', 'رابط خارجي') !!}
 

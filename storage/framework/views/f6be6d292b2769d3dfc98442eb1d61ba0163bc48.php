@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" dir="rtl">
+<?php $__env->startSection('content'); ?>
+<!-- Start Login Section  -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>المحجة البيضاء- تسجيل الدخول</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css_new/boostrap4.min.css">
-    <link rel="stylesheet" href="css_new/all.min.css">
-    <link rel="stylesheet" href="css_new/style.css">
-    <link rel="stylesheet" href="css/style.css">
-
-
-
-    <link rel="icon" type="image/png" href="images/logo-fav.png" sizes="32x32">
-</head>
-
-<body>
 
 <!-- Start Login Section  -->
 <section class="login-sec">
@@ -25,8 +9,7 @@
 
         <?php echo csrf_field(); ?>
         <div class="inputs">
-            <img src="images/logo.png" alt="">
-            <?php echo $__env->make('admin.commun.flash-message', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
             <div class="form-group <?php echo e($errors->has('username') ? ' has-error' : ''); ?> has-feedback">
                 <input type="text" class="form-control" name="username" placeholder="اسم المستخدم" value="<?php echo e(old('username')); ?>" required>
             </div>
@@ -61,15 +44,5 @@
 
     </form>
 </section>
-<!-- End Login Section  -->
-
-
-<script src="js/jquery.js"></script>
-<script src="js/poper.js"></script>
-<script src="js/bootstrap4.min.js"></script>
-<script src="js/all.min.js"></script>
-<script src="js/custome.js"></script>
-
-</body>
-
-</html>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('site.new_default', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

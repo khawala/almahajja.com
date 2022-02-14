@@ -14,8 +14,12 @@
                         <img class="d-block w-100 back-img"
                              style="background: url(<?php echo e($ad->photo); ?>) no-repeat center center;background-size: contain !important;">
                         <div class="carousel-caption d-md-block">
+                               <?php if($ad->name!=null): ?>
                             <h5><?php echo e($ad->name); ?></h5>
+                            <?php endif; ?>
+                               <?php if($ad->short_description!=null): ?>
                             <p><?php echo e($ad->short_description); ?></p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

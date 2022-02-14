@@ -45,6 +45,7 @@
 						{!! Form::myInput('text', 'mobile', 'الجوال') !!}
 
 						{!! Form::myInput('text', 'phone', 'الهاتف') !!}
+	{!! Form::myInput('text', 'whatsapp', 'واتساب') !!}
 
 						{!! Form::myInput('text', 'fax', 'الفاكس') !!}
 

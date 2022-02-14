@@ -10,13 +10,13 @@
       </div>
       <div class="box-body">
 
-        <?php echo Form::myInput('text', 'name', 'عنوان الاعلان  <span class=red>*</span>', ['required']); ?>
+        <?php echo Form::myInput('text', 'name', 'عنوان الاعل'); ?>
 
 
-        <?php echo Form::myTextArea('short_description', 'مختصر الاعلان  <span class=red>*</span>', ['required']); ?>
+        <?php echo Form::myTextArea('short_description', 'مختصر الاعل'); ?>
 
 
-        <?php echo Form::myTextArea('description', 'نص الاعلان  <span class=red>*</span>', ['required']); ?>
+        <?php echo Form::myTextArea('description', 'نص الاعلان'); ?>
 
 
         <?php echo Form::myInput('url', 'url', 'رابط خارجي'); ?>

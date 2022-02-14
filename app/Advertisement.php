@@ -16,9 +16,7 @@ class Advertisement extends Model
     public static function rules($update = false, $id = null)
     {
         $common = [
-            'name'              => 'required',
-            'short_description' => 'required',
-            'description'       => 'required',
+         
             'photo'             => 'mimes:jpeg,jpg,png',
         ];
 

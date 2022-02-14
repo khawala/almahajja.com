@@ -34,8 +34,8 @@
                 @foreach($items as $item)
                 <div class="col-lg-4">
                     <div class="box">
-                        <img src="{{url('images/news-courses/supporting-quran-memorization-workshops.png')}}" alt="">
-                        <h4>{{$item->name}}ً</h4>
+                        <img src="{{url($item->photo)}}" alt="">
+                        <h4>{{$item->name}}</h4>
                         <div class="row justify-content-between text-right">
                             <div class="col-6">
                                 <div class="one">

@@ -54,6 +54,8 @@
 
 						<?php echo Form::myInput('text', 'phone', 'الهاتف'); ?>
 
+	<?php echo Form::myInput('text', 'whatsapp', 'واتساب'); ?>
+
 
 						<?php echo Form::myInput('text', 'fax', 'الفاكس'); ?>
 

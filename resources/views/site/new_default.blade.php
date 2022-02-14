@@ -112,6 +112,11 @@
 .swal2-container .select-wrapper{
 display: none !important;
 }
+@media (min-width: 976px) {
+.navbar-sec nav .navbar-brand {
+    width: 400px;
+}
+}
 </style>
 </head>
 
@@ -125,7 +130,7 @@ display: none !important;
 
 <div class="social-div" id="header">
     <ul class="list-inline">
-                                  <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp" target="_blank"></i></a></li>
+                                  <li class="list-inline-item"><a href="{{$config->whatsapp}}"><i class="fab fa-fw fa-whatsapp" target="_blank"></i></a></li>
         <li class="list-inline-item"><a href="{{$config->instagram}}" target="_blank"><i class="fab fa-fw fa-instagram"></i></a></li>
         <li class="list-inline-item"><a href="{{$config->twitter}}" target="_blank"><i class="fab fa-fw fa-twitter" ></i></a></li>
         <!--<li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-youtube"></i></a></li>-->
@@ -139,8 +144,8 @@ display: none !important;
 <section class="navbar-sec">
     <div class="container">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="{{url('/') . '#'}}">
-                <img src="{{url('images/logo.png')}}" alt="" width="300">
+            <a class="navbar-brand" href="{{url('/') . '#'}}"  style="margin-right: 0;">
+                <img src="{{url('images/logo.png')}}" alt="" width="100%">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -220,7 +225,8 @@ display: none !important;
             </div>
             <div class="col-lg-7">
                 <div class="text-center box-img">
-                    <img class="img-fluid" src="{{url('images/center-img.png')}}" alt="">
+                    <img class="img-fluid"  style="max-width: 80%;
+    height: auto;" src="{{url('images/center-img.png')}}" alt="">
                 </div>
             </div>
             <div class="col-lg">
@@ -340,7 +346,7 @@ display: none !important;
                     <!--</li>-->
                     <li>
                         <h5>التواصل على البريد الالكتروني</h5>
-                        <h6>{{ $config->mobile }}</h6>
+                        <h6>{{ $config->email }}</h6>
                     </li>
                 </ul>
             </div>
@@ -387,7 +393,7 @@ display: none !important;
             <div class="col-xs-6">
                 <div class="right text-right">
                     <ul class="list-inline">
-                              <li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-whatsapp" target="_blank"></i></a></li>
+                                  <li class="list-inline-item"><a href="{{$config->whatsapp}}"><i class="fab fa-fw fa-whatsapp" target="_blank"></i></a></li>
         <li class="list-inline-item"><a href="{{$config->instagram}}" target="_blank"><i class="fab fa-fw fa-instagram"></i></a></li>
         <li class="list-inline-item"><a href="{{$config->twitter}}" target="_blank"><i class="fab fa-fw fa-twitter" ></i></a></li>
         <!--<li class="list-inline-item"><a href="#"><i class="fab fa-fw fa-youtube"></i></a></li>-->

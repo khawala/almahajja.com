@@ -34,8 +34,8 @@
                 <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-4">
                     <div class="box">
-                        <img src="<?php echo e(url('images/news-courses/supporting-quran-memorization-workshops.png')); ?>" alt="">
-                        <h4><?php echo e($item->name); ?>ً</h4>
+                        <img src="<?php echo e(url($item->photo)); ?>" alt="">
+                        <h4><?php echo e($item->name); ?></h4>
                         <div class="row justify-content-between text-right">
                             <div class="col-6">
                                 <div class="one">

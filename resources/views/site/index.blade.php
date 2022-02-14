@@ -16,8 +16,12 @@
                         <img class="d-block w-100 back-img"
                              style="background: url({{$ad->photo}}) no-repeat center center;background-size: contain !important;">
                         <div class="carousel-caption d-md-block">
+                               @if($ad->name!=null)
                             <h5>{{$ad->name}}</h5>
+                            @endif
+                               @if($ad->short_description!=null)
                             <p>{{$ad->short_description}}</p>
+                            @endif
                         </div>
                     </div>
                 @endforeach
