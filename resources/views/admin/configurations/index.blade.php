@@ -63,6 +63,12 @@
 
 						{!! Form::myInput('text', 'address', 'عنوان المكتب') !!}
 						
+						{!! Form::myInput('text', 'malath_username', 'اسم المستخدم في ملاذ ') !!}
+
+						{!! Form::myInput('password', 'malath_password', 'كلمة السر في ملاذ ') !!}
+
+						{!! Form::myInput('text', 'malath_sender_name', 'اسم المرسل في ملاذ') !!}
+						
 				  </div>
 				</div>
 

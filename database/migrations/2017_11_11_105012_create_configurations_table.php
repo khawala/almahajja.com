@@ -26,6 +26,11 @@ class CreateConfigurationsTable extends Migration
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
              $table->string('whatsapp')->nullable();
+             
+               $table->string('malath_username')->nullable();
+            $table->string('malath_password')->nullable();
+            $table->string('malath_sender_name')->nullable();
+
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
             $table->string('toll_free')->nullable();

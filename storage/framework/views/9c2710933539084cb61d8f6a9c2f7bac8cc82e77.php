@@ -442,8 +442,12 @@ margin-right:100px;
                 </div>
             </div>
             <div class="col-xs-6">
-                <h4>&copy; جميع الحقوق محفوظة لــ المحجة البيضاء </h4>
-            </div>
+                <h4>&copy;  جميع الحقوق محفوظة لــ المحجة البيضاء 
+                                        <span> تطوير واستضافة <a target="_blank" href="http://wa.me/+966548313071">يلا نبدع</a></span>
+
+           </h4> 
+                
+        </div>
         </div>
     </div>
 </div>

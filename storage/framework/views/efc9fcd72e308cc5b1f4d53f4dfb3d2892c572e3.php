@@ -81,6 +81,15 @@
 						<?php echo Form::myInput('text', 'address', 'عنوان المكتب'); ?>
 
 						
+						<?php echo Form::myInput('text', 'malath_username', 'اسم المستخدم في ملاذ '); ?>
+
+
+						<?php echo Form::myInput('password', 'malath_password', 'كلمة السر في ملاذ '); ?>
+
+
+						<?php echo Form::myInput('text', 'malath_sender_name', 'اسم المرسل في ملاذ'); ?>
+
+						
 				  </div>
 				</div>
 

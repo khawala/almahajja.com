@@ -55,8 +55,8 @@ class MarkController extends Controller
                     // 'mark1'           => $mark['mark1'],
                     // 'mark2'           => $mark['mark2'],
                     // 'mark3'           => $mark['mark3'],
-                      'separate_section_from'           => $mark['separate_section_from'],
-                    'separate_section_to'           => $mark['separate_section_to'],
+                    //   'separate_section_from'           => $mark['separate_section_from'],
+                    // 'separate_section_to'           => $mark['separate_section_to'],
                     'total'           => $mark['total'],
                     'created_at'      => Carbon::now(),
                 ];

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Configuration extends Model
 {
-    protected $fillable = [ 'about_almahajja_waqf', 'about_almahajja_project', 'vision', 'mission', 'values', 'goals', 'history', 'website', 'email', 'mobile', 'phone', 'fax', 'toll_free', 'twitter', 'instagram', 'facebook', 'youtube', 'snapchat', 'address', 'lat', 'whatsapp','lng', 'logo',];
+    protected $fillable = [ 'about_almahajja_waqf', 'malath_sender_name','malath_password','','about_almahajja_project', 'vision', 'mission', 'values', 'goals', 'history', 'website', 'email', 'mobile', 'phone', 'fax', 'toll_free', 'twitter', 'instagram', 'facebook', 'youtube', 'snapchat', 'address', 'lat', 'whatsapp','lng', 'logo',];
 
     /*
     |------------------------------------------------------------------------------------

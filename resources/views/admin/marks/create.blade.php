@@ -74,7 +74,7 @@
                                         <input type="hidden" name="marks[{{ $student->id }}][level]" value="{{ $student->level->id }}">
                                     </td>
                                     <td>{{$student->name }}</td>
-                                    <td>{{ $student->level->name  }}</td>seprate_section_to
+                                    <td>{{ $student->level->name  }}</td>
                                     <!--<td><input type="number" name="marks[{{ $student->id }}][mark1]" class="form-control mark" step="0.01" min="0" max="30" value="{{ $student->mark1 }}"></td>-->
                                     <!--<td><input type="number" name="marks[{{ $student->id }}][mark2]" class="form-control mark" step="0.01" min="0" max="30" value="{{ $student->mark2 }}"></td>-->
                                     <!--<td><input type="number" name="marks[{{ $student->id }}][mark3]" class="form-control mark" step="0.01" min="0" max="40" value="{{ $student->mark3 }}"></td>-->

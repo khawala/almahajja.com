@@ -208,7 +208,7 @@
                     </a>
                 </li>
                 <li>
-    <a target="_blank" href="https://www.hit.sa/#section4">
+    <a target="_blank" href="http://wa.me/+966548313071">
         <i class="fa fa-life-ring" aria-hidden="true"></i> <span>الدعم الفني</span>
     </a>
 </li>

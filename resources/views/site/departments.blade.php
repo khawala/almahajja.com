@@ -50,9 +50,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="cost">
+                       <button class="cost" onclick="window.open('{{ route('department.show', $item) }} ')" style="width: 100%;cursor: pointer;border-style: solid;">
                             <span>رسوم التسجيل</span>  @if ($item->price) {{ $item->price }} ريال @else مجانا @endif
-                        </div>
+                        </button>
                     </div>
                 </div>
                 @endforeach

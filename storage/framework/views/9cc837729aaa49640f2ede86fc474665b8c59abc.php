@@ -67,11 +67,12 @@ $total=$total/$count;
 </span>
  <?php echo e($registration->classroom->department->certificate_type); ?>  :
 <span>
-        <!--<?php if($registration->classroom->department->separate_section==1): ?>-->
-        <!-- من <?php echo e($markes[0]->separate_section_from); ?> الى <?php echo e($markes[0]->separate_section_to); ?>-->
-        <!--                    <?php else: ?>-->
+        <?php if($registration->classroom->department->separate_section==1): ?>
+         من <?php echo e($markes[0]->separate_section_from); ?> الى <?php echo e($markes[0]->separate_section_to); ?>
+
+                            <?php else: ?>
   <?php echo e($registration->level->name); ?> 
-     <!--<?php endif; ?>-->
+     <?php endif; ?>
 </span>
 <br>
 على يد المعلمة:

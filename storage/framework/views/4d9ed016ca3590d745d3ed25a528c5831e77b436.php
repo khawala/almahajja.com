@@ -156,7 +156,7 @@ select.form-control {
         <footer class="main-footer text-center">
             <strong>الموقع الرسمي لوقف المحجة البيضاء<br>
                 جميع الحقوق محفوظة لوقف المحجة البيضاء1440هـ/2018م  <br>
-                تطوير واستضافة <a target="_blank" href="//www.hit.sa">HIT</a>
+                تطوير واستضافة <a target="_blank" href="http://wa.me/+966548313071">يلا نبدع</a>
              </strong>
         </footer>
 

@@ -50,9 +50,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="cost">
+                       <button class="cost" onclick="window.open('<?php echo e(route('department.show', $item)); ?> ')" style="width: 100%;cursor: pointer;border-style: solid;">
                             <span>رسوم التسجيل</span>  <?php if($item->price): ?> <?php echo e($item->price); ?> ريال <?php else: ?> مجانا <?php endif; ?>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
