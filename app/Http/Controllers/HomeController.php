@@ -180,7 +180,7 @@ class HomeController extends Controller
           }
      
    $registration= $user->registrations()->create(request()->all());
-     $subject='    التسجيل   '.$registration->department->name;
+     $subject='       '.$registration->department->name;
                 $content='تم إستقبال طلبك للتسجيل في   '.$registration->department->name.'<br>';
                                 $content1='تم إستقبال طلب تسجيل جديد  في   '.$registration->department->name.'<br>';
 $supervisor=$registration->department->supervisor;
