@@ -102,7 +102,7 @@ class RegistrationController extends Controller
              $instituteName=Setting::where('id',8)->pluck('content')->first();
                                             $tax= '1.'.$tax1;
                       $total=$registration->department->price;
-                      if($registration->paid!=0)
+                      if($registration->paid!=0 && $registration->paid!=null)
                       {
                        $total= $registration->paid;  
                       }

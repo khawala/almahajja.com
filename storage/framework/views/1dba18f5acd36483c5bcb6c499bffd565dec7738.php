@@ -136,7 +136,7 @@
                          
                             <th class="th_desc">عنوان</th>
                             <th class="th_desc">الوسيلة </th>
-                                <th class="th_unit">المبلغ </th>
+                                <th class="th_unit">  المبلغ  المدفوع</th>
                         
                             <th class="th_unit">  الضريبة <?php echo e($tax); ?> %</th>
                                                      
@@ -162,7 +162,7 @@
                         
          <td class="unit En">
                                 
-                              <?php   echo $department->price-$taxamount?>
+                              <?php    echo $total-$taxamount?>
                               SR
                             </td>
                                   
@@ -177,9 +177,15 @@
                     </tbody>
                 </table>
                     <div>
-                                        الاجمالي :<?php echo e($department->price); ?>
+                                        الاجمالي :<?php echo e($total); ?>
 
                                         SR
+                                                              <?php if($registration->paid!=0 && $registration->paid!=null): ?>
+                                                              <br>
+                                                              الباقي: <?php echo e($department->price-$registration->paid); ?>
+
+                                                              SR
+                                                              <?php endif; ?>
                             </div>
                              
              
