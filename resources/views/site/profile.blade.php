@@ -93,7 +93,10 @@
                                             @if ($item->status == 3||$item->status==5)
                                                 <li><a target="_blank" class="btn btn-xs btn-success" href="{{ route('certifications.print', $item) }}">طباعة الشهادة</a></li>
                                             @endif
- 
+   @if($item->status!=0 && $item->status!=2)
+        
+                         <!--<li><a href="{{ route( 'student.invoivce', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-info btn-xs">الفاتورة</a></li>-->
+                      @endif
                                             @foreach ($item->section->divisiontimes as $divisiontime)
                                                 @if ($divisiontime->pdf_file)
                                                     <a class="btn btn-primary btn-xs" download href="{{ $divisiontime->pdf_file }}"><i class="fa fa-download"></i></a>

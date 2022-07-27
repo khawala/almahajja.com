@@ -19,6 +19,7 @@
         "laravelcollective/html": "^5.7",
         "maatwebsite/excel": "~2.1.0",
         "realrashid/sweet-alert": "^4.1",
+        "salla/zatca": "^2.0",
         "teepluss/restable": "^2.0"
     },
     "require-dev": {

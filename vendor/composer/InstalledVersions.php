@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6646e37f8519c496f4effb9ed5a6afd4f72edd86',
+    'reference' => '1f5ff8cfec1cd265e4bb1160f83c9a5e58fa4d7c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -32,6 +32,24 @@ private static $installed = array (
       array (
       ),
       'reference' => '91ee8b3acf0d72a4937f4855bd245acbda9910ac',
+    ),
+    'chillerlan/php-qrcode' => 
+    array (
+      'pretty_version' => '4.3.4',
+      'version' => '4.3.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2ca4bf5ae048af1981d1023ee42a0a2a9d51e51d',
+    ),
+    'chillerlan/php-settings-container' => 
+    array (
+      'pretty_version' => '2.1.4',
+      'version' => '2.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1beb7df3c14346d4344b0b2e12f6f9a74feabd4a',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -464,7 +482,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '6646e37f8519c496f4effb9ed5a6afd4f72edd86',
+      'reference' => '1f5ff8cfec1cd265e4bb1160f83c9a5e58fa4d7c',
     ),
     'laravel/nexmo-notification-channel' => 
     array (
@@ -915,6 +933,15 @@ private static $installed = array (
       array (
         0 => '3.9.4',
       ),
+    ),
+    'salla/zatca' => 
+    array (
+      'pretty_version' => '2.0.1',
+      'version' => '2.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3c1f534acf16a06687102895b511ffe4f74a7af1',
     ),
     'sebastian/code-unit-reverse-lookup' => 
     array (

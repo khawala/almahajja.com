@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 use App\Registration;
 use App\Section;
 use App\User;
+use App\Configuration;
+use App\Setting;
 use Excel;
+use Salla\ZATCA\GenerateQrCode;
+use Salla\ZATCA\Tags\InvoiceDate;
+use Salla\ZATCA\Tags\InvoiceTaxAmount;
+use Salla\ZATCA\Tags\InvoiceTotalAmount;
+use Salla\ZATCA\Tags\Seller;
+use Salla\ZATCA\Tags\TaxNumber;
 
 class RegistrationController extends Controller
 {
@@ -18,7 +26,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        $items = Registration::search()->with('student', 'section', 'period', 'classroom', 'telecom')->latest('updated_at')->paginate(20);
+        $items = Registration::search()->with('student', 'section', 'period', 'classroom', 'telecom')->latest('updated_at')->paginate(100);
 
         if (request()->has('export')) {
             $this->export($items);
@@ -75,6 +83,71 @@ class RegistrationController extends Controller
         //
     }
 
+  public function invoice($id)
+    {
+        $registration = Registration::where('id', '=', $id)->first();
+        
+        if($registration->status==0 || $registration->status==2)
+        {
+          return back()->withSuccess('لا يمكن اصدار فاتورة بسبب عدم تاكيد حالة التسجيل');  
+        }
+        if($registration->department->price==null || $registration->department->price==0)
+        {
+             return back()->withSuccess('القسم مجاني لا يمكن اصدار فاتورة');
+        }
+        else{
+            if($registration->department!=null){
+            $tax1=Setting::where('id',6)->pluck('content')->first();
+            $commercial_register=Setting::where('id',7)->pluck('content')->first();
+             $instituteName=Setting::where('id',8)->pluck('content')->first();
+                                            $tax= '1.'.$tax1;
+                      $total=$registration->department->price;
+                      if($registration->paid!=0)
+                      {
+                       $total= $registration->paid;  
+                      }
+            $taxamount=$total-($total/(double)$tax);
+        
+               $taxamount= round($taxamount, 2);
+                 
+                 
+       $institute=Configuration::where('id',1)->first();
+        
+$displayQRCodeAsBase64 = GenerateQrCode::fromArray([
+    new Seller($instituteName), // seller name        
+    new TaxNumber($commercial_register), // seller tax number
+    new InvoiceDate(date(DATE_ISO8601, strtotime($registration->created_at))), // invoice date as Zulu ISO8601 @see https://en.wikipedia.org/wiki/ISO_8601
+    new InvoiceTotalAmount($total), // invoice total amount
+    new InvoiceTaxAmount($taxamount) // invoice tax amount
+    // TODO :: Support others tags
+])->render();
+$trainee=$registration->student;
+if($trainee==null)
+{
+    return back()->withSuccess('لم يتم ايجاد الطالب التابع له التسجيل'); 
+}
+$logo=Setting::where('id',9)->first();
+$SQL = Array(
+        "registration"         => $registration,
+        'displayQRCodeAsBase64'=>$displayQRCodeAsBase64,
+        "department"       => $registration->department,
+        "total"=>$total,
+        "tax"=>$tax1,
+        "instituteName"=>$instituteName,
+        "trainee" =>$trainee,
+        "commercial_register"=>$commercial_register,
+        "institute"=>$institute,
+        "logo"=>$logo,
+        "taxamount"=>$taxamount,
+      );
+    return view('admin.registrations.invoice', $SQL);  
+}
+else
+{
+    return back()->withSuccess('لم يتم ايجاد القسم التابع له التسجيل');
+}
+    }
+    }
     /**
      * Show the form for editing the specified resource.
      *

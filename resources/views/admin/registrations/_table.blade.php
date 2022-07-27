@@ -45,6 +45,7 @@
             <tr>
                 <td><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}">{{ $item->id }}</a></td>
                 <td><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}">{{ $item->student->name }}</a></td>
+                
                 <td>{{ $item->department->name }}</td>
                 <td>{{ $item->section->name }}</td>
                 <td>{{ $item->telecom->name }}</td>
@@ -84,6 +85,10 @@
                 <td class="actions">
                     <ul class="list-inline">
                         <li><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
+                       @if($item->status!=0 && $item->status!=2 && $item->department->price!=null && $item->department->price!=0)
+        
+                         <!--<li><a href="{{ route(ADMIN . '.registrations.invoivce', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-info btn-xs">الفاتورة</a></li>-->
+                      @endif
                         <li>
                             {!! Form::open([
                                 'class'=>'delete',

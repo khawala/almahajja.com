@@ -78,15 +78,15 @@ class Section extends Model
     public function scopeListGroup($q)
     {
         $res = [];
-        $divisions = Division::with('sections')->get();
-        foreach ($divisions as $division) {
-            foreach ($division->sections as $section) {
+        $departments = Department::with('sections')->get();
+        foreach ($departments as $department) {
+            foreach ($department->sections as $section) {
                 if (auth()->user()->isTeacher) { // teaher
                     if (! $section->classrooms->where('teacher_id', auth()->id())->count()) {
                         continue;
                     }
                 }
-                $res[$division->name][$section->id] = $section->name . ' - ' . $division->genderName;
+                $res[$department->name][$section->id] = $section->name . ' - ' . $department->name;
             }
         }
         return $res;

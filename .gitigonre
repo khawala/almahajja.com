@@ -4,3 +4,4 @@ storage/logs/*
 /storage/*
 storage
 .env
+.git.zip

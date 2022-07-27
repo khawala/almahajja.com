@@ -92,7 +92,10 @@
                                             <?php if($item->status == 3||$item->status==5): ?>
                                                 <li><a target="_blank" class="btn btn-xs btn-success" href="<?php echo e(route('certifications.print', $item)); ?>">طباعة الشهادة</a></li>
                                             <?php endif; ?>
- 
+   <?php if($item->status!=0 && $item->status!=2): ?>
+        
+                         <li><a href="<?php echo e(route( 'student.invoivce', $item->id)); ?>" title="<?php echo e(trans('app.edit_title')); ?>" class="btn btn-info btn-xs">الفاتورة</a></li>
+                      <?php endif; ?>
                                             <?php $__currentLoopData = $item->section->divisiontimes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $divisiontime): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <?php if($divisiontime->pdf_file): ?>
                                                     <a class="btn btn-primary btn-xs" download href="<?php echo e($divisiontime->pdf_file); ?>"><i class="fa fa-download"></i></a>

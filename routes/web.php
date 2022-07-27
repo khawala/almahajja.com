@@ -39,6 +39,7 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
     Route::get('registrations/stats', 'RegistrationController@stats')->name('registrations.stats');
     Route::get('registrations/marks', 'RegistrationController@marks')->name('registrations.marks');
     Route::get('registrations/classrooms', 'RegistrationController@classrooms')->name('registrations.classrooms');
+    Route::get('registrations/invoice/{id}', 'RegistrationController@invoice')->name('registrations.invoivce');
     Route::post('registrations/search', 'RegistrationController@search')->name('registrations.search');
     Route::resource('registrations', 'RegistrationController');
     Route::resource('classrooms', 'ClassroomController');
@@ -77,6 +78,7 @@ Route::post('job-request', 'HomeController@postJobRequest')->name('job.store');
 
 Route::group(['middleware'=>['auth', 'checkstatus']], function () {
     Route::get('profile', 'HomeController@profile')->name('profile.show');
+     Route::get('invoice/{id}', 'RegistrationController@invoice')->name('student.invoivce');
 Route::get('/check',  "HomeController@check")->name('tap.check');
 Route::get('/success', "HomeController@success")->name('tap.success');
 Route::get('/cancel',  "HomeController@cancel")->name('tap.cancel');
