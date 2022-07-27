@@ -38,7 +38,7 @@
 	      </div>
 
 	    </div>
-        {!! $items->links() !!}
+        {!! $items->appends(request()->input())->links() !!}
 	  </div>
 	</div>
 	

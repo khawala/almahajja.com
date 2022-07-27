@@ -48,9 +48,9 @@
 					@foreach ($items as $item)
 						<tr>
                             <td><a href="{{ route(ADMIN . '.job-requests.edit', $item->id) }}">{{ $item->id }}</a></td>
-	                        <td><a href="{{ route(ADMIN . '.job-requests.edit', $item->id) }}">{{ $item->job->name }}</a></td>
-                            <td>{{ $item->user->name }}</td>
-                            <td>{{ $item->user->mobile1 }}</td>
+	                        <td><a href="{{ route(ADMIN . '.job-requests.edit', $item->id) }}">@if($item->job){{ $item->job->name }} @endif</a></td>
+                            <td>@if($item->user){{ $item->user->name }} @endif</td>
+                            <td>@if($item->user) {{ $item->user->mobile1 }}@endif</td>
                             <td>{{ $item->statusName }}</td>
 	                        <td class="actions">
                                 <ul class="list-inline">

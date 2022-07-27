@@ -90,7 +90,7 @@
                         </tbody>
                     </table>
 
-                    <?php echo $classrooms->links(); ?>
+                    <?php echo $classrooms->appends(request()->input())->links(); ?>
 
                 </div>
                 <!-- /.box-body -->

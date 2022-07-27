@@ -83,7 +83,7 @@
                         </tbody>
                     </table>
 
-                    {!! $classrooms->links() !!}
+                    {!! $classrooms->appends(request()->input())->links() !!}
                 </div>
                 <!-- /.box-body -->
             </div>

@@ -26,7 +26,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        $items = Registration::search()->with('student', 'section', 'period', 'classroom', 'telecom')->latest('updated_at')->paginate(100);
+        $items = Registration::search()->with('student', 'section', 'period', 'classroom', 'telecom')->latest('updated_at')->paginate(20);
 
         if (request()->has('export')) {
             $this->export($items);

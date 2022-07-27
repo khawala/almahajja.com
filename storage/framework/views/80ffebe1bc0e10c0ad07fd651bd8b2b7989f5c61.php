@@ -46,9 +46,9 @@
 					<?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr>
                             <td><a href="<?php echo e(route(ADMIN . '.job-requests.edit', $item->id)); ?>"><?php echo e($item->id); ?></a></td>
-	                        <td><a href="<?php echo e(route(ADMIN . '.job-requests.edit', $item->id)); ?>"><?php echo e($item->job->name); ?></a></td>
-                            <td><?php echo e($item->user->name); ?></td>
-                            <td><?php echo e($item->user->mobile1); ?></td>
+	                        <td><a href="<?php echo e(route(ADMIN . '.job-requests.edit', $item->id)); ?>"><?php if($item->job): ?><?php echo e($item->job->name); ?> <?php endif; ?></a></td>
+                            <td><?php if($item->user): ?><?php echo e($item->user->name); ?> <?php endif; ?></td>
+                            <td><?php if($item->user): ?> <?php echo e($item->user->mobile1); ?><?php endif; ?></td>
                             <td><?php echo e($item->statusName); ?></td>
 	                        <td class="actions">
                                 <ul class="list-inline">

@@ -40,7 +40,7 @@
 	      </div>
 
 	    </div>
-        <?php echo $items->links(); ?>
+        <?php echo $items->appends(request()->input())->links(); ?>
 
 	  </div>
 	</div>

@@ -30,7 +30,8 @@ Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'ch
     Route::resource('telecoms', 'TelecomController');
     Route::resource('periods', 'PeriodController');
     Route::resource('nationalities', 'NationalityController');
-
+     Route::get('invoice/report', 'RegistrationController@invoiceReport')->name('invoivce.report');
+          Route::post('invoice/report', 'RegistrationController@invoiceReportPost')->name('invoivce.report');
     Route::get('users/export', ['uses'=>'UsersController@export', 'as' => 'users.export']);
         Route::get('teachers/export', ['uses'=>'TeacherController@export', 'as' => 'teachers.export']);
     Route::resource('users', 'UsersController');
