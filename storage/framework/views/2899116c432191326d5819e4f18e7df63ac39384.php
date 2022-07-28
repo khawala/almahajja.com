@@ -158,9 +158,15 @@
                     <span>احصائيات طلبات التسجيل</span>
                 </a>
             </li>
-                <li class="<?php echo ( starts_with($route, ADMIN.'.stats') ) ? "active" : '' ?>">
+                  <li class="<?php echo ( starts_with($route, ADMIN.'.stats') ) ? "active" : '' ?>">
                     <a href="<?php echo e(route(ADMIN.'.stats.index')); ?>">
-                        <span>احصائيات طلبات التوظيف</span>
+                       <span>احصائيات طلبات التوظيف</span>
+                    </a>
+                </li>
+                   <li class="<?php echo ( starts_with($route, ADMIN.'.invoice.getReport') ) ? "active" : '' ?>">
+                    <a href="<?php echo e(route(ADMIN . '.invoice.getReport')); ?>">
+                      
+                        <span>  تقرير الفواتير</span>
                     </a>
                 </li>
             </ul>

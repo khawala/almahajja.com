@@ -16,7 +16,7 @@ use Salla\ZATCA\Tags\InvoiceTaxAmount;
 use Salla\ZATCA\Tags\InvoiceTotalAmount;
 use Salla\ZATCA\Tags\Seller;
 use Salla\ZATCA\Tags\TaxNumber;
-
+use Illuminate\Support\Carbon;
 class RegistrationController extends Controller
 {
     /**
@@ -178,7 +178,33 @@ else
 
         return back()->withSuccess(trans('app.success_update'));
     }
+public function invoiceReport()
+{
+  return view('admin.registrations.invoiceReport');  
+}
+ public function invoiceReportPost(Request $request)
+    {
+        // dd($request);
+        $start_date=$request->start_date;
+        $end_date=$request->end_date;
+        // dd(Carbon::parse($request->start_date));
+        $items = Registration::whereDate('created_at', '>=', Carbon::parse($request->start_date))->whereDate('created_at', '<=', Carbon::parse($request->end_date))->where([['status','!=',0],['status','!=',2]])->get();
+        // dd($items);
+         $commercial_register=Setting::where('id',7)->pluck('content')->first();
+             $instituteName=Setting::where('id',8)->pluck('content')->first();
+                 $institute=Configuration::where('id',1)->first();
+                 $logo=Setting::where('id',9)->first();
+    //     $SQL = Array(
 
+    //     "instituteName"=>$instituteName,
+       
+    //     "commercial_register"=>$commercial_register,
+    //     "institute"=>$institute,
+    //     "logo"=>$logo,
+   
+    //   );
+          return view('admin.registrations.invoiceReportPdf', compact('items','start_date','end_date','logo','instituteName','commercial_register','institute'));
+    }
     /**
      * Remove the specified resource from storage.
      *

@@ -87,7 +87,7 @@
                         <li><a href="{{ route(ADMIN . '.registrations.edit', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a></li>
                        @if($item->status!=0 && $item->status!=2 && $item->department->price!=null && $item->department->price!=0)
         
-                         <li><a href="{{ route(ADMIN . '.registrations.invoivce', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-info btn-xs">الفاتورة</a></li>
+                         <li><a href="{{ route(ADMIN . '.registrations.invoice', $item->id) }}" title="{{ trans('app.edit_title') }}" class="btn btn-info btn-xs">الفاتورة</a></li>
                       @endif
                         <li>
                             {!! Form::open([
