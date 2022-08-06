@@ -17,7 +17,7 @@
                         <?php $rid=\App\Registration::where('id',$marks->first()->rid)->first();?>
                      
                             <p>الحلقة: <?php echo e($rid->classroom->name); ?></p>
-                            <p>المعلمة: <?php echo e($marks->first()->users_name); ?></p>
+                            <!--<p>المعلمة: <?php echo e($marks->first()->users_name); ?></p>-->
                         </div>
                     </div>
                 <?php endif; ?>

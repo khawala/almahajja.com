@@ -16,7 +16,7 @@
                 
               <?php echo e(Form::label('end_date','تاريخ الإنتهاء',['class' => 'control-label'])); ?>
 
-               <?php echo Form::date('end_date',null,['required', 'class' => 'form-control']); ?> 
+               <?php echo Form::date('end_date',date('Y-m-d'),['required', 'class' => 'form-control']); ?> 
           
             	<div class="box-footer">
   	  <button type="submit" class="btn btn-info">بحث</button>

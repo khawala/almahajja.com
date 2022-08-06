@@ -20,6 +20,9 @@
     display:block;
     margin:auto;
             }
+            #logo img {
+   
+    position: relative;}
             table .th_no, table .th_desc, table .th_unit {
     color: #FFFFFF;
  font-size: 1em;
@@ -54,7 +57,7 @@ section {
             </header>
             <main class="invoice">
         <div class="wrapper">
-<h1>من <?php echo e($start_date); ?>إلى  <?php echo e($end_date); ?></h1>
+ <h1>تقرير الفواتير من  <?php echo e($start_date); ?>إلى  <?php echo e($end_date); ?></h1>
             <a href="<?php echo e(request()->fullUrl()); ?>&print=1" target="_blank" class="btn btn-success no-print pull-left"><i class="fa fa-print"></i></a>
             <hr>
         

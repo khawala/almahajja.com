@@ -87,7 +87,7 @@ class RegistrationController extends Controller
     {
         $registration = Registration::where('id', '=', $id)->first();
         
-        if($registration->status==0 || $registration->status==2)
+        if($registration->status==0)
         {
           return back()->withSuccess('لا يمكن اصدار فاتورة بسبب عدم تاكيد حالة التسجيل');  
         }
@@ -188,7 +188,7 @@ public function invoiceReport()
         $start_date=$request->start_date;
         $end_date=$request->end_date;
         // dd(Carbon::parse($request->start_date));
-        $items = Registration::whereDate('created_at', '>=', Carbon::parse($request->start_date))->whereDate('created_at', '<=', Carbon::parse($request->end_date))->where([['status','!=',0],['status','!=',2]])->get();
+        $items = Registration::whereDate('created_at', '>=', Carbon::parse($request->start_date))->whereDate('created_at', '<=', Carbon::parse($request->end_date))->where('status','!=',0)->get();
         // dd($items);
          $commercial_register=Setting::where('id',7)->pluck('content')->first();
              $instituteName=Setting::where('id',8)->pluck('content')->first();
