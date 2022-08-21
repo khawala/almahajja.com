@@ -20,7 +20,7 @@
             <div class="all">
                 <div class="text1">
                     <h3><?php echo e($department->name); ?></h3>
-                    <h5><?php echo e(nl2br($department->description)); ?></h5>
+                    <h5><?php echo $department->description; ?></h5>
                 </div>
                 <div class="box-img">
                     <img src="<?php echo e($department->photo); ?>" />

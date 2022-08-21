@@ -201,7 +201,7 @@ $supervisor=$registration->department->supervisor;
 if($request->payment_type==1&&($registration->department->price!=0)){
 
 
-        $tapSecretAPIKey = "sk_test_XKokBfNWv6FIYuTMg5sLPjhJ";
+        $tapSecretAPIKey = "sk_live_lMCOm4XPgbkfdjBAQoD6LtIn";
       
         $key = "Bearer $tapSecretAPIKey";
       $amount=$registration->department->price;
@@ -268,7 +268,7 @@ $name=$user->name;
         
          
   
-           $tapSecretAPIKey = "sk_test_XKokBfNWv6FIYuTMg5sLPjhJ";
+           $tapSecretAPIKey = "sk_live_lMCOm4XPgbkfdjBAQoD6LtIn";
       
         $key = "Bearer $tapSecretAPIKey";
         

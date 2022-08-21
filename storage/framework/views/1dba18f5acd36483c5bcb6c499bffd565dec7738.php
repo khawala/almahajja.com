@@ -23,7 +23,7 @@
             table .th_no, table .th_desc, table .th_unit {
     color: #FFFFFF;
  font-size: 1em;
-    background: rgb(0, 71, 103);
+    background: #7f999a;
 }
                 #client ,#invoice {max-width: 50%;}
         </style>

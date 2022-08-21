@@ -20,7 +20,7 @@
             <div class="all">
                 <div class="text1">
                     <h3>{{ $department->name }}</h3>
-                    <h5>{{ nl2br($department->description) }}</h5>
+                    <h5>{!!$department->description !!}</h5>
                 </div>
                 <div class="box-img">
                     <img src="{{ $department->photo }}" />
