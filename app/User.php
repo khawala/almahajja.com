@@ -74,6 +74,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Registration::class);
     }
+     public function cartRegistrations()
+    {
+        return $this->hasMany(CartRegistration::class);
+    }
       public function departments()
     {
         return $this->hasMany(Department::class,'supervisor_id');

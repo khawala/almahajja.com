@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Activity' => $baseDir . '/app/Activity.php',
     'App\\Advertisement' => $baseDir . '/app/Advertisement.php',
+    'App\\CartRegistration' => $baseDir . '/app/CartRegistration.php',
     'App\\Classroom' => $baseDir . '/app/Classroom.php',
     'App\\Configuration' => $baseDir . '/app/Configuration.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -135,6 +136,7 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'CreateActivitiesTable' => $baseDir . '/database/migrations/2018_11_01_215804_create_activities_table.php',
     'CreateAdvertisementsTable' => $baseDir . '/database/migrations/2018_10_31_233027_create_advertisements_table.php',
+    'CreateCartRegistrationsTable' => $baseDir . '/database/migrations/2022_08_24_033221_create_cart_registrations_table.php',
     'CreateClassroomsTable' => $baseDir . '/database/migrations/2018_11_20_131355_create_classrooms_table.php',
     'CreateConfigurationsTable' => $baseDir . '/database/migrations/2017_11_11_105012_create_configurations_table.php',
     'CreateDepartmentSectionTable' => $baseDir . '/database/migrations/2021_09_18_131355_create_department_section_table.php',

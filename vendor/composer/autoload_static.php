@@ -574,6 +574,7 @@ class ComposerStaticInitbea8d0ba4a0975c6eda4073bde18cdb6
     public static $classMap = array (
         'App\\Activity' => __DIR__ . '/../..' . '/app/Activity.php',
         'App\\Advertisement' => __DIR__ . '/../..' . '/app/Advertisement.php',
+        'App\\CartRegistration' => __DIR__ . '/../..' . '/app/CartRegistration.php',
         'App\\Classroom' => __DIR__ . '/../..' . '/app/Classroom.php',
         'App\\Configuration' => __DIR__ . '/../..' . '/app/Configuration.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -701,6 +702,7 @@ class ComposerStaticInitbea8d0ba4a0975c6eda4073bde18cdb6
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'CreateActivitiesTable' => __DIR__ . '/../..' . '/database/migrations/2018_11_01_215804_create_activities_table.php',
         'CreateAdvertisementsTable' => __DIR__ . '/../..' . '/database/migrations/2018_10_31_233027_create_advertisements_table.php',
+        'CreateCartRegistrationsTable' => __DIR__ . '/../..' . '/database/migrations/2022_08_24_033221_create_cart_registrations_table.php',
         'CreateClassroomsTable' => __DIR__ . '/../..' . '/database/migrations/2018_11_20_131355_create_classrooms_table.php',
         'CreateConfigurationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_11_11_105012_create_configurations_table.php',
         'CreateDepartmentSectionTable' => __DIR__ . '/../..' . '/database/migrations/2021_09_18_131355_create_department_section_table.php',

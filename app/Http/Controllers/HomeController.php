@@ -16,6 +16,7 @@ use App\User;
 use App\Mark;
 use App\Section;
 use App\Classroom;
+use App\CartRegistration;
 use App\Department;
 use App\Registration;
 use Illuminate\Support\Facades\Validator;
@@ -160,14 +161,19 @@ class HomeController extends Controller
         } else {
             $user = auth()->user();
         }
-
+   
+        $department=Department::find($request->department_id);
+            //  dd($department);
+// dd($user->registrations()
+//                 ->where([['section_id', request('section_id')],['level_id', request('level_id')],['department_id', request('department_id')]])
+//                 ->whereYear('created_at', date('Y'))->first());
         if ($user->registrations()
                 ->where([['section_id', request('section_id')],['level_id', request('level_id')],['department_id', request('department_id')]])
                 ->whereYear('created_at', date('Y'))
                 ->exists()) {
                     
             alert('الطالبة لا تسجل في نفس المسار إلا مرة واحدة خلال السنة الحالية.', 'خطأ');
-            return back();
+            return back()->withInput($request->input());
         }
           if($request->payment_type==2){
               if (! ($request->hasFile('receipt_image'))) {
@@ -178,38 +184,22 @@ class HomeController extends Controller
  }  
             
           }
-     
-   $registration= $user->registrations()->create(request()->all());
-     $subject='       '.$registration->department->name;
-                $content='تم إستقبال طلبك للتسجيل في   '.$registration->department->name.'<br>';
-                                $content1='تم إستقبال طلب تسجيل جديد  في   '.$registration->department->name.'<br>';
-$supervisor=$registration->department->supervisor;
- if($registration->department->price==0){
-        $registration->status=1;
-        $registration->save();
-             $content.='وسيتم مراجعة طلبك في اسرع وقت ';
-           $content1.='ويجب عليك مراجعة الطلب ';
+  
    
-        alert('تم ارسال طلب التسجيل   بنجاح.', '', 'success');
-  General::sendEmail($user,$content,$subject);
-    General::sendEmail($supervisor,$content1,$subject);
-     
-     
-        return redirect('/profile');
-    }
 
-if($request->payment_type==1&&($registration->department->price!=0)){
+if($request->payment_type==1&&($department->price!=0)){
 
 
         $tapSecretAPIKey = "sk_live_lMCOm4XPgbkfdjBAQoD6LtIn";
       
         $key = "Bearer $tapSecretAPIKey";
-      $amount=$registration->department->price;
+      $amount=$department->price;
+      $cartRegistration= $user->cartRegistrations()->create(request()->all());
    $curl = curl_init();
         $url = \Request::fullUrl();
         $url2 = route('tap.check');
         $currency ="SAR";
-$cid=$registration->id;
+$cid=$cartRegistration->id;
 $phone=$user->mobile1;
 $email=$user->email;
 $name=$user->name;
@@ -238,18 +228,39 @@ $name=$user->name;
         curl_close($curl);
 
         if (isset($response['errors'])) {
-            return back()->with('errors', $response['errors'][0]);
+          
+            return back()->with('errors', 'تم رفض عملية الشراء')->withInput($request->input());
         }
 
         if ($err) {
 
-            return back()->with('errors', 'حدث خطأ ما');
+            return back()->with('errors', 'حدث خطأ ما')->withInput($request->input());
         } else {
 
             $redirectUrl = $data->transaction->url;
             return redirect($redirectUrl);
           }
 }
+ //  $registration= new Registration(request()->except('_token'));
+  $registration= $user->registrations()->create(request()->all());
+    //   dd($registration);
+     $subject='       '.$registration->department->name;
+                $content='تم إستقبال طلبك للتسجيل في   '.$registration->department->name.'<br>';
+                                $content1='تم إستقبال طلب تسجيل جديد  في   '.$registration->department->name.'<br>';
+$supervisor=$registration->department->supervisor;
+ if($department->price==0){
+        $registration->status=1;
+        $registration->save();
+             $content.='وسيتم مراجعة طلبك في اسرع وقت ';
+           $content1.='ويجب عليك مراجعة الطلب ';
+   
+        alert('تم ارسال طلب التسجيل   بنجاح.', '', 'success');
+  General::sendEmail($user,$content,$subject);
+    General::sendEmail($supervisor,$content1,$subject);
+     
+     
+        return redirect('/profile');
+    }
              $content.='وسيتم مراجعة طلبك في اسرع وقت ';
            $content1.='ويجب عليك مراجعة الطلب ';
    
@@ -293,15 +304,16 @@ $name=$user->name;
         $err = curl_error($curl);
         $data = json_decode($response);
         $response = json_decode($response, true);
-     
-$registration=Registration::find($response['reference']['order']);
-if(!$registration)
+       $user = auth()->user();
+$cartRegistration=CartRegistration::find($response['reference']['order']);
+if(!$cartRegistration)
 {
     return redirect('/profile')->with(
         'errors',
      ' حدث خطأ ما بعملية الدفع '
       );   
 }
+
       
         curl_close($curl);
        $tap_id = $request->tap_id;
@@ -318,6 +330,15 @@ if(!$registration)
         } else {
 
             if ($data->status == 'CAPTURED') {
+           
+                $registration=new Registration();
+              $registration->user_id=$cartRegistration->user_id;  
+               $registration->section_id=$cartRegistration->section_id;  
+                $registration->telecom_id=$cartRegistration->telecom_id;  
+                 $registration->period_id=$cartRegistration->period_id;  
+                  $registration->department_id=$cartRegistration->department_id;  
+                   $registration->level_id=$cartRegistration->level_id;  
+                    $registration->payment_type=$cartRegistration->payment_type;  
        $registration->status=1;
          $registration->paid=$response['amount'];
           $registration->reference_no=$tap_id;
@@ -337,6 +358,13 @@ $supervisor=$registration->department->supervisor;
         'success',
      '    تم التسجيل بنجاح  '
       );   
+            }
+            else{
+              return redirect('/profile')->with(
+        'success',
+     '    حدث خطأ ما    '
+      );     
+                
             }
         }
         }
