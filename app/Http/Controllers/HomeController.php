@@ -249,7 +249,7 @@ $name=$user->name;
                                 $content1='تم إستقبال طلب تسجيل جديد  في   '.$registration->department->name.'<br>';
 $supervisor=$registration->department->supervisor;
  if($department->price==0){
-        $registration->status=1;
+        $registration->status=0;
         $registration->save();
              $content.='وسيتم مراجعة طلبك في اسرع وقت ';
            $content1.='ويجب عليك مراجعة الطلب ';

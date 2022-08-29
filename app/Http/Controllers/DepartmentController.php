@@ -34,7 +34,7 @@ class DepartmentController extends Controller
 
     public function list()
     {
-        $items = Department::with('supervisor','sections')->latest('updated_at')->paginate(6);
+        $items = Department::where('registeration_status', 1)->with('supervisor','sections')->latest('updated_at')->paginate(6);
         if (request()->has('export')) {
             $this->export($items);
         }
