@@ -76,12 +76,15 @@
                                     <td>
                                         <form action="<?php echo e(route(ADMIN . '.marks.create')); ?>" target="_blank">
                                             <input type="hidden" name="classroom" value="<?php echo e($classroom->classroom_id); ?>">
-                                            <?php echo Form::mySelect('month', '', config('variables.months')); ?>
+                                            <?php echo Form::mySelect('month', '', config('variables.months'),null, ['class' => 'form-control select']); ?>
 
-                                            <?php echo Form::mySelect('semester', '', config('variables.semesters')); ?>
+                                            <?php echo Form::mySelect('semester', '', config('variables.semesters'), null,['class' => 'form-control select']); ?>
 
-                                            <?php echo Form::mySelect('level', '', App\Level::pluck('name', 'id')->toArray(), null, ['required']); ?>
+                              
+                                            <?php if($classroom->separate_section!=1): ?>
+                                            <?php echo Form::mySelect('level', '', App\Level::pluck('name', 'id')->toArray(), null, ['required', 'class' => 'form-control select']); ?>
 
+                                            <?php endif; ?>
                                             <button class="btn btn-danger">رصد الدرجات</button>
                                         </form>
                                     </td>

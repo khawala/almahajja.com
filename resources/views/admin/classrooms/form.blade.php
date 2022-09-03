@@ -32,7 +32,7 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         <div class="form-group">
                                         
                                                 <label for="">المسار</label>
-                                                <select name="section_id" id="section_id" class="form-control select" required>
+                                                <select name="section_id" id="section_id" class="form-control select">
                                                  
                                                         <option value="">اختر القسم اولاً</option>
                                                  
@@ -45,7 +45,7 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         <div class="form-group">
                                         
                                                 <label for="">المستوى</label>
-                                                <select name="level_id" id="level_id" class="form-control select" required>
+                                                <select name="level_id" id="level_id" class="form-control select" >
                                                  
                                                         <option value="">اختر المسار اولاً</option>
                                                  

@@ -53,7 +53,9 @@
                 <td>{{ $item->created_at }}</td>
                      <td>{{ $item->PaymentTypeName }}</td>
                 <td>{{ $item->paid }}</td>
+        
                 <td style="width:250 px;">
+                            @if($item->department->separate_section!=1)
                     {!! Form::model($item, [
                         'url'  => route(ADMIN . '.registrations.update', $item->id), 
                         'method' => 'PUT',
@@ -61,7 +63,9 @@
                     !!}
                         {!! Form::mySelect('level_id', '', ['' => ''] + $item->section->levels->pluck('name', 'id')->toArray(), null, ['class' => 'form-control select onchange', 'width' =>'FIT-CONTENT']) !!}
                     {!! Form::close() !!}
+                 @endif
                 </td>
+             
                 <td width="130">
                     {!! Form::model($item, [
                         'url'  => route(ADMIN . '.registrations.update', $item->id), 

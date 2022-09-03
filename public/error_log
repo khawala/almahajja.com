@@ -2594,3 +2594,4 @@
 [22-Aug-2022 17:40:38 Asia/Riyadh] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/bzlw9ifkqppo/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Writer/Excel5/Worksheet.php on line 879
 [22-Aug-2022 17:40:38 Asia/Riyadh] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/bzlw9ifkqppo/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 288
 [22-Aug-2022 17:40:38 Asia/Riyadh] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/bzlw9ifkqppo/public_html/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/OLE.php on line 446
+[03-Sep-2022 01:54:23 Asia/Riyadh] PHP Fatal error:  Can't use function return value in write context in /home/bzlw9ifkqppo/public_html/app/Http/Controllers/MarkController.php on line 30

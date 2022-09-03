@@ -72,9 +72,12 @@
                                     <td>
                                         <form action="{{ route(ADMIN . '.marks.create') }}" target="_blank">
                                             <input type="hidden" name="classroom" value="{{ $classroom->classroom_id }}">
-                                            {!! Form::mySelect('month', '', config('variables.months')) !!}
-                                            {!! Form::mySelect('semester', '', config('variables.semesters')) !!}
-                                            {!! Form::mySelect('level', '', App\Level::pluck('name', 'id')->toArray(), null, ['required']) !!}
+                                            {!! Form::mySelect('month', '', config('variables.months'),null, ['class' => 'form-control select']) !!}
+                                            {!! Form::mySelect('semester', '', config('variables.semesters'), null,['class' => 'form-control select']) !!}
+                              
+                                            @if($classroom->separate_section!=1)
+                                            {!! Form::mySelect('level', '', App\Level::pluck('name', 'id')->toArray(), null, ['required', 'class' => 'form-control select']) !!}
+                                            @endif
                                             <button class="btn btn-danger">رصد الدرجات</button>
                                         </form>
                                     </td>

@@ -53,7 +53,9 @@
                 <td><?php echo e($item->created_at); ?></td>
                      <td><?php echo e($item->PaymentTypeName); ?></td>
                 <td><?php echo e($item->paid); ?></td>
+        
                 <td style="width:250 px;">
+                            <?php if($item->department->separate_section!=1): ?>
                     <?php echo Form::model($item, [
                         'url'  => route(ADMIN . '.registrations.update', $item->id), 
                         'method' => 'PUT',
@@ -63,7 +65,9 @@
 
                     <?php echo Form::close(); ?>
 
+                 <?php endif; ?>
                 </td>
+             
                 <td width="130">
                     <?php echo Form::model($item, [
                         'url'  => route(ADMIN . '.registrations.update', $item->id), 

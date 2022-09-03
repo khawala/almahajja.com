@@ -46,17 +46,12 @@
                             <tr>
                                 <th>رقم التسجيل</th>
                                 <th>الطالبة</th>
+                                
                                 <th>مستوى الطالبة</th>
-                              <?php if($classroom->department->separate_section==1): ?>
-                                <!-- <th> من</th>-->
-                                <!--<th>إلى </th>-->
-                                <?php endif; ?>
+                        
                               <th>المجموع</th>
                               
-                                <!--<th>المراجعة (30)</th>-->
-                                <!--<th>التسميع (30)</th>-->
-                                <!--<th>الإختبار الشهري (40)</th>-->
-                                <!--<th>المجموع</th>-->
+                        
                             </tr>
                         </thead>
 
@@ -73,16 +68,15 @@
                                         <input type="hidden" name="marks[<?php echo e($student->id); ?>][level]" value="<?php echo e($student->level->id); ?>">
                                     </td>
                                     <td><?php echo e($student->name); ?></td>
+                                     <?php if($classroom->department->separate_section!=1): ?>
                                     <td><?php echo e($student->level->name); ?></td>
+                                    <?php else: ?>
                                     <!--<td><input type="number" name="marks[<?php echo e($student->id); ?>][mark1]" class="form-control mark" step="0.01" min="0" max="30" value="<?php echo e($student->mark1); ?>"></td>-->
                                     <!--<td><input type="number" name="marks[<?php echo e($student->id); ?>][mark2]" class="form-control mark" step="0.01" min="0" max="30" value="<?php echo e($student->mark2); ?>"></td>-->
                                     <!--<td><input type="number" name="marks[<?php echo e($student->id); ?>][mark3]" class="form-control mark" step="0.01" min="0" max="40" value="<?php echo e($student->mark3); ?>"></td>-->
                                     <!--<td><input type="number" class="form-control total" step="0.01" min="0" max="100" disabled value="<?php echo e($student->mark1 + $student->mark2 + $student->mark3); ?>"></td>-->
-                                         <?php if($classroom->department->separate_section==1): ?>
-                             =
-                                    <!--<td><input type="text" name="marks[<?php echo e($student->id); ?>][separate_section_from]" class="form-control mark"  value="<?php echo e($student->separate_section_from); ?>"></td>-->
-                                    <!--   <td><input type="text" name="marks[<?php echo e($student->id); ?>][separate_section_to]" class="form-control mark"  value="<?php echo e($student->separate_section_to); ?>"></td>-->
-                            
+                                    <td><input type="text" name="marks[<?php echo e($student->id); ?>][separate_section]" class="form-control mark"  value="<?php echo e($student->separate_section); ?>"></td>
+                               
                                 <?php endif; ?>
                                        <td><input type="number" name="marks[<?php echo e($student->id); ?>][total]" class="form-control mark" step="0.01" min="0" max="100" value="<?php echo e($student->total); ?>"></td>
                                    

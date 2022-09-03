@@ -53,7 +53,7 @@ $total=$total/$count;
 لاجتيازها
 <span>
   {{ $item->classroom->department->certificate_type  }}            @if($item->classroom->department->separate_section==1)
-         من {{$markes[0]->separate_section_from}} الى {{$markes[0]->separate_section_to}}
+         {{$markes[0]->separate_section}}
                             @else
   {{ $item->level->name  }} 
      @endif

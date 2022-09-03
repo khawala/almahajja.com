@@ -115,7 +115,24 @@ class Registration extends Model
     }
     public function scopeStudentsForMark($q, $month = 1, $semester = 1, $level = 1)
     {
- 
+ if($level==0){
+    return $q->join('classrooms', function ($join) {
+            $join->on('classrooms.id', '=', 'registrations.classroom_id')
+                ->on('classrooms.section_id', '=', 'registrations.section_id');
+        })->join('users', 'users.id', '=', 'registrations.user_id')
+            ->leftJoin('marks', function ($join) use ($month, $semester) {
+                $join->on('marks.registration_id', '=', 'registrations.id')
+                   
+                    ->where('month', $month)
+                    ->where('semester', $semester);
+            })
+            ->where('classrooms.id', request('classroom'))
+            ->where('users.status', 1)
+          
+            
+            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3' ,'marks.total', 'marks.separate_section');
+            ;
+ }
         return $q->join('classrooms', function ($join) {
             $join->on('classrooms.id', '=', 'registrations.classroom_id')
                 ->on('classrooms.section_id', '=', 'registrations.section_id');
@@ -130,7 +147,7 @@ class Registration extends Model
             ->where('users.status', 1)
             ->where('registrations.level_id', $level)
             // ->select('registrations.id', 'users.name', 'registrations.level_id');
-            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3' ,'marks.total', 'marks.separate_section_from', 'marks.separate_section_to');
+            ->select('registrations.id', 'users.name', 'registrations.level_id', 'marks.mark1', 'marks.mark2', 'marks.mark3' ,'marks.total', 'marks.separate_section');
             ;
     }
     public function scopeSearch($q)

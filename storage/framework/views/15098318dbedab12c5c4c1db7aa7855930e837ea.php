@@ -104,7 +104,8 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                               <?php echo Form::mySelect('need_teacher', 'يحتاج معلمين', config('variables.need_teacher'),null); ?>
 
                    
-                              <!--<?php echo Form::mySelect('separate_section', 'قسم متفرق', config('variables.separate_section'),null); ?>-->
+                              <?php echo Form::mySelect('separate_section', 'قسم متفرق', config('variables.separate_section'),null); ?>
+
                    
   <?php echo Form::myInput('text', 'certificate_type', ' نوع الشهادة  ', ['required']); ?>
 

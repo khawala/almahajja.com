@@ -51,7 +51,7 @@ $title = isset($item) ? $item->name : 'إنشاء الحلقات والقاعا�
                                         <div class="form-group">
                                         
                                                 <label for="">المستوى</label>
-                                                <select name="level_id" id="level_id" class="form-control select" required>
+                                                <select name="level_id" id="level_id" class="form-control select" >
                                                  
                                                         <option value="">اختر المسار اولاً</option>
                                                  

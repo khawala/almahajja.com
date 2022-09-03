@@ -21,11 +21,15 @@ class MarkController extends Controller
         return view('admin.marks.index', compact('classrooms'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $classroom = Classroom::findOrFail(request('classroom')); // load teacher,
         $classroom->load('teacher', 'section.division');
-
+if($classroom->department->separate_section==1)
+{
+    $request->request->add(['level' => '0']);
+  
+}
         $students = Registration::StudentsForMark(request('month'), request('semester'), request('level'))->get();
        
 
@@ -45,6 +49,12 @@ class MarkController extends Controller
             $marks = request('marks');
             $data = [];
             foreach ($marks as $register_id => $mark) {
+                if(array_key_exists("separate_section", $mark)){
+                    $level=$mark['separate_section'];
+                }
+                else{
+                    $level=null;
+                }
                 $data[] = [
                     'registration_id' => $register_id,
                     'section_id'      => $mark['section_id'],
@@ -55,12 +65,21 @@ class MarkController extends Controller
                     // 'mark1'           => $mark['mark1'],
                     // 'mark2'           => $mark['mark2'],
                     // 'mark3'           => $mark['mark3'],
-                    //   'separate_section_from'           => $mark['separate_section_from'],
-                    // 'separate_section_to'           => $mark['separate_section_to'],
+                    
+                      'separate_section'           => $level,
                     'total'           => $mark['total'],
                     'created_at'      => Carbon::now(),
                 ];
-
+if($level)
+{
+     DB::table('marks')
+                        ->where('registration_id', $register_id)
+                        ->where('section_id', $mark['section_id'])
+                        ->where('month', $mark['month'])
+                        ->where('semester', $mark['semester'])
+                        ->delete(); 
+}
+else{
                 DB::table('marks')
                         ->where('registration_id', $register_id)
                         ->where('section_id', $mark['section_id'])
@@ -68,6 +87,7 @@ class MarkController extends Controller
                         ->where('semester', $mark['semester'])
                         ->where('level', $mark['level'])
                         ->delete();
+}
             }
             DB::table('marks')->insert($data);
         });
@@ -82,18 +102,24 @@ class MarkController extends Controller
     {
         $data = [];
         foreach ($items as $item) {
+            if($item->separate_section){
+                $level= $item->separate_section;
+            }
+            else{
+                $level= $item->level->name;
+            }
+                    
             $data[] = [
                 'رقم التسجيل'          => $item->id,
                 'الطالبة'              => $item->name,
-                'مستوى الطالبة'        => $item->level->name,
+                'مستوى الطالبة'        =>$level,
                 
                 // 'الحضور (30)'          => $item->mark1,
                 // 'التسميع (30)'         => $item->mark2,
                 // 'الإختبار الشهري (40)' => $item->mark3,
                 // 'المجموع'              => $item->mark1 + $item->mark2 + $item->mark3,
                       'المجموع'              => $item->total,
-                                'من'           =>  $item->separate_section_from,
-                    'الى'           => $item->separate_section_to,
+                              
                  
             ];
         }

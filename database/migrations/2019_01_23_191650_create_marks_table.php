@@ -25,8 +25,8 @@ class CreateMarksTable extends Migration
             $table->float('mark2')->nullable();
             $table->float('mark3')->nullable();
             $table->float('total')->nullable();
-            $table->text('separate_section_from')->nullable();
-             $table->text('separate_section_to')->nullable();
+            $table->text('separate_section')->nullable();
+       
             // $table->softDeletes();
             $table->timestamps();
 

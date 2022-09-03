@@ -94,7 +94,7 @@ $title = isset($item) ? $item->name : 'إنشاء قسم ';
                 @endif
                               {!! Form::mySelect('need_teacher', 'يحتاج معلمين', config('variables.need_teacher'),null) !!}
                    
-                              <!--{!! Form::mySelect('separate_section', 'قسم متفرق', config('variables.separate_section'),null) !!}-->
+                              {!! Form::mySelect('separate_section', 'قسم متفرق', config('variables.separate_section'),null) !!}
                    
   {!! Form::myInput('text', 'certificate_type', ' نوع الشهادة  ', ['required']) !!}
                  

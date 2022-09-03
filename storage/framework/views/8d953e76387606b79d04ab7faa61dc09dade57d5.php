@@ -52,7 +52,7 @@ $total=$total/$count;
 لاجتيازها
 <span>
   <?php echo e($item->classroom->department->certificate_type); ?>            <?php if($item->classroom->department->separate_section==1): ?>
-         من <?php echo e($markes[0]->separate_section_from); ?> الى <?php echo e($markes[0]->separate_section_to); ?>
+         <?php echo e($markes[0]->separate_section); ?>
 
                             <?php else: ?>
   <?php echo e($item->level->name); ?> 
