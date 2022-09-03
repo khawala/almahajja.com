@@ -24,7 +24,7 @@ class Mark extends Model
             ->where('marks.registration_id', $registration_id)
             ->where('marks.section_id', $section_id)
             // ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name','marks.registration_id as rid','marks.total','marks.seprate_section_from','marks.seprate_section_to', 'sections.name as sections_name']);
-         ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name','marks.registration_id as rid','marks.total', 'sections.name as sections_name']);
+         ->select(['marks.month', 'marks.semester', 'marks.level', 'marks.mark1', 'marks.mark2', 'marks.mark3', 'departments.name as departments_name','marks.registration_id as rid','marks.total', 'sections.name as sections_name','marks.separate_section']);
        
         ;
     }

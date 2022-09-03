@@ -44,15 +44,24 @@
                         
                         <tbody>
                             <?php $__currentLoopData = $marks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mark): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($mark->total!=null): ?>
                                 <tr>
                                     <td><?php echo e($months[$mark->month]); ?></td>
                                     <td><?php echo e($semesters[$mark->semester]); ?></td>
+                                   
+                                      <?php if($mark->separate_section!=null): ?>
+                                
+                                 <td><?php echo e($mark->separate_section); ?></td>
+                                 
+                                 <?php else: ?>
                                     <td><?php echo e($mark->leveln->name); ?></td>
+                                    <?php endif; ?>
                                     <!--<td><?php echo e($mark->mark1); ?></td>-->
                                     <!--<td><?php echo e($mark->mark2); ?></td>-->
                                     <!--<td><?php echo e($mark->mark3); ?></td>-->
                                     <td><?php echo e($mark->total); ?></td>
                                 </tr>
+                                <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>

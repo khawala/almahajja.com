@@ -45,15 +45,24 @@
                         
                         <tbody>
                             @foreach ($marks as $mark)
+                            @if($mark->total!=null)
                                 <tr>
                                     <td>{{ $months[$mark->month] }}</td>
                                     <td>{{ $semesters[$mark->semester] }}</td>
+                                   
+                                      @if($mark->separate_section!=null)
+                                
+                                 <td>{{ $mark->separate_section }}</td>
+                                 
+                                 @else
                                     <td>{{ $mark->leveln->name }}</td>
+                                    @endif
                                     <!--<td>{{ $mark->mark1 }}</td>-->
                                     <!--<td>{{ $mark->mark2 }}</td>-->
                                     <!--<td>{{ $mark->mark3 }}</td>-->
                                     <td>{{ $mark->total}}</td>
                                 </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

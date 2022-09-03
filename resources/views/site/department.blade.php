@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
                                     <!-- End Col  -->
-                               
+                               @if($department->separate_section!=1)
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                         
@@ -124,6 +124,7 @@
                                                 @endif
                                         </div>
                                     </div>
+                                    @endif
                                 <!-- Start Col  -->
                                     <div class="col-lg-6">
                                         <div class="form-group">

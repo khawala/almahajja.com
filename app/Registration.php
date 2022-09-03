@@ -31,7 +31,7 @@ class Registration extends Model
     */
     public function marks()
     {
-        return $this->hasMany(Mark::class);
+        return $this->hasMany(Mark::class)->where('total','!=',null);
     }
     public function classroom()
     {
@@ -81,11 +81,23 @@ class Registration extends Model
     */
     public function scopeTotalMarks($q, $id, $level)
     {
-        
+    $registration=Registration::find($id);
+    if($registration)
+    {
+        if($registration->department->separate_section==1)
+        {
+              return DB::select("SELECT *
+                            FROM `marks`
+                            WHERE (`registration_id` = $id) and (total!='null')
+        "); 
+        }
+        else{
         return DB::select("SELECT *
                             FROM `marks`
-                            WHERE (`registration_id` = $id) and (level=$level->id)
+                            WHERE (`registration_id` = $id) and (level=$level->id) and (total!='null')
         ");
+        }
+    }
         
     }
 

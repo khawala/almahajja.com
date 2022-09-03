@@ -58,7 +58,12 @@
                                 
                                     <td>{{ $item->period->name}}</td>
                                    
-                                 
+                                 @if($item->department->separate_section==1)
+                              
+                                 @if(count($item->marks)>=1)
+                                 <td>{{ $item->marks[0]->separate_section }}</td>
+                                 @endif
+                                 @else
                                     @if($item->level)
                                     <td>{{ $item->level->name }}
                                       <?php
@@ -77,6 +82,7 @@
                                     @else
                                     <td>لم يحدد بعد</td>
                                     @endif
+                                    @endif
                                     @if($item->classroom)
                                     <td>{{ $item->classroom->name }}</td>
                                     @else
@@ -86,7 +92,7 @@
                                         <ul class="list-inline">
                                             <li>{{ $item->statusName }}</li>
 
-                                            @if ($item->level && $item->section)
+                                            @if(count($item->marks)>=1)
                                                 <li><a class="btn btn-xs btn-info" href="{{ route('profile.marks', [$item->id, $item->section->id]) }}">كشف الدرجات</a></li>
                                             @endif
 

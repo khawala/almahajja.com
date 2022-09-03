@@ -56,7 +56,12 @@
                                 
                                     <td><?php echo e($item->period->name); ?></td>
                                    
-                                 
+                                 <?php if($item->department->separate_section==1): ?>
+                              
+                                 <?php if(count($item->marks)>=1): ?>
+                                 <td><?php echo e($item->marks[0]->separate_section); ?></td>
+                                 <?php endif; ?>
+                                 <?php else: ?>
                                     <?php if($item->level): ?>
                                     <td><?php echo e($item->level->name); ?>
 
@@ -76,6 +81,7 @@
                                     <?php else: ?>
                                     <td>لم يحدد بعد</td>
                                     <?php endif; ?>
+                                    <?php endif; ?>
                                     <?php if($item->classroom): ?>
                                     <td><?php echo e($item->classroom->name); ?></td>
                                     <?php else: ?>
@@ -85,7 +91,7 @@
                                         <ul class="list-inline">
                                             <li><?php echo e($item->statusName); ?></li>
 
-                                            <?php if($item->level && $item->section): ?>
+                                            <?php if(count($item->marks)>=1): ?>
                                                 <li><a class="btn btn-xs btn-info" href="<?php echo e(route('profile.marks', [$item->id, $item->section->id])); ?>">كشف الدرجات</a></li>
                                             <?php endif; ?>
 
